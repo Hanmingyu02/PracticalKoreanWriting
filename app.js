@@ -32,6 +32,8 @@ function resetRound() {
   $('quiz-bottom').hidden = false;
 }
 const categories = [...new Set(['전체 영역', '어법·어문 규범', '틀리기 쉬운 맞춤법', '띄어쓰기', '낱말', '표현', '외래어·외국어 다듬기', '한자어 다듬기', '일본어 투 용어', ...QUESTIONS.map(q => q.category)])];
+let selectedCategories = new Set(categories.slice(1));
+function matchesCategory(question) { return selectedCategories.has(question.category); }
 
 function persist() {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch { /* Session remains usable. */ }
@@ -43,7 +45,7 @@ function updateStats() {
   $('wrong-count').textContent = state.wrong.length;
 }
 function pool() {
-  return QUESTIONS.filter(q => (category === '전체 영역' || q.category === category) && (!wrongMode || state.wrong.includes(q.id)));
+  return QUESTIONS.filter(q => matchesCategory(q) && (!wrongMode || state.wrong.includes(q.id)));
 }
 function onCategoryChanged() {
   resetRound();
@@ -58,33 +60,55 @@ function onCategoryChanged() {
   }
 }
 function renderCategories() {
-  $('category-select').replaceChildren(...categories.map(name => {
-    const option = document.createElement('option');
-    option.value = name;
-    option.textContent = `${name} (${QUESTIONS.filter(q => name === '전체 영역' || q.category === name).length})`;
-    return option;
-  }));
-  $('category-select').value = category;
-  $('categories').replaceChildren(...categories.map(name => {
-    const button = document.createElement('button');
-    const label = document.createElement('span');
-    label.className = 'category-name';
-    label.textContent = name;
-    button.append(label);
-    button.className = name === category ? 'active' : '';
-    button.setAttribute('aria-pressed', name === category);
+  const container = $('category-options');
+  const legend = document.createElement('legend');
+  legend.className = 'visually-hidden';
+  legend.textContent = '함께 풀 영역 선택';
+  container.replaceChildren(legend, ...categories.map(name => {
+    const label = document.createElement('label');
+    label.className = 'category-choice';
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.value = name;
+    checkbox.checked = name === '전체 영역' ? selectedCategories.size === categories.length - 1 : selectedCategories.has(name);
+    checkbox.setAttribute('aria-label', name);
+    const text = document.createElement('span');
+    text.className = 'category-name';
+    text.textContent = name;
     const count = document.createElement('span');
     count.className = 'category-count';
     count.textContent = QUESTIONS.filter(q => name === '전체 영역' || q.category === name).length;
-    button.append(count);
-    button.onclick = () => { category = name; onCategoryChanged(); };
-    return button;
+    label.append(checkbox, text, count);
+    checkbox.onchange = () => {
+      if (name === '전체 영역') for (const item of container.querySelectorAll('input')) item.checked = checkbox.checked;
+      updateCategoryDraft();
+    };
+    return label;
   }));
+  $('category-summary').textContent = selectedCategories.size === categories.length - 1
+    ? '영역 선택 · 전체' : `영역 선택 · ${selectedCategories.size}개 선택됨`;
+  updateCategoryDraft();
 }
-$('category-select').onchange = event => {
-  category = event.target.value;
+function updateCategoryDraft() {
+  const inputs = [...$('category-options').querySelectorAll('input')];
+  const chosen = inputs.slice(1).filter(input => input.checked);
+  inputs[0].checked = chosen.length === categories.length - 1;
+  inputs[0].indeterminate = chosen.length > 0 && chosen.length < categories.length - 1;
+  $('apply-categories').disabled = chosen.length === 0;
+  const count = QUESTIONS.filter(q => chosen.some(input => input.value === q.category)).length;
+  $('category-selection-status').textContent = chosen.length ? `${chosen.length}개 영역 · ${count}문제 선택` : '한 개 이상의 영역을 선택하세요.';
+}
+$('apply-categories').onclick = () => {
+  selectedCategories = new Set([...$('category-options').querySelectorAll('input')].slice(1).filter(input => input.checked).map(input => input.value));
+  if (!selectedCategories.size) return;
+  category = selectedCategories.size === categories.length - 1 ? '전체 영역' : [...selectedCategories].join(' + ');
   onCategoryChanged();
+  if (matchMedia('(max-width:760px)').matches) {
+    $('category-picker').open = false;
+    $('category-summary').focus();
+  }
 };
+$('category-picker').open = !matchMedia('(max-width:760px)').matches;
 function showQuestion() {
   if (memoMode || mockMode || pastMode || (wrongMode && !wrongRetryActive)) return;
   if (notesMode) {
@@ -205,7 +229,7 @@ $('answer-form').onsubmit = event => {
   if (!composing) submitAnswer();
 };
 function renderWrongReview() {
-  const entries = QUESTIONS.filter(q => state.wrong.includes(q.id) && (category === '전체 영역' || q.category === category));
+  const entries = QUESTIONS.filter(q => state.wrong.includes(q.id) && matchesCategory(q));
   $('wrong-summary').textContent = category + ' · ' + entries.length + '개 오답';
   $('wrong-empty').hidden = entries.length !== 0;
   $('wrong-retry-start').disabled = entries.length === 0;
@@ -239,7 +263,7 @@ function renderWrongReview() {
 }
 function renderNotes() {
   const search = normalizeAnswer($('notes-search').value).toLocaleLowerCase();
-  const entries = QUESTIONS.filter(q => (category === '전체 영역' || q.category === category)
+  const entries = QUESTIONS.filter(q => matchesCategory(q)
     && (!search || [q.question, ...q.answers].some(text => normalizeAnswer(text).toLocaleLowerCase().includes(search))));
   $('notes-count').textContent = `${category} · ${entries.length}개 항목`;
   $('notes-empty').hidden = entries.length > 0;
