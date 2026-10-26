@@ -195,26 +195,29 @@ function renderNotes() {
   }));
 }
 $('notes-search').addEventListener('input', renderNotes);
-const MEMO_KEY = 'bareun-personal-notes-v1';
-try {
-  const saved = localStorage.getItem(MEMO_KEY);
-  if (saved !== null) {
-    $('memo-input').value = saved;
-    $('memo-status').textContent = '저장된 노트를 불러왔습니다.';
-  }
-} catch {
-  $('memo-status').textContent = '저장된 노트를 불러올 수 없습니다. 브라우저 저장소 설정을 확인하세요.';
+function renderConcepts() {
+  $('concepts-empty').hidden = CONCEPT_NOTES.length > 0;
+  $('concepts-content').replaceChildren(...CONCEPT_NOTES.map(entry => {
+    const article = document.createElement('article');
+    article.className = 'concept-entry';
+    const title = document.createElement('h3');
+    title.textContent = entry.title;
+    const body = document.createElement('div');
+    body.className = 'concept-body';
+    body.textContent = entry.body;
+    article.append(title, body);
+    return article;
+  }));
 }
-$('memo-input').addEventListener('input', () => {
-  try {
-    localStorage.setItem(MEMO_KEY, $('memo-input').value);
-    $('memo-status').textContent = '저장됨';
-  } catch {
-    $('memo-status').textContent = '저장하지 못했습니다. 작성한 내용을 파일로 내려받아 보관하세요.';
-  }
-});
+renderConcepts();
+let legacyMemo = '';
+try {
+  legacyMemo = localStorage.getItem('bareun-personal-notes-v1') || '';
+  $('legacy-memo').hidden = !legacyMemo;
+  $('legacy-memo-text').textContent = legacyMemo;
+} catch { /* Legacy browser notes remain untouched. */ }
 $('export-memo').onclick = () => {
-  const blob = new Blob([$('memo-input').value], { type: 'text/plain;charset=utf-8' });
+  const blob = new Blob([legacyMemo], { type: 'text/plain;charset=utf-8' });
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = url;
