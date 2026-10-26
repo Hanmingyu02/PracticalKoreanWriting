@@ -13,6 +13,7 @@ let wrongMode = false;
 let wrongRetryActive = false;
 let notesMode = false;
 let memoMode = false;
+let mockMode = false;
 let pastMode = false;
 let current = null;
 let answered = false;
@@ -72,7 +73,7 @@ $('category-select').onchange = event => {
   onCategoryChanged();
 };
 function showQuestion() {
-  if (memoMode || pastMode || (wrongMode && !wrongRetryActive)) return;
+  if (memoMode || mockMode || pastMode || (wrongMode && !wrongRetryActive)) return;
   if (notesMode) {
     renderNotes();
     return;
@@ -324,19 +325,21 @@ function setMode(mode) {
   wrongRetryActive = false;
   notesMode = mode === 'notes';
   memoMode = mode === 'memo';
+  mockMode = mode === 'mock';
   pastMode = mode === 'past';
-  for (const [id, active] of [['all-mode', mode === 'all'], ['wrong-mode', wrongMode], ['notes-mode', notesMode], ['memo-mode', memoMode], ['past-mode', pastMode]]) {
+  for (const [id, active] of [['all-mode', mode === 'all'], ['wrong-mode', wrongMode], ['notes-mode', notesMode], ['memo-mode', memoMode], ['mock-mode', mockMode], ['past-mode', pastMode]]) {
     $(id).classList.toggle('active', active);
     $(id).setAttribute('aria-pressed', active);
   }
   $('study-notes').hidden = !notesMode;
   $('personal-notes').hidden = !memoMode;
+  $('mock-exams').hidden = !mockMode;
   $('past-exams').hidden = !pastMode;
   $('wrong-review').hidden = !wrongMode;
   if (wrongMode) renderWrongReview();
-  document.querySelector('.quiz-card').hidden = notesMode || memoMode || pastMode || wrongMode;
-  document.querySelector('.stats').hidden = memoMode || pastMode || wrongMode;
-  $('reset').hidden = memoMode || pastMode;
+  document.querySelector('.quiz-card').hidden = notesMode || memoMode || mockMode || pastMode || wrongMode;
+  document.querySelector('.stats').hidden = memoMode || mockMode || pastMode || wrongMode;
+  $('reset').hidden = memoMode || mockMode || pastMode;
   queue = [];
   showQuestion();
 }
@@ -353,6 +356,7 @@ $('wrong-retry-start').onclick = () => {
 };
 $('notes-mode').onclick = () => setMode('notes');
 $('memo-mode').onclick = () => setMode('memo');
+$('mock-mode').onclick = () => setMode('mock');
 $('past-mode').onclick = () => setMode('past');
 $('next').onclick = () => {
   showQuestion();
