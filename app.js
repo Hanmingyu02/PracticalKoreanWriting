@@ -222,7 +222,15 @@ let composing = false;
 $('answer-input').addEventListener('compositionstart', () => { composing = true; });
 $('answer-input').addEventListener('compositionend', () => { composing = false; });
 $('answer-input').addEventListener('keydown', event => {
-  if (event.key === 'Enter' && (event.isComposing || composing || event.keyCode === 229)) event.preventDefault();
+  if (event.key !== 'Enter') return;
+  if (event.isComposing || composing || event.keyCode === 229) {
+    event.preventDefault();
+    return;
+  }
+  if (!event.shiftKey) {
+    event.preventDefault();
+    $('answer-form').requestSubmit();
+  }
 });
 $('answer-form').onsubmit = event => {
   event.preventDefault();
