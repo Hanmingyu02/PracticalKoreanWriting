@@ -68,7 +68,7 @@ const categoryShortNames = {
 function renderCategories() {
   draftCategories = new Set(selectedCategories);
   const count = QUESTIONS.filter(matchesCategory).length;
-  $('category-summary').textContent = `현재: ${selectedCategories.size === categories.length - 1 ? '전체 영역' : [...selectedCategories].map(name => categoryShortNames[name] || name).join(' · ')} (${count}) · 변경`;
+  $('category-summary').textContent = `현재: ${selectedCategories.size === categories.length - 1 ? '전체 영역' : selectedCategories.size ? [...selectedCategories].map(name => categoryShortNames[name] || name).join(' · ') : '선택 없음'} (${count}) · 변경`;
   renderCategoryChoices();
 }
 function renderCategoryChoices() {
@@ -92,20 +92,31 @@ function renderCategoryChoices() {
       else if (allSelected) draftCategories = new Set([name]);
       else if (draftCategories.has(name)) draftCategories.delete(name);
       else draftCategories.add(name);
-      renderCategoryChoices();
+      if (notesMode) {
+        applyCategoryScope();
+        renderCategories();
+        renderNotes();
+      } else renderCategoryChoices();
       [...$('category-options').children].find(item => item.getAttribute('aria-label') === name).focus();
     };
     return button;
   }));
   const count = QUESTIONS.filter(q => draftCategories.has(q.category)).length;
   $('apply-categories').disabled = count === 0;
+  $('apply-categories').hidden = notesMode;
+  document.querySelector('#category-picker > .category-hint').textContent = notesMode
+    ? '영역을 누르면 학습노트에 바로 표시됩니다. 여러 개도 선택할 수 있습니다.'
+    : '영역 이름을 눌러 선택하세요. 여러 개도 가능합니다.';
   $('apply-categories').textContent = notesMode ? '선택한 영역 보기' : wrongMode ? '선택한 오답 보기' : `${count}문제 시작`;
   $('category-selection-status').textContent = !count ? '학습할 영역을 선택하세요.' : allSelected ? `전체 ${count}문제` : `${draftCategories.size}개 영역 · ${count}문제`;
 }
+function applyCategoryScope() {
+  selectedCategories = new Set(draftCategories);
+  category = selectedCategories.size === categories.length - 1 ? '전체 영역' : selectedCategories.size ? [...selectedCategories].join(' + ') : '선택 없음';
+}
 $('apply-categories').onclick = () => {
   if (!draftCategories.size) return;
-  selectedCategories = new Set(draftCategories);
-  category = selectedCategories.size === categories.length - 1 ? '전체 영역' : [...selectedCategories].join(' + ');
+  applyCategoryScope();
   onCategoryChanged();
   if (compactLayout.matches) {
     $('category-picker').open = false;
@@ -282,7 +293,7 @@ function renderNotes() {
     && (!search || [q.question, ...q.answers].some(text => normalizeAnswer(text).toLocaleLowerCase().includes(search))));
   $('notes-count').textContent = `${category} · ${entries.length}개 항목`;
   $('notes-empty').hidden = entries.length > 0;
-  $('notes-empty').textContent = search ? '검색 결과가 없습니다.' : '이 영역에 등록된 항목이 없습니다.';
+  $('notes-empty').textContent = !selectedCategories.size ? '학습할 영역을 선택하세요.' : search ? '검색 결과가 없습니다.' : '이 영역에 등록된 항목이 없습니다.';
   $('notes-table').hidden = entries.length === 0;
   $('notes-rows').replaceChildren(...entries.map(q => {
     const row = document.createElement('tr');
@@ -386,6 +397,10 @@ function setMode(mode) {
   wrongMode = mode === 'wrong';
   wrongRetryActive = false;
   notesMode = mode === 'notes';
+  if (notesMode) {
+    applyCategoryScope();
+    renderCategories();
+  }
   memoMode = mode === 'memo';
   mockMode = mode === 'mock';
   pastMode = mode === 'objective-past' || mode === 'written-past';
