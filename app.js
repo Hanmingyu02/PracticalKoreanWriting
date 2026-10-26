@@ -486,6 +486,20 @@ function renderConcepts() {
       table.append(caption, head, rows);
       body.append(table);
     }
+    for (const item of entry.sections || []) {
+      const section = document.createElement('section');
+      section.className = 'concept-note-section';
+      const heading = document.createElement('h4');
+      heading.textContent = item.title;
+      const list = document.createElement('ul');
+      for (const text of item.items) {
+        const li = document.createElement('li');
+        li.textContent = text;
+        list.append(li);
+      }
+      section.append(heading, list);
+      body.append(section);
+    }
     if (entry.images?.length) {
       const gallery = document.createElement('section');
       gallery.className = 'concept-images';
