@@ -486,6 +486,40 @@ function renderConcepts() {
       table.append(caption, head, rows);
       body.append(table);
     }
+    if (entry.images?.length) {
+      const gallery = document.createElement('section');
+      gallery.className = 'concept-images';
+      const heading = document.createElement('h4');
+      heading.textContent = '기안문 서식';
+      gallery.append(heading);
+      for (const item of entry.images) {
+        const figure = document.createElement('figure');
+        const caption = document.createElement('figcaption');
+        caption.textContent = item.title;
+        const link = document.createElement('a');
+        link.href = item.src;
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.setAttribute('aria-label', `${item.title} 원본 이미지 새 탭에서 열기`);
+        const img = document.createElement('img');
+        img.src = item.src;
+        img.alt = item.alt;
+        img.width = item.width;
+        img.height = item.height;
+        img.loading = 'lazy';
+        link.append(img);
+        const original = document.createElement('a');
+        original.href = item.src;
+        original.target = '_blank';
+        original.rel = 'noopener';
+        original.className = 'concept-image-original';
+        original.textContent = '원본 크기로 보기 ↗';
+        original.setAttribute('aria-label', `${item.title} 원본 크기로 보기, 새 탭에서 열기`);
+        figure.append(caption, link, original);
+        gallery.append(figure);
+      }
+      body.append(gallery);
+    }
     return body;
   }));
   const readable = part.volumes.flatMap(item => item.chapters.filter(ch => chapterEntries(part.id, item.id, ch.number).length).map(ch => ({ volume: item.id, chapter: ch.number })));
