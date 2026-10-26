@@ -96,11 +96,11 @@ function showQuestion() {
   $('question').textContent = current.question;
 }
 function normalizeAnswer(text) {
-  // 한자어 풀이 연습이므로 띄어쓰기 차이는 채점하지 않습니다.
-  return text.normalize('NFC').replace(/\s+/gu, '').trim();
+  // 괄호 속 맥락 설명과 띄어쓰기 차이는 채점하지 않습니다.
+  return text.normalize('NFC').replace(/\([^)]*\)/gu, '').replace(/\s+/gu, '').trim();
 }
 function isAcceptedAnswer(text, answers) {
-  const parts = text.split(/[,，、/;；·\n]+/u).map(normalizeAnswer).filter(Boolean);
+  const parts = text.replace(/\([^)]*\)/gu, '').split(/[,，、/;；·\n]+/u).map(normalizeAnswer).filter(Boolean);
   const accepted = answers.map(normalizeAnswer);
   return parts.length > 0 && parts.every(part => accepted.includes(part));
 }
