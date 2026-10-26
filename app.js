@@ -34,6 +34,7 @@ function resetRound() {
 const categories = [...new Set(['전체 영역', '어법·어문 규범', '틀리기 쉬운 맞춤법', '띄어쓰기', '낱말', '표현', '외래어·외국어 다듬기', '한자어 다듬기', '일본어 투 용어', ...QUESTIONS.map(q => q.category)])];
 let selectedCategories = new Set(categories.slice(1));
 let draftCategories = new Set(selectedCategories);
+const compactLayout = matchMedia('(max-width:1023px)');
 function matchesCategory(question) { return selectedCategories.has(question.category); }
 
 function persist() {
@@ -106,12 +107,15 @@ $('apply-categories').onclick = () => {
   selectedCategories = new Set(draftCategories);
   category = selectedCategories.size === categories.length - 1 ? '전체 영역' : [...selectedCategories].join(' + ');
   onCategoryChanged();
-  if (matchMedia('(max-width:760px)').matches) {
+  if (compactLayout.matches) {
     $('category-picker').open = false;
     $('category-summary').focus();
   }
 };
-$('category-picker').open = !matchMedia('(max-width:760px)').matches;
+$('category-picker').open = !compactLayout.matches;
+compactLayout.addEventListener('change', event => {
+  $('category-picker').open = !event.matches;
+});
 function showQuestion() {
   if (memoMode || mockMode || pastMode || (wrongMode && !wrongRetryActive)) return;
   if (notesMode) {
