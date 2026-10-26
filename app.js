@@ -11,6 +11,7 @@ try {
 let category = '전체 영역';
 let wrongMode = false;
 let notesMode = false;
+let memoMode = false;
 let current = null;
 let answered = false;
 let queue = [];
@@ -59,6 +60,7 @@ $('category-select').onchange = event => {
   showQuestion();
 };
 function showQuestion() {
+  if (memoMode) return;
   if (notesMode) {
     renderNotes();
     return;
@@ -193,21 +195,55 @@ function renderNotes() {
   }));
 }
 $('notes-search').addEventListener('input', renderNotes);
+const MEMO_KEY = 'bareun-personal-notes-v1';
+try {
+  const saved = localStorage.getItem(MEMO_KEY);
+  if (saved !== null) {
+    $('memo-input').value = saved;
+    $('memo-status').textContent = '저장된 노트를 불러왔습니다.';
+  }
+} catch {
+  $('memo-status').textContent = '저장된 노트를 불러올 수 없습니다. 브라우저 저장소 설정을 확인하세요.';
+}
+$('memo-input').addEventListener('input', () => {
+  try {
+    localStorage.setItem(MEMO_KEY, $('memo-input').value);
+    $('memo-status').textContent = '저장됨';
+  } catch {
+    $('memo-status').textContent = '저장하지 못했습니다. 작성한 내용을 파일로 내려받아 보관하세요.';
+  }
+});
+$('export-memo').onclick = () => {
+  const blob = new Blob([$('memo-input').value], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = '실용글쓰기-단권화-노트.txt';
+  document.body.append(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+};
 function setMode(mode) {
   wrongMode = mode === 'wrong';
   notesMode = mode === 'notes';
-  for (const [id, active] of [['all-mode', mode === 'all'], ['wrong-mode', wrongMode], ['notes-mode', notesMode]]) {
+  memoMode = mode === 'memo';
+  for (const [id, active] of [['all-mode', mode === 'all'], ['wrong-mode', wrongMode], ['notes-mode', notesMode], ['memo-mode', memoMode]]) {
     $(id).classList.toggle('active', active);
     $(id).setAttribute('aria-pressed', active);
   }
   $('study-notes').hidden = !notesMode;
-  document.querySelector('.quiz-card').hidden = notesMode;
+  $('personal-notes').hidden = !memoMode;
+  document.querySelector('.quiz-card').hidden = notesMode || memoMode;
+  document.querySelector('.stats').hidden = memoMode;
+  $('reset').hidden = memoMode;
   queue = [];
   showQuestion();
 }
 $('all-mode').onclick = () => setMode('all');
 $('wrong-mode').onclick = () => setMode('wrong');
 $('notes-mode').onclick = () => setMode('notes');
+$('memo-mode').onclick = () => setMode('memo');
 $('next').onclick = () => {
   showQuestion();
   (current ? $('answer-input') : $('question')).focus();
