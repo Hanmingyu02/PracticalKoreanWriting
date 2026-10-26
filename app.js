@@ -238,7 +238,16 @@ function renderConcepts() {
     title.textContent = chapter.title;
     const body = document.createElement('div');
     body.className = 'concept-body';
-    body.textContent = entry.body;
+    // 취소선 표시만 지원하며 원문을 HTML로 해석하지 않습니다.
+    for (const [index, text] of entry.body.split(/~~([^~\n]+)~~/gu).entries()) {
+      if (index % 2 === 0) body.append(document.createTextNode(text));
+      else {
+        const deleted = document.createElement('del');
+        deleted.textContent = text;
+        deleted.title = '삭제할 표현';
+        body.append(deleted);
+      }
+    }
     article.append(title, body);
     return article;
   }));
