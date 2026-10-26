@@ -14,7 +14,6 @@ let current = null;
 let answered = false;
 let queue = [];
 const categories = [...new Set(['전체 영역', '어법·어문 규범', '틀리기 쉬운 맞춤법', '띄어쓰기', '낱말', '표현', '외래어·외국어 다듬기', '한자어 다듬기', '일본어 투 용어', ...QUESTIONS.map(q => q.category)])];
-const categoryIcons = ['▦', 'Aa', '✓', '↔', '가', '✎', '↗', '字', '≈'];
 
 function persist() {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch { /* Session remains usable. */ }
@@ -29,16 +28,12 @@ function pool() {
   return QUESTIONS.filter(q => (category === '전체 영역' || q.category === category) && (!wrongMode || state.wrong.includes(q.id)));
 }
 function renderCategories() {
-  $('categories').replaceChildren(...categories.map((name, index) => {
+  $('categories').replaceChildren(...categories.map(name => {
     const button = document.createElement('button');
-    const icon = document.createElement('span');
-    icon.className = 'category-icon';
-    icon.textContent = categoryIcons[index] || '·';
-    icon.setAttribute('aria-hidden', 'true');
     const label = document.createElement('span');
     label.className = 'category-name';
     label.textContent = name;
-    button.append(icon, label);
+    button.append(label);
     button.className = name === category ? 'active' : '';
     button.setAttribute('aria-pressed', name === category);
     const count = document.createElement('span');
@@ -65,8 +60,8 @@ function showQuestion() {
   document.querySelector('.quiz-card').classList.toggle('is-empty', !current);
   $('empty-description').hidden = Boolean(current);
   $('empty-description').textContent = wrongMode && QUESTIONS.length
-    ? '이 영역에서 틀린 문제를 모두 복습했어요. 다른 영역도 살펴보세요.'
-    : '좋은 문장을 위한 연습을 준비하고 있어요. 문제가 등록되면 이곳에서 바로 시작할 수 있어요.';
+    ? '이 영역에 저장된 오답이 없습니다.'
+    : '사진 자료를 바탕으로 문제를 등록할 예정입니다.';
   answered = false;
   $('next').disabled = true;
   $('feedback').replaceChildren();
@@ -75,9 +70,9 @@ function showQuestion() {
   $('progress').textContent = available.length ? `이 영역에서 ${available.length}문제 무작위 출제` : '다른 영역도 살펴보세요';
   if (!current) {
     $('question').textContent = !QUESTIONS.length
-      ? '아직 등록된 문제가 없어요.'
-      : wrongMode ? '아직 이 영역의 오답이 없어요.' : '아직 이 영역에 등록된 문제가 없어요.';
-    if (!QUESTIONS.length) $('progress').textContent = '자료를 확인한 뒤 문제를 추가할 예정입니다.';
+      ? '등록된 문제가 없습니다.'
+      : wrongMode ? '이 영역에 저장된 오답이 없습니다.' : '이 영역에 등록된 문제가 없습니다.';
+    if (!QUESTIONS.length) $('progress').textContent = '등록된 문제 0개';
     return;
   }
   $('category').textContent = current.category;
