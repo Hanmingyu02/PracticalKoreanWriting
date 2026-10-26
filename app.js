@@ -10,6 +10,7 @@ try {
 } catch { /* Private browsing and unavailable storage still allow quizzes. */ }
 let category = '전체 영역';
 let wrongMode = false;
+let notesMode = false;
 let current = null;
 let answered = false;
 let queue = [];
@@ -58,6 +59,10 @@ $('category-select').onchange = event => {
   showQuestion();
 };
 function showQuestion() {
+  if (notesMode) {
+    renderNotes();
+    return;
+  }
   const available = pool();
   queue = queue.filter(id => available.some(q => q.id === id));
   if (!queue.length) {
@@ -147,17 +152,44 @@ $('answer-form').onsubmit = event => {
   event.preventDefault();
   if (!composing) submitAnswer();
 };
-function setMode(wrong) {
-  wrongMode = wrong;
-  $('all-mode').classList.toggle('active', !wrong);
-  $('wrong-mode').classList.toggle('active', wrong);
-  $('all-mode').setAttribute('aria-pressed', !wrong);
-  $('wrong-mode').setAttribute('aria-pressed', wrong);
+function renderNotes() {
+  const search = normalizeAnswer($('notes-search').value).toLocaleLowerCase();
+  const entries = QUESTIONS.filter(q => (category === '전체 영역' || q.category === category)
+    && (!search || [q.question, ...q.answers].some(text => normalizeAnswer(text).toLocaleLowerCase().includes(search))));
+  $('notes-count').textContent = `${category} · ${entries.length}개 항목`;
+  $('notes-empty').hidden = entries.length > 0;
+  $('notes-empty').textContent = search ? '검색 결과가 없습니다.' : '이 영역에 등록된 항목이 없습니다.';
+  $('notes-table').hidden = entries.length === 0;
+  $('notes-rows').replaceChildren(...entries.map(q => {
+    const row = document.createElement('tr');
+    const term = document.createElement('th');
+    term.scope = 'row';
+    term.textContent = q.question;
+    const group = document.createElement('small');
+    group.textContent = q.group;
+    term.append(group);
+    const answers = document.createElement('td');
+    answers.textContent = q.answers.join(', ');
+    row.append(term, answers);
+    return row;
+  }));
+}
+$('notes-search').addEventListener('input', renderNotes);
+function setMode(mode) {
+  wrongMode = mode === 'wrong';
+  notesMode = mode === 'notes';
+  for (const [id, active] of [['all-mode', mode === 'all'], ['wrong-mode', wrongMode], ['notes-mode', notesMode]]) {
+    $(id).classList.toggle('active', active);
+    $(id).setAttribute('aria-pressed', active);
+  }
+  $('study-notes').hidden = !notesMode;
+  document.querySelector('.quiz-card').hidden = notesMode;
   queue = [];
   showQuestion();
 }
-$('all-mode').onclick = () => setMode(false);
-$('wrong-mode').onclick = () => setMode(true);
+$('all-mode').onclick = () => setMode('all');
+$('wrong-mode').onclick = () => setMode('wrong');
+$('notes-mode').onclick = () => setMode('notes');
 $('next').onclick = () => {
   showQuestion();
   (current ? $('answer-input') : $('question')).focus();
@@ -168,4 +200,4 @@ $('reset').onclick = () => {
 };
 renderCategories();
 updateStats();
-setMode(false);
+setMode('all');
