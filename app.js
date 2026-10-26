@@ -1,4 +1,26 @@
 const $ = id => document.getElementById(id);
+const EXAM_DAY = Date.UTC(2026, 10, 21);
+const DAY_MS = 86400000;
+const KOREA_OFFSET_MS = 9 * 60 * 60 * 1000;
+function updateExamCountdown(now = new Date()) {
+  // 날짜만 한국 시간 기준으로 비교하여 시차와 일광 절약 시간의 영향을 피합니다.
+  const koreanDay = Math.floor((now.getTime() + KOREA_OFFSET_MS) / DAY_MS) * DAY_MS;
+  const days = Math.round((EXAM_DAY - koreanDay) / DAY_MS);
+  $('exam-dday').textContent = days > 0 ? `D-${days}` : days === 0 ? 'D-DAY' : `D+${-days}`;
+  $('exam-dday').setAttribute('aria-label', days > 0 ? `시험까지 ${days}일` : days === 0 ? '오늘은 시험일입니다' : `시험일로부터 ${-days}일 지났습니다`);
+}
+let countdownTimer;
+function refreshExamCountdown() {
+  updateExamCountdown();
+  clearTimeout(countdownTimer);
+  const untilMidnight = DAY_MS - ((Date.now() + KOREA_OFFSET_MS) % DAY_MS);
+  countdownTimer = setTimeout(refreshExamCountdown, untilMidnight + 50);
+}
+refreshExamCountdown();
+window.addEventListener('focus', refreshExamCountdown);
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) refreshExamCountdown();
+});
 const STORAGE_KEY = 'bareun-study-v1';
 const emptyState = () => ({ answered: 0, correct: 0, streak: 0, wrong: [] });
 let state = emptyState();
