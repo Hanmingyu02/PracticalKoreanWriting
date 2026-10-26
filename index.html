@@ -10,7 +10,19 @@
   <script src="app.js" defer></script>
 </head>
 <body>
-  <header><a class="logo" href="./">바른<span>실용글쓰기 연습장</span></a><span class="header-note">하루 한 문제, 더 정확한 우리말</span></header>
+  <section id="password-gate" class="gate" aria-labelledby="gate-title">
+    <form id="password-form" class="gate-card">
+      <span class="logo">바른</span>
+      <h1 id="gate-title">우리말 연습을 시작해요.</h1>
+      <p>입장 비밀번호를 입력해 주세요.</p>
+      <label for="site-password">비밀번호</label>
+      <input id="site-password" type="password" inputmode="numeric" autocomplete="current-password" required aria-describedby="password-error">
+      <p id="password-error" class="gate-error" role="alert"></p>
+      <button type="submit" class="primary">입장하기 →</button>
+    </form>
+  </section>
+  <div id="site-content" hidden>
+  <header><a class="logo" href="./">바른<span>실용글쓰기 연습장</span></a><button id="lock-site" class="text-button">잠그기</button></header>
   <main>
     <section class="intro"><div class="eyebrow">WRITE BETTER, EVERY DAY</div><h1>익숙한 말도,<br>한 번 더 <em>바르게.</em></h1><p>헷갈리는 우리말을 짧은 퀴즈로 익혀 보세요.<br>정답보다 중요한 건, 왜 그런지 아는 일이니까요.</p></section>
     <section class="workspace">
@@ -23,5 +35,6 @@
       </div>
     </section>
   </main><footer><span class="logo">바른</span><span>매일 조금 더 정확하게, 우리말 연습.</span><span>학습 기록은 이 브라우저에 저장됩니다.</span></footer>
+  </div>
 </body>
 </html>
