@@ -504,7 +504,7 @@ function renderConcepts() {
       const gallery = document.createElement('section');
       gallery.className = 'concept-images';
       const heading = document.createElement('h4');
-      heading.textContent = '기안문 서식';
+      heading.textContent = entry.imagesTitle || '기안문 서식';
       gallery.append(heading);
       for (const item of entry.images) {
         if (item.heading) {

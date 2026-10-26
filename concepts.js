@@ -268,6 +268,30 @@ const CONCEPT_NOTES = [
           "완결성을 갖추어 쓰고 필요할 경우 참고 자료를 첨부함"
         ]
       }
+    ],
+    "imagesTitle": "보고서 작성 예시",
+    "images": [
+      {
+        "src": "assets/notes/report-policy-review.png",
+        "title": "정책 보고서·검토 보고서 작성 예시",
+        "alt": "정책 보고서와 검토 보고서의 제목, 추진·검토 배경, 현황, 계획과 참고 자료 배치 예시.",
+        "width": 1055,
+        "height": 1491
+      },
+      {
+        "src": "assets/notes/report-situation-event.png",
+        "title": "상황·동향 보고서·행사 보고서 작성 예시",
+        "alt": "상황·동향 보고서의 보고 배경, 현 상황과 전망, 대응 방안 및 행사 보고서의 개요, 시간·준비 계획과 행정 사항 예시.",
+        "width": 1055,
+        "height": 1491
+      },
+      {
+        "src": "assets/notes/report-meeting-results.png",
+        "title": "회의 보고서·결과 보고서 작성 예시",
+        "alt": "회의 보고서의 개요와 진행·준비 계획 및 결과 보고서의 결과 분석, 주요 성과, 미흡한 점과 향후 계획 예시.",
+        "width": 1055,
+        "height": 1491
+      }
     ]
   }
 ];
