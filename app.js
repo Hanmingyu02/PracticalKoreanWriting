@@ -15,7 +15,8 @@ try { unlocked = sessionStorage.getItem(ACCESS_KEY) === 'yes'; } catch {}
 setUnlocked(unlocked);
 $('password-form').onsubmit = event => {
   event.preventDefault();
-  if ($('site-password').value !== '2002') {
+  const password = $('site-password').value.trim().replace(/[０-９]/g, digit => String(digit.charCodeAt(0) - 0xFF10));
+  if (password !== '2002') {
     $('password-error').textContent = '비밀번호가 맞지 않습니다. 다시 입력해 주세요.';
     $('site-password').setAttribute('aria-invalid', 'true');
     $('site-password').select();

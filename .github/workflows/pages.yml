@@ -23,6 +23,8 @@ jobs:
         run: |
           mkdir _site
           cp index.html style.css app.js questions.js _site/
+          # Every deployment uses new asset URLs to avoid stale cached scripts.
+          sed -i "s/entry-fix-1/${GITHUB_SHA}/g" _site/index.html
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
