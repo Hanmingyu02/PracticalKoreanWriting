@@ -507,6 +507,11 @@ function renderConcepts() {
       heading.textContent = '기안문 서식';
       gallery.append(heading);
       for (const item of entry.images) {
+        if (item.heading) {
+          const sectionHeading = document.createElement('h4');
+          sectionHeading.textContent = item.heading;
+          gallery.append(sectionHeading);
+        }
         const figure = document.createElement('figure');
         const caption = document.createElement('figcaption');
         caption.textContent = item.title;
