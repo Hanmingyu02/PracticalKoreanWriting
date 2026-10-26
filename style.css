@@ -40,3 +40,5 @@ body{min-height:100vh;min-height:100svh;padding-top:env(safe-area-inset-top,0px)
 #wrong-retry-start{width:auto}
 #wrong-review:not([hidden])+.quiz-card:not([hidden]){margin-top:18px}
 @media(max-width:760px){#wrong-review{padding:18px 14px}#wrong-review-title{font-size:19px}.wrong-entry{padding:15px 13px}.wrong-entry-row{grid-template-columns:58px minmax(0,1fr);gap:10px}.wrong-entry-value{font-size:14px}#wrong-retry-start{width:100%}}
+
+#round-complete{margin-top:22px;padding:20px;border:1px solid #c6d7c9;border-radius:6px;background:#f4f8f4}#round-title{font-size:18px;margin:0 0 10px}#round-complete p{font-size:14px;line-height:1.8;margin:8px 0}#restart-round{margin-top:10px}#round-summary{font-weight:500}

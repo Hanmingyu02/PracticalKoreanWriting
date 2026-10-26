@@ -18,6 +18,19 @@ let pastMode = false;
 let current = null;
 let answered = false;
 let queue = [];
+let roundStarted = false;
+let roundTotal = 0;
+let roundAnswered = 0;
+let roundCorrect = 0;
+function resetRound() {
+  queue = [];
+  roundStarted = false;
+  roundTotal = 0;
+  roundAnswered = 0;
+  roundCorrect = 0;
+  $('round-complete').hidden = true;
+  $('quiz-bottom').hidden = false;
+}
 const categories = [...new Set(['전체 영역', '어법·어문 규범', '틀리기 쉬운 맞춤법', '띄어쓰기', '낱말', '표현', '외래어·외국어 다듬기', '한자어 다듬기', '일본어 투 용어', ...QUESTIONS.map(q => q.category)])];
 
 function persist() {
@@ -33,7 +46,7 @@ function pool() {
   return QUESTIONS.filter(q => (category === '전체 영역' || q.category === category) && (!wrongMode || state.wrong.includes(q.id)));
 }
 function onCategoryChanged() {
-  queue = [];
+  resetRound();
   renderCategories();
   if (wrongMode) {
     wrongRetryActive = false;
@@ -79,8 +92,9 @@ function showQuestion() {
     return;
   }
   const available = pool();
-  queue = queue.filter(id => available.some(q => q.id === id));
-  if (!queue.length) {
+  if (!roundStarted) {
+    roundStarted = true;
+    roundTotal = available.length;
     queue = available.map(q => q.id);
     for (let i = queue.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -89,7 +103,7 @@ function showQuestion() {
     if (queue.length > 1 && queue[0] === current?.id) [queue[0], queue[1]] = [queue[1], queue[0]];
   }
   const nextId = queue.shift();
-  current = available.find(q => q.id === nextId) || null;
+  current = QUESTIONS.find(q => q.id === nextId) || null;
   document.querySelector('.quiz-card').classList.toggle('is-empty', !current);
   $('empty-description').hidden = Boolean(current);
   $('empty-description').textContent = wrongMode && QUESTIONS.length
@@ -104,7 +118,7 @@ function showQuestion() {
   $('submit-answer').disabled = false;
   $('answer-input').removeAttribute('aria-invalid');
   $('category').textContent = category;
-  $('progress').textContent = available.length ? `이 영역에서 ${available.length}문제 무작위 출제` : '다른 영역도 살펴보세요';
+  $('progress').textContent = roundTotal ? `${roundAnswered + 1} / ${roundTotal}문제 · 이번 회차 ${roundAnswered}문제 완료` : '다른 영역도 살펴보세요';
   if (!current) {
     $('question').textContent = !QUESTIONS.length
       ? '등록된 문제가 없습니다.'
@@ -141,6 +155,8 @@ function submitAnswer() {
   }
   answered = true;
   const correct = isAcceptedAnswer(text, current.answers, current.strict);
+  roundAnswered++;
+  roundCorrect += Number(correct);
   state.answered++;
   state.correct += Number(correct);
   state.streak = correct ? state.streak + 1 : 0;
@@ -169,7 +185,14 @@ function submitAnswer() {
   persist();
   updateStats();
   renderWrongReview();
-  $('next').focus();
+  $('progress').textContent = `${roundAnswered} / ${roundTotal}문제 완료`;
+  if (roundAnswered === roundTotal) {
+    $('round-complete').hidden = false;
+    $('quiz-bottom').hidden = true;
+    $('next').disabled = true;
+    $('round-summary').textContent = `${category} · ${roundTotal}문제 완료 · 정답 ${roundCorrect}개 · 오답 ${roundTotal - roundCorrect}개`;
+    $('restart-round').focus();
+  } else $('next').focus();
 }
 let composing = false;
 $('answer-input').addEventListener('compositionstart', () => { composing = true; });
@@ -340,7 +363,7 @@ function setMode(mode) {
   document.querySelector('.quiz-card').hidden = notesMode || memoMode || mockMode || pastMode || wrongMode;
   document.querySelector('.stats').hidden = memoMode || mockMode || pastMode || wrongMode;
   $('reset').hidden = memoMode || mockMode || pastMode;
-  queue = [];
+  resetRound();
   showQuestion();
 }
 $('all-mode').onclick = () => setMode('all');
@@ -348,7 +371,7 @@ $('wrong-mode').onclick = () => setMode('wrong');
 $('wrong-retry-start').onclick = () => {
   if (!wrongMode || !$('wrong-list').children.length) return;
   wrongRetryActive = true;
-  queue = [];
+  resetRound();
   document.querySelector('.quiz-card').hidden = false;
   document.querySelector('.stats').hidden = false;
   showQuestion();
@@ -358,6 +381,11 @@ $('notes-mode').onclick = () => setMode('notes');
 $('memo-mode').onclick = () => setMode('memo');
 $('mock-mode').onclick = () => setMode('mock');
 $('past-mode').onclick = () => setMode('past');
+$('restart-round').onclick = () => {
+  resetRound();
+  showQuestion();
+  (current ? $('answer-input') : $('question')).focus();
+};
 $('next').onclick = () => {
   showQuestion();
   (current ? $('answer-input') : $('question')).focus();
@@ -367,7 +395,7 @@ $('reset').onclick = () => {
   state = emptyState();
   persist();
   updateStats();
-  queue = [];
+  resetRound();
   if (wrongMode) {
     wrongRetryActive = false;
     document.querySelector('.quiz-card').hidden = true;
