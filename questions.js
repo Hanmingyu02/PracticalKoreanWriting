@@ -4864,3 +4864,653 @@ const STUDY_ONLY_ITEMS = [
     "note": "‘서슴지’는 어간이 ㅁ으로 끝나는데도 ‘서슴치’가 아니고 ‘서슴지’인 이유: 기본형이 ‘서슴하다’가 아니고 ‘서슴다’이기 때문에 위의 경우에 해당되지 않아서 ‘하’를 완전히 줄여 ‘서슴지’로 써요. (제공 자료의 설명)"
   }
 ];
+
+// 사용자가 제공한 표현 수정 표 (이번 제공 범위: 16~17쪽). 원문과 복수 수정안을 보존합니다.
+const EXPRESSION_QUESTIONS = [
+  {
+    "id": "expression-16a-01",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 첫 번째 표",
+    "question": "검사·감독의 결과 관련",
+    "answers": [
+      "검사·감독 결과와 관련하여"
+    ],
+    "sourceAnswer": "검사·감독 결과와 관련하여",
+    "strict": true
+  },
+  {
+    "id": "expression-16a-02",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 첫 번째 표",
+    "question": "경품이 공정거래위원회의 '경품류 제공에 관한 불공정 거래 행위의 유형 및 기준 지정 고시(제2000-11호)'위반 여부",
+    "answers": [
+      "경품이 공정거래위원회의 '경품류 제공에 관한 불공정 거래 행위의 유형 및 기준 지정 고시(제2000-11호)'에 위반되는지 여부"
+    ],
+    "sourceAnswer": "경품이 공정거래위원회의 '경품류 제공에 관한 불공정 거래 행위의 유형 및 기준 지정 고시(제2000-11호)'에 위반되는지 여부",
+    "strict": true
+  },
+  {
+    "id": "expression-16a-03",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 첫 번째 표",
+    "question": "계약시",
+    "answers": [
+      "계약 시",
+      "계약할 때"
+    ],
+    "sourceAnswer": "계약 시(→ 계약할 때)",
+    "strict": true
+  },
+  {
+    "id": "expression-16a-04",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 첫 번째 표",
+    "question": "계획 수립 과정에 녹색 성장 관련 전문가 그룹인 녹색성장위원회 및 녹색 성장 기획 연구단을 통해 자문과 의견을 수렴하고",
+    "answers": [
+      "계획 수립 과정에서 녹색 성장 관련 전문가 그룹인 녹색성장위원회와 녹색 성장 기획 연구단에 자문하고"
+    ],
+    "sourceAnswer": "계획 수립 과정에서 녹색 성장 관련 전문가 그룹인 녹색성장위원회와 녹색 성장 기획 연구단에 자문하고",
+    "strict": true
+  },
+  {
+    "id": "expression-16a-05",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 첫 번째 표",
+    "question": "계획인 바",
+    "answers": [
+      "계획인바",
+      "계획입니다. 이에"
+    ],
+    "sourceAnswer": "계획인바(→ 계획입니다. 이에)",
+    "strict": true
+  },
+  {
+    "id": "expression-16a-06",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 첫 번째 표",
+    "question": "공동 실시하는",
+    "answers": [
+      "공동으로 실시하는"
+    ],
+    "sourceAnswer": "공동으로 실시하는",
+    "strict": true
+  },
+  {
+    "id": "expression-16a-07",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 첫 번째 표",
+    "question": "공사로 인해 출입문이 상시 개방중입니다.",
+    "answers": [
+      "공사를 하고 있어서 출입문을 계속 열어 놓고 있습니다."
+    ],
+    "sourceAnswer": "공사를 하고 있어서 출입문을 계속 열어 놓고 있습니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-16a-08",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 첫 번째 표",
+    "question": "공설묘지를 활용 방안도 검토 중이다.",
+    "answers": [
+      "공설묘지를 활용하는 방안도 검토하고 있다."
+    ],
+    "sourceAnswer": "공설묘지를 활용하는 방안도 검토하고 있다.",
+    "strict": true
+  },
+  {
+    "id": "expression-16a-09",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 첫 번째 표",
+    "question": "공연 종료 후 사용 장비 및 물품은 제자리 정리 정돈이 필요하며, 공연장의 시설·설비·비품을 파손·분실할 경우 원상 복구를 하여야 합니다.",
+    "answers": [
+      "공연을 마치면 공연에 사용한 장비와 물품을 정리해 주시기 바랍니다. 시설, 설비, 비품 등을 파손하거나 분실한 경우에는 원상 복구를 해야 합니다."
+    ],
+    "sourceAnswer": "공연을 마치면 공연에 사용한 장비와 물품을 정리해 주시기 바랍니다. 시설, 설비, 비품 등을 파손하거나 분실한 경우에는 원상 복구를 해야 합니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-16a-10",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 첫 번째 표",
+    "question": "과거사를 극복하고 미래 지향적인 양국 간 관계 발전을 위한",
+    "answers": [
+      "과거사를 극복하고 미래 지향적인 양국 간 관계를 발전시키기 위한"
+    ],
+    "sourceAnswer": "과거사를 극복하고 미래 지향적인 양국 간 관계를 발전시키기 위한",
+    "strict": true
+  },
+  {
+    "id": "expression-16a-11",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 첫 번째 표",
+    "question": "관련 적용법은?",
+    "answers": [
+      "관련 적용법 조항은 무엇인지?"
+    ],
+    "sourceAnswer": "관련 적용법 조항은 무엇인지?",
+    "strict": true
+  },
+  {
+    "id": "expression-16a-12",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 첫 번째 표",
+    "question": "교원 능력 제고를 위한 인프라 구축",
+    "answers": [
+      "교원 능력을 높이기 위한 기반 구축"
+    ],
+    "sourceAnswer": "교원 능력을 높이기 위한 기반 구축",
+    "strict": true
+  },
+  {
+    "id": "expression-16a-13",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 첫 번째 표",
+    "question": "교육관 건립 등 시설 정비 끝낼 방침이다.",
+    "answers": [
+      "교육관 건립 등 시설 정비를 끝낼 방침이다."
+    ],
+    "sourceAnswer": "교육관 건립 등 시설 정비를 끝낼 방침이다.",
+    "strict": true
+  },
+  {
+    "id": "expression-16b-01",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 두 번째 표",
+    "question": "교육을 실시하게",
+    "answers": [
+      "교육을 하게"
+    ],
+    "sourceAnswer": "교육을 하게",
+    "strict": true
+  },
+  {
+    "id": "expression-16b-02",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 두 번째 표",
+    "question": "교육을 실시한다.",
+    "answers": [
+      "교육을 한다."
+    ],
+    "sourceAnswer": "교육을 한다.",
+    "strict": true
+  },
+  {
+    "id": "expression-16b-03",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 두 번째 표",
+    "question": "교육의 질 제고를 위해 '마이스터고' 인증시스템 구축",
+    "answers": [
+      "교육의 질을 높이도록 '마이스터고' 인증 체계 마련"
+    ],
+    "sourceAnswer": "교육의 질을 높이도록 '마이스터고' 인증 체계 마련",
+    "strict": true
+  },
+  {
+    "id": "expression-16b-04",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 두 번째 표",
+    "question": "구직자의 채용 기회",
+    "answers": [
+      "구직자의 취업 기회"
+    ],
+    "sourceAnswer": "구직자의 취업 기회",
+    "strict": true
+  },
+  {
+    "id": "expression-16b-05",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 두 번째 표",
+    "question": "구체화시켜",
+    "answers": [
+      "구체화해"
+    ],
+    "sourceAnswer": "구체화해",
+    "strict": true
+  },
+  {
+    "id": "expression-16b-06",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 두 번째 표",
+    "question": "'위기에 강한 국민', '할 수 있다'는 자신감, 경제난국 극복에 기여",
+    "answers": [
+      "국민에게 '할 수 있다'는 자신감을 심어 경제 위기 극복에 기여"
+    ],
+    "sourceAnswer": "국민에게 '할 수 있다'는 자신감을 심어 경제 위기 극복에 기여",
+    "strict": true
+  },
+  {
+    "id": "expression-16b-07",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 두 번째 표",
+    "question": "국립OOO문화전당을 건립 중에 있으며",
+    "answers": [
+      "국립OOO문화전당을 건립하고 있으며"
+    ],
+    "sourceAnswer": "국립OOO문화전당을 건립하고 있으며",
+    "strict": true
+  },
+  {
+    "id": "expression-16b-08",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 두 번째 표",
+    "question": "규정법 위반 시",
+    "answers": [
+      "규정법을 위반했을 때"
+    ],
+    "sourceAnswer": "규정법을 위반했을 때",
+    "strict": true
+  },
+  {
+    "id": "expression-16b-09",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 두 번째 표",
+    "question": "근로능력 없는 장애율 80% 이상자",
+    "answers": [
+      "근로 능력이 없으며 장애율이 80% 이상인 사람"
+    ],
+    "sourceAnswer": "근로 능력이 없으며 장애율이 80% 이상인 사람",
+    "strict": true
+  },
+  {
+    "id": "expression-16b-10",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 두 번째 표",
+    "question": "기 참석한 경우에는 별도 참석하실 필요가 없습니다.",
+    "answers": [
+      "이미 참석했으면 또 참석하실 필요가 없습니다."
+    ],
+    "sourceAnswer": "이미 참석했으면 또 참석하실 필요가 없습니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-16b-11",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 두 번째 표",
+    "question": "기간 동안",
+    "answers": [
+      "기간",
+      "동안"
+    ],
+    "sourceAnswer": "기간/동안",
+    "strict": true
+  },
+  {
+    "id": "expression-16b-12",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 두 번째 표",
+    "question": "기반한",
+    "answers": [
+      "기반을 둔",
+      "기초한"
+    ],
+    "sourceAnswer": "기반을 둔/기초한",
+    "strict": true
+  },
+  {
+    "id": "expression-16b-13",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 두 번째 표",
+    "question": "담보증 금액의 만기도래분",
+    "answers": [
+      "기존 보증 금액 가운데 만기가 된 것"
+    ],
+    "sourceAnswer": "기존 보증 금액 가운데 만기가 된 것",
+    "strict": true
+  },
+  {
+    "id": "expression-16b-14",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 두 번째 표",
+    "question": "기재 필",
+    "answers": [
+      "반드시 기재"
+    ],
+    "sourceAnswer": "반드시 기재",
+    "strict": true
+  },
+  {
+    "id": "expression-16b-15",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 두 번째 표",
+    "question": "기존의 교과 위주의 수업에",
+    "answers": [
+      "기존의 교과 위주 수업에"
+    ],
+    "sourceAnswer": "기존의 교과 위주 수업에",
+    "strict": true
+  },
+  {
+    "id": "expression-16b-16",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 두 번째 표",
+    "question": "기한내 미납부시 참가 포기자로 간주",
+    "answers": [
+      "이때까지 납부하지 않으면 참가 의사가 없는 것으로 여김"
+    ],
+    "sourceAnswer": "이때까지 납부하지 않으면 참가 의사가 없는 것으로 여김",
+    "strict": true
+  },
+  {
+    "id": "expression-16b-17",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 두 번째 표",
+    "question": "나타나고 있다.",
+    "answers": [
+      "나타났다."
+    ],
+    "sourceAnswer": "나타났다.",
+    "strict": true
+  },
+  {
+    "id": "expression-16b-18",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 두 번째 표",
+    "question": "노동력 경영비 절감이 가능하다.",
+    "answers": [
+      "노동력과 경영비를 줄일 수 있다."
+    ],
+    "sourceAnswer": "노동력과 경영비를 줄일 수 있다.",
+    "strict": true
+  },
+  {
+    "id": "expression-16b-19",
+    "category": "표현",
+    "group": "표현 수정 · 16쪽 · 두 번째 표",
+    "question": "녹색성장을 통한 변화되는 모습 및 기대 효과 분석 등을 실시할 계획이다.",
+    "answers": [
+      "녹색 성장으로 변화되는 모습과 기대 효과를 분석하는 등의 일을 할 계획이다."
+    ],
+    "sourceAnswer": "녹색 성장으로 변화되는 모습과 기대 효과를 분석하는 등의 일을 할 계획이다.",
+    "strict": true
+  },
+  {
+    "id": "expression-17a-01",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 첫 번째 표",
+    "question": "누전 차단기가 동작되어",
+    "answers": [
+      "누전 차단기가 작동하여"
+    ],
+    "sourceAnswer": "누전 차단기가 작동하여",
+    "strict": true
+  },
+  {
+    "id": "expression-17a-02",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 첫 번째 표",
+    "question": "다수인이 왕래하는 장소에 6. 1.(금)까지 첨부합니다.",
+    "answers": [
+      "사람들이 많이 오가는 곳에 6. 1.(금)까지 부착할 예정입니다."
+    ],
+    "sourceAnswer": "사람들이 많이 오가는 곳에 6. 1.(금)까지 부착할 예정입니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-17a-03",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 첫 번째 표",
+    "question": "다양한 지식과 정보 제공을 위하여",
+    "answers": [
+      "다양한 지식과 정보를 제공하고자"
+    ],
+    "sourceAnswer": "다양한 지식과 정보를 제공하고자",
+    "strict": true
+  },
+  {
+    "id": "expression-17a-04",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 첫 번째 표",
+    "question": "단순 업무 효율성 향상에만",
+    "answers": [
+      "단순히 업무 효율성을 향상하는 데에만"
+    ],
+    "sourceAnswer": "단순히 업무 효율성을 향상하는 데에만",
+    "strict": true
+  },
+  {
+    "id": "expression-17a-05",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 첫 번째 표",
+    "question": "담당자를 위한 문화 예술 전문 역량 강화를 위해",
+    "answers": [
+      "담당자의 문화 예술 전문 역량 강화를 위해"
+    ],
+    "sourceAnswer": "담당자의 문화 예술 전문 역량 강화를 위해",
+    "strict": true
+  },
+  {
+    "id": "expression-17a-06",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 첫 번째 표",
+    "question": "대비·대응 안전 당부",
+    "answers": [
+      "대비·대응 협조 요청"
+    ],
+    "sourceAnswer": "대비·대응 협조 요청",
+    "strict": true
+  },
+  {
+    "id": "expression-17a-07",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 첫 번째 표",
+    "question": "국내 여행자를 대상, 「관광진흥법」에 따라 강력한 행정처분 조치를 취할 예정입니다.",
+    "answers": [
+      "국내 여행자를 대상으로 「관광진흥법」에 따라 강력한 행정처분 조치를 취할 예정입니다."
+    ],
+    "sourceAnswer": "국내 여행자를 대상으로 「관광진흥법」에 따라 강력한 행정처분 조치를 취할 예정입니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-17a-08",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 첫 번째 표",
+    "question": "대통령 방한 시",
+    "answers": [
+      "대통령이 방한했을 때"
+    ],
+    "sourceAnswer": "대통령이 방한했을 때",
+    "strict": true
+  },
+  {
+    "id": "expression-17a-09",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 첫 번째 표",
+    "question": "대학 자료 반납 시, 필히 연체여부를 확인하고 연체 시 이용자에게 연체료를 수납한 후, 운영자 홈페이지에서 반납 처리함.",
+    "answers": [
+      "이용자가 대학 자료를 반납할 때 운영자는 반드시 연체 여부를 확인하고 연체되면 이용자에게 연체료를 받은 다음, 운영자 누리집에서 반납 처리함."
+    ],
+    "sourceAnswer": "이용자가 대학 자료를 반납할 때 운영자는 반드시 연체 여부를 확인하고 연체되면 이용자에게 연체료를 받은 다음, 운영자 누리집에서 반납 처리함.",
+    "strict": true
+  },
+  {
+    "id": "expression-17a-10",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 첫 번째 표",
+    "question": "대형 포털 해당 메일 차단 요청, 경찰 수사 요청 등 적극 대응으로 피해를 최소화하기 위해",
+    "answers": [
+      "대형 포털에 해당 전자우편을 차단 요청하거나 경찰에 수사 요청을 하는 등 피해를 최소화하고자"
+    ],
+    "sourceAnswer": "대형 포털에 해당 전자우편을 차단 요청하거나 경찰에 수사 요청을 하는 등 피해를 최소화하고자",
+    "strict": true
+  },
+  {
+    "id": "expression-17a-11",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 첫 번째 표",
+    "question": "도시 철도 이용 시 불편한 사항에 대하여 제언해 주시면",
+    "answers": [
+      "도시 철도를 이용하면서 겪은 불편한 점을 말씀해 주시면"
+    ],
+    "sourceAnswer": "도시 철도를 이용하면서 겪은 불편한 점을 말씀해 주시면",
+    "strict": true
+  },
+  {
+    "id": "expression-17a-12",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 첫 번째 표",
+    "question": "도시계획 도로 공사를 진행 중에 있습니다.",
+    "answers": [
+      "도시계획 도로 공사를 진행하고 있습니다."
+    ],
+    "sourceAnswer": "도시계획 도로 공사를 진행하고 있습니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-17a-13",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 첫 번째 표",
+    "question": "동법에 의해",
+    "answers": [
+      "이 법에 따라"
+    ],
+    "sourceAnswer": "이 법에 따라",
+    "strict": true
+  },
+  {
+    "id": "expression-17a-14",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 첫 번째 표",
+    "question": "응시 원서 등에 허위 기재",
+    "answers": [
+      "응시 원서 등 각종 서류의 허위 기재"
+    ],
+    "sourceAnswer": "응시 원서 등 각종 서류의 허위 기재",
+    "strict": true
+  },
+  {
+    "id": "expression-17b-01",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 두 번째 표",
+    "question": "또한 지식 재산 정책에 대한 국민의 접근성을 더욱 강화하기 위해 올해부터는 국민이 직접 정책 설명 공개 과제를 요청하는 '국민 신청 설명제'를 분기별로 시행할 예정이다.",
+    "answers": [
+      "또한 올해부터 국민이 직접 정책 설명의 공개 과제를 요청하는 '국민 신청 설명제'를 분기별로 시행할 예정이다."
+    ],
+    "sourceAnswer": "또한 올해부터 국민이 직접 정책 설명의 공개 과제를 요청하는 '국민 신청 설명제'를 분기별로 시행할 예정이다.",
+    "strict": true
+  },
+  {
+    "id": "expression-17b-02",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 두 번째 표",
+    "question": "또한 \"해외 한식당 교육은 그 대상 지역을 점점 확대하고 정례화하는 방향으로 추진하겠다\"라며 \"외국의 유명 요리 학교와도 이에 대해 협력해 나가고 있다\"고 덧붙였다.",
+    "answers": [
+      "또한 관계자는 \"해외 한식당 교육은 그 대상 지역을 점점 확대하고 정례화하는 방향으로 추진하겠다.\"라며 \"외국의 유명 요리 학교와도 이에 대해 협력해 나가고 있다.\"라고 덧붙였다."
+    ],
+    "sourceAnswer": "또한 관계자는 \"해외 한식당 교육은 그 대상 지역을 점점 확대하고 정례화하는 방향으로 추진하겠다.\"라며 \"외국의 유명 요리 학교와도 이에 대해 협력해 나가고 있다.\"라고 덧붙였다.",
+    "strict": true
+  },
+  {
+    "id": "expression-17b-03",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 두 번째 표",
+    "question": "마라톤처럼 일정 시간 내에",
+    "answers": [
+      "마라톤처럼 정해진 시간 안에"
+    ],
+    "sourceAnswer": "마라톤처럼 정해진 시간 안에",
+    "strict": true
+  },
+  {
+    "id": "expression-17b-04",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 두 번째 표",
+    "question": "마스터플랜을 마련하여",
+    "answers": [
+      "종합 계획을 마련하여",
+      "기본 설계를 마련하여"
+    ],
+    "sourceAnswer": "(종합 계획을/기본 설계를) 마련하여",
+    "strict": true
+  },
+  {
+    "id": "expression-17b-05",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 두 번째 표",
+    "question": "만전을 기하여",
+    "answers": [
+      "허술함이 없도록 하여"
+    ],
+    "sourceAnswer": "허술함이 없도록 하여",
+    "strict": true
+  },
+  {
+    "id": "expression-17b-06",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 두 번째 표",
+    "question": "많은 데 기인한 것으로 보인다.",
+    "answers": [
+      "많기 때문인 것으로 보인다."
+    ],
+    "sourceAnswer": "많기 때문인 것으로 보인다.",
+    "strict": true
+  },
+  {
+    "id": "expression-17b-07",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 두 번째 표",
+    "question": "매 1년마다",
+    "answers": [
+      "1년마다",
+      "매년",
+      "해마다"
+    ],
+    "sourceAnswer": "1년마다/매년/해마다",
+    "strict": true
+  },
+  {
+    "id": "expression-17b-08",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 두 번째 표",
+    "question": "정상 간 채택 문서에 최초로 영문화함으로써",
+    "answers": [
+      "정상 간 채택 문서에 최초로 밝혀옴으로써"
+    ],
+    "sourceAnswer": "정상 간 채택 문서에 최초로 밝혀옴으로써",
+    "strict": true
+  },
+  {
+    "id": "expression-17b-09",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 두 번째 표",
+    "question": "모델로 설립",
+    "answers": [
+      "본보기로 하여 설립"
+    ],
+    "sourceAnswer": "본보기로 하여 설립",
+    "strict": true
+  },
+  {
+    "id": "expression-17b-10",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 두 번째 표",
+    "question": "무대 작업은 안전 관리 담당자의 안전 교육 실시 후에 시작하시기 바랍니다.",
+    "answers": [
+      "무대 작업은 안전 관리 담당자에게서 안전 교육을 받은 후에 시작해야 합니다."
+    ],
+    "sourceAnswer": "무대 작업은 안전 관리 담당자에게서 안전 교육을 받은 후에 시작해야 합니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-17b-11",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 두 번째 표",
+    "question": "무한OO, 행복OO 등의 슬로건이 많이 나왔다는 점이 군정 구호였던 행복OO의 영향을 많이 받았음을 말해 줌.",
+    "answers": [
+      "무한OO, 행복OO 등 군정 구호 행복OO의 영향을 받은 구호가 많음."
+    ],
+    "sourceAnswer": "무한OO, 행복OO 등 군정 구호 행복OO의 영향을 받은 구호가 많음.",
+    "strict": true
+  },
+  {
+    "id": "expression-17b-12",
+    "category": "표현",
+    "group": "표현 수정 · 17쪽 · 두 번째 표",
+    "question": "응시자가 선발 예정 인원수와 같거나 미달이더라도",
+    "answers": [
+      "응시자가 선발 예정 인원수와 같거나 그에 미달하더라도"
+    ],
+    "sourceAnswer": "응시자가 선발 예정 인원수와 같거나 그에 미달하더라도",
+    "strict": true
+  }
+];
+QUESTIONS.push(...EXPRESSION_QUESTIONS);
