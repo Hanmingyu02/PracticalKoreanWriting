@@ -315,49 +315,93 @@ function renderNotes() {
   }));
 }
 $('notes-search').addEventListener('input', renderNotes);
-function setConceptOptions(id, items) {
-  $(id).replaceChildren(...items.map(item => {
-    const option = document.createElement('option');
-    option.value = item.value;
-    option.textContent = item.title;
-    return option;
+let conceptPart = CONCEPT_STRUCTURE[0].id;
+const conceptSelections = new Map();
+function chapterEntries(part, volume, chapter) {
+  return CONCEPT_NOTES.filter(entry => entry.part === part && entry.volume === volume && entry.chapter === chapter);
+}
+function currentConceptPart() { return CONCEPT_STRUCTURE.find(part => part.id === conceptPart); }
+function conceptSelection() {
+  if (!conceptSelections.has(conceptPart)) {
+    const volume = currentConceptPart().volumes[0];
+    conceptSelections.set(conceptPart, { volume: volume.id, chapter: volume.chapters[0].number });
+  }
+  return conceptSelections.get(conceptPart);
+}
+function renderConceptToc() {
+  $('concept-part-buttons').replaceChildren(...CONCEPT_STRUCTURE.map(part => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    const total = part.volumes.reduce((sum, volume) => sum + volume.chapters.length, 0);
+    const registered = part.volumes.reduce((sum, volume) => sum + volume.chapters.filter(chapter => chapterEntries(part.id, volume.id, chapter.number).length).length, 0);
+    button.textContent = `${part.title} (${registered}/${total})`;
+    button.setAttribute('aria-pressed', part.id === conceptPart);
+    button.onclick = () => {
+      conceptPart = part.id;
+      renderConceptToc();
+      renderConcepts();
+      [...$('concept-part-buttons').children].find(item => item.getAttribute('aria-pressed') === 'true').focus();
+    };
+    return button;
+  }));
+  const selection = conceptSelection();
+  $('concept-volume-list').replaceChildren(...currentConceptPart().volumes.map(volume => {
+    const details = document.createElement('details');
+    details.className = 'concept-volume';
+    details.open = volume.id === selection.volume;
+    const summary = document.createElement('summary');
+    const registered = volume.chapters.filter(chapter => chapterEntries(conceptPart, volume.id, chapter.number).length).length;
+    summary.textContent = volume.title;
+    const count = document.createElement('span');
+    count.textContent = `${registered}/${volume.chapters.length}장 등록`;
+    summary.append(count);
+    const list = document.createElement('div');
+    list.className = 'concept-chapters';
+    volume.chapters.forEach(chapter => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.dataset.volume = volume.id;
+      button.dataset.chapter = chapter.number;
+      const registered = chapterEntries(conceptPart, volume.id, chapter.number).length > 0;
+      button.textContent = chapter.title;
+      button.setAttribute('aria-pressed', selection.volume === volume.id && selection.chapter === chapter.number);
+      const status = document.createElement('span');
+      status.textContent = registered ? '읽기 →' : '내용 미등록';
+      button.append(status);
+      button.onclick = () => {
+        conceptSelections.set(conceptPart, { volume: volume.id, chapter: chapter.number });
+        updateConceptChapterButtons();
+        renderConcepts();
+        focusConceptReader();
+      };
+      list.append(button);
+    });
+    details.append(summary, list);
+    return details;
   }));
 }
-function selectedConceptPart() {
-  return CONCEPT_STRUCTURE.find(part => part.id === $('concept-part').value);
+function updateConceptChapterButtons() {
+  const selected = conceptSelection();
+  for (const button of document.querySelectorAll('.concept-chapters button')) {
+    button.setAttribute('aria-pressed', button.dataset.volume === selected.volume && Number(button.dataset.chapter) === selected.chapter);
+  }
 }
-function selectedConceptVolume() {
-  return selectedConceptPart().volumes.find(volume => volume.id === $('concept-volume').value);
-}
-function renderConceptVolumes() {
-  setConceptOptions('concept-volume', selectedConceptPart().volumes.map(volume => ({ value: volume.id, title: volume.title })));
-  renderConceptChapters();
-}
-function renderConceptChapters() {
-  const part = selectedConceptPart();
-  const volume = selectedConceptVolume();
-  setConceptOptions('concept-chapter', volume.chapters.map(chapter => ({
-    value: String(chapter.number),
-    title: chapter.title + (CONCEPT_NOTES.some(entry => entry.part === part.id && entry.volume === volume.id && entry.chapter === chapter.number) ? '' : ' · 내용 미등록'),
-  })));
-  renderConcepts();
+function focusConceptReader() {
+  $('concept-reader-title').focus({ preventScroll: true });
+  $('concept-reader').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
 }
 function renderConcepts() {
-  const part = selectedConceptPart();
-  const volume = selectedConceptVolume();
-  const chapter = volume.chapters.find(item => item.number === Number($('concept-chapter').value));
-  const entries = CONCEPT_NOTES.filter(entry => entry.part === part.id && entry.volume === volume.id && entry.chapter === chapter.number);
-  $('concept-location').textContent = `${part.title} / ${volume.title} / ${chapter.title}`;
+  const part = currentConceptPart();
+  const selected = conceptSelection();
+  const volume = part.volumes.find(item => item.id === selected.volume);
+  const chapter = volume.chapters.find(item => item.number === selected.chapter);
+  const entries = chapterEntries(part.id, volume.id, chapter.number);
+  $('concept-location').textContent = `${part.title} / ${volume.title}`;
+  $('concept-reader-title').textContent = chapter.title;
   $('concepts-empty').hidden = entries.length > 0;
-  $('concepts-empty').textContent = '이 장은 아직 내용이 등록되지 않았습니다.';
   $('concepts-content').replaceChildren(...entries.map(entry => {
-    const article = document.createElement('article');
-    article.className = 'concept-entry';
-    const title = document.createElement('h3');
-    title.textContent = chapter.title;
     const body = document.createElement('div');
     body.className = 'concept-body';
-    // 취소선 표시만 지원하며 원문을 HTML로 해석하지 않습니다.
     for (const [index, text] of entry.body.split(/~~([^~\n]+)~~/gu).entries()) {
       if (index % 2 === 0) body.append(document.createTextNode(text));
       else {
@@ -367,15 +411,29 @@ function renderConcepts() {
         body.append(deleted);
       }
     }
-    article.append(title, body);
-    return article;
+    return body;
   }));
+  const readable = part.volumes.flatMap(item => item.chapters.filter(ch => chapterEntries(part.id, item.id, ch.number).length).map(ch => ({ volume: item.id, chapter: ch.number })));
+  const index = readable.findIndex(item => item.volume === selected.volume && item.chapter === selected.chapter);
+  $('concept-page-nav').hidden = index < 0;
+  for (const [id, step] of [['concept-previous', -1], ['concept-next', 1]]) {
+    $(id).disabled = index < 0 || index + step < 0 || index + step >= readable.length;
+    $(id).onclick = () => {
+      const next = readable[index + step];
+      if (!next) return;
+      conceptSelections.set(conceptPart, next);
+      renderConceptToc();
+      renderConcepts();
+      focusConceptReader();
+    };
+  }
 }
-setConceptOptions('concept-part', CONCEPT_STRUCTURE.map(part => ({ value: part.id, title: part.title })));
-$('concept-part').onchange = renderConceptVolumes;
-$('concept-volume').onchange = renderConceptChapters;
-$('concept-chapter').onchange = renderConcepts;
-renderConceptVolumes();
+$('back-to-concept-toc').onclick = () => {
+  $('concept-toc').focus({ preventScroll: true });
+  $('concept-toc').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
+};
+renderConceptToc();
+renderConcepts();
 let legacyMemo = '';
 try {
   legacyMemo = localStorage.getItem('bareun-personal-notes-v1') || '';
