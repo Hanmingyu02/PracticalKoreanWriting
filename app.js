@@ -28,6 +28,13 @@ function pool() {
   return QUESTIONS.filter(q => (category === '전체 영역' || q.category === category) && (!wrongMode || state.wrong.includes(q.id)));
 }
 function renderCategories() {
+  $('category-select').replaceChildren(...categories.map(name => {
+    const option = document.createElement('option');
+    option.value = name;
+    option.textContent = `${name} (${QUESTIONS.filter(q => name === '전체 영역' || q.category === name).length})`;
+    return option;
+  }));
+  $('category-select').value = category;
   $('categories').replaceChildren(...categories.map(name => {
     const button = document.createElement('button');
     const label = document.createElement('span');
@@ -44,6 +51,12 @@ function renderCategories() {
     return button;
   }));
 }
+$('category-select').onchange = event => {
+  category = event.target.value;
+  queue = [];
+  renderCategories();
+  showQuestion();
+};
 function showQuestion() {
   const available = pool();
   queue = queue.filter(id => available.some(q => q.id === id));
