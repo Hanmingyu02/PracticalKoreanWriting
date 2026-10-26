@@ -1742,3 +1742,1904 @@ const CORRECTION_QUESTIONS = [
   }
 ];
 QUESTIONS.push(...CORRECTION_QUESTIONS);
+
+// 사용자가 제공한 12~14쪽 낱말 표. 화살표는 바꿔 쓰면 좋은 말을 나타냅니다.
+const WORD_QUESTIONS = [
+  {
+    "id": "word-12-01",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 12쪽",
+    "question": "패널",
+    "answers": [
+      "출연자",
+      "토론자"
+    ],
+    "sourceAnswer": "출연자, 토론자",
+    "strict": true
+  },
+  {
+    "id": "word-12-02",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 12쪽",
+    "question": "20 SPACE",
+    "answers": [
+      "20 스페이스(SPACE)"
+    ],
+    "sourceAnswer": "20 스페이스(SPACE)",
+    "strict": true
+  },
+  {
+    "id": "word-12-03",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 12쪽",
+    "question": "3R’s(읽기·쓰기·기초 수학)",
+    "answers": [
+      "읽기·쓰기·기초 수학(3R’s)"
+    ],
+    "sourceAnswer": "읽기·쓰기·기초 수학(3R’s)",
+    "strict": true
+  },
+  {
+    "id": "word-12-04",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 12쪽",
+    "question": "BI",
+    "answers": [
+      "비아이(BI)",
+      "대표 이미지"
+    ],
+    "sourceAnswer": "비아이(BI)/대표 이미지",
+    "strict": true
+  },
+  {
+    "id": "word-12-05",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 12쪽",
+    "question": "Bush 미 대통령",
+    "answers": [
+      "부시 미 대통령"
+    ],
+    "sourceAnswer": "부시 미 대통령",
+    "strict": true
+  },
+  {
+    "id": "word-12-06",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 12쪽",
+    "question": "DB",
+    "answers": [
+      "데이터베이스"
+    ],
+    "sourceAnswer": "데이터베이스",
+    "strict": true
+  },
+  {
+    "id": "word-12-07",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 12쪽",
+    "question": "E-mail",
+    "answers": [
+      "전자우편"
+    ],
+    "sourceAnswer": "전자우편",
+    "strict": true
+  },
+  {
+    "id": "word-12-08",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 12쪽",
+    "question": "GDP",
+    "answers": [
+      "국내 총생산"
+    ],
+    "sourceAnswer": "국내 총생산",
+    "strict": true
+  },
+  {
+    "id": "word-12-09",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 12쪽",
+    "question": "LED",
+    "answers": [
+      "엘이디(LED)",
+      "발광 다이오드[LED]"
+    ],
+    "sourceAnswer": "엘이디(LED)/발광 다이오드[LED]",
+    "strict": true
+  },
+  {
+    "id": "word-12-10",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 12쪽",
+    "question": "Obama 미 대통령",
+    "answers": [
+      "오바마 미 대통령"
+    ],
+    "sourceAnswer": "오바마 미 대통령",
+    "strict": true
+  },
+  {
+    "id": "word-12-11",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 12쪽",
+    "question": "p21",
+    "answers": [
+      "21쪽"
+    ],
+    "sourceAnswer": "21쪽",
+    "strict": true
+  },
+  {
+    "id": "word-12-12",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 12쪽",
+    "question": "p26~29",
+    "answers": [
+      "26~29쪽"
+    ],
+    "sourceAnswer": "26~29쪽",
+    "strict": true
+  },
+  {
+    "id": "word-13a-01",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "para. 1-2",
+    "answers": [
+      "1-2 문단"
+    ],
+    "sourceAnswer": "1-2 문단",
+    "strict": true
+  },
+  {
+    "id": "word-13a-02",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "PC",
+    "answers": [
+      "개인용 컴퓨터",
+      "피시(PC)"
+    ],
+    "sourceAnswer": "개인용 컴퓨터/피시(PC)",
+    "strict": true
+  },
+  {
+    "id": "word-13a-03",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "R&D",
+    "answers": [
+      "연구 개발"
+    ],
+    "sourceAnswer": "연구 개발",
+    "strict": true
+  },
+  {
+    "id": "word-13a-04",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "SMS",
+    "answers": [
+      "문자 메시지"
+    ],
+    "sourceAnswer": "문자 메시지",
+    "strict": true
+  },
+  {
+    "id": "word-13a-05",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "Step 1.",
+    "answers": [
+      "1단계"
+    ],
+    "sourceAnswer": "1단계",
+    "strict": true
+  },
+  {
+    "id": "word-13a-06",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "T/F",
+    "answers": [
+      "특별 팀"
+    ],
+    "sourceAnswer": "특별 팀",
+    "strict": true
+  },
+  {
+    "id": "word-13a-07",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "TV",
+    "answers": [
+      "텔레비전"
+    ],
+    "sourceAnswer": "텔레비전",
+    "strict": true
+  },
+  {
+    "id": "word-13a-08",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "VS",
+    "answers": [
+      "대"
+    ],
+    "sourceAnswer": "대",
+    "strict": true
+  },
+  {
+    "id": "word-13a-09",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "WMD",
+    "answers": [
+      "대량 살상 무기"
+    ],
+    "sourceAnswer": "대량 살상 무기",
+    "strict": true
+  },
+  {
+    "id": "word-13a-10",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "감안하여",
+    "answers": [
+      "고려하여"
+    ],
+    "sourceAnswer": "고려하여",
+    "strict": true
+  },
+  {
+    "id": "word-13a-11",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "게재되어 있습니다.",
+    "answers": [
+      "나와 있습니다.",
+      "실려 있습니다."
+    ],
+    "sourceAnswer": "나와 있습니다./실려 있습니다.",
+    "strict": true
+  },
+  {
+    "id": "word-13a-12",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "게재하여",
+    "answers": [
+      "실어"
+    ],
+    "sourceAnswer": "실어",
+    "strict": true
+  },
+  {
+    "id": "word-13a-13",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "계획을 달성할 수 있도록",
+    "answers": [
+      "계획을 이행할 수 있도록",
+      "목표를 달성할 수 있도록"
+    ],
+    "sourceAnswer": "계획을 이행할 수 있도록/목표를 달성할 수 있도록",
+    "strict": true
+  },
+  {
+    "id": "word-13a-14",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "고객",
+    "answers": [
+      "승객"
+    ],
+    "sourceAnswer": "승객",
+    "strict": true,
+    "note": "교통수단 이용 손님"
+  },
+  {
+    "id": "word-13a-15",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "공연장에 반입할",
+    "answers": [
+      "공연장에 들어올"
+    ],
+    "sourceAnswer": "공연장에 들어올",
+    "strict": true
+  },
+  {
+    "id": "word-13a-16",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "관할",
+    "answers": [
+      "담당"
+    ],
+    "sourceAnswer": "담당",
+    "strict": true
+  },
+  {
+    "id": "word-13a-17",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "교육바우처",
+    "answers": [
+      "교육 복지 이용권 제도",
+      "교육 복지 상품권 제도"
+    ],
+    "sourceAnswer": "교육 복지 이용권 제도/교육 복지 상품권 제도",
+    "strict": true
+  },
+  {
+    "id": "word-13a-18",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "글로벌",
+    "answers": [
+      "국제적",
+      "세계적"
+    ],
+    "sourceAnswer": "국제적/세계적",
+    "strict": true
+  },
+  {
+    "id": "word-13a-19",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "글로벌 네트워크",
+    "answers": [
+      "국제 협력망"
+    ],
+    "sourceAnswer": "국제 협력망",
+    "strict": true
+  },
+  {
+    "id": "word-13a-20",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "글로벌 스탠더드",
+    "answers": [
+      "국제 표준",
+      "국제 기준"
+    ],
+    "sourceAnswer": "글로벌 스탠더드(→ 국제 표준/국제 기준)",
+    "strict": true
+  },
+  {
+    "id": "word-13a-21",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "글로벌화",
+    "answers": [
+      "세계화",
+      "국제화"
+    ],
+    "sourceAnswer": "세계화/국제화",
+    "strict": true
+  },
+  {
+    "id": "word-13a-22",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "금년",
+    "answers": [
+      "올해"
+    ],
+    "sourceAnswer": "올해",
+    "strict": true
+  },
+  {
+    "id": "word-13a-23",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "금번",
+    "answers": [
+      "이번"
+    ],
+    "sourceAnswer": "이번",
+    "strict": true
+  },
+  {
+    "id": "word-13a-24",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "금일",
+    "answers": [
+      "오늘"
+    ],
+    "sourceAnswer": "오늘",
+    "strict": true
+  },
+  {
+    "id": "word-13a-25",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 첫 번째 표",
+    "question": "기 통보한",
+    "answers": [
+      "이미 통보한",
+      "이미 알려 드린"
+    ],
+    "sourceAnswer": "이미 통보한/이미 알려 드린",
+    "strict": true
+  },
+  {
+    "id": "word-13b-01",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "旣보증 금액",
+    "answers": [
+      "기존 보증 금액"
+    ],
+    "sourceAnswer": "기존 보증 금액",
+    "strict": true
+  },
+  {
+    "id": "word-13b-02",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "기여하는",
+    "answers": [
+      "이바지하는"
+    ],
+    "sourceAnswer": "이바지하는",
+    "strict": true
+  },
+  {
+    "id": "word-13b-03",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "기일을 엄수하여",
+    "answers": [
+      "날짜를 지켜"
+    ],
+    "sourceAnswer": "날짜를 지켜",
+    "strict": true
+  },
+  {
+    "id": "word-13b-04",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "꼼꼼이",
+    "answers": [
+      "꼼꼼히"
+    ],
+    "sourceAnswer": "꼼꼼히",
+    "strict": true
+  },
+  {
+    "id": "word-13b-05",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "다운/다운로드",
+    "answers": [
+      "내려받기"
+    ],
+    "sourceAnswer": "내려받기",
+    "strict": true
+  },
+  {
+    "id": "word-13b-06",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "다운로드하지",
+    "answers": [
+      "내려받지"
+    ],
+    "sourceAnswer": "내려받지",
+    "strict": true
+  },
+  {
+    "id": "word-13b-07",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "당초",
+    "answers": [
+      "기존"
+    ],
+    "sourceAnswer": "기존",
+    "strict": true
+  },
+  {
+    "id": "word-13b-08",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "對해외언론",
+    "answers": [
+      "대해외 언론"
+    ],
+    "sourceAnswer": "대해외 언론",
+    "strict": true
+  },
+  {
+    "id": "word-13b-09",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "도출",
+    "answers": [
+      "이끌어 냄"
+    ],
+    "sourceAnswer": "이끌어 냄",
+    "strict": true
+  },
+  {
+    "id": "word-13b-10",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "동 건은",
+    "answers": [
+      "이 건은"
+    ],
+    "sourceAnswer": "이 건은",
+    "strict": true
+  },
+  {
+    "id": "word-13b-11",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "동 사업의 일환으로",
+    "answers": [
+      "이러한 사업의 하나로"
+    ],
+    "sourceAnswer": "이러한 사업의 하나로",
+    "strict": true
+  },
+  {
+    "id": "word-13b-12",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "동봉",
+    "answers": [
+      "함께 보냄"
+    ],
+    "sourceAnswer": "함께 보냄",
+    "strict": true
+  },
+  {
+    "id": "word-13b-13",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "랜섬웨어",
+    "answers": [
+      "금품 요구 악성 프로그램"
+    ],
+    "sourceAnswer": "금품 요구 악성 프로그램",
+    "strict": true
+  },
+  {
+    "id": "word-13b-14",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "로그인",
+    "answers": [
+      "회원 들어가기"
+    ],
+    "sourceAnswer": "회원 들어가기",
+    "strict": true
+  },
+  {
+    "id": "word-13b-15",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "로드맵",
+    "answers": [
+      "이행안",
+      "단계별 이행안"
+    ],
+    "sourceAnswer": "이행안/단계별 이행안",
+    "strict": true
+  },
+  {
+    "id": "word-13b-16",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "리더십",
+    "answers": [
+      "지도력",
+      "통솔력"
+    ],
+    "sourceAnswer": "지도력/통솔력",
+    "strict": true
+  },
+  {
+    "id": "word-13b-17",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "마대",
+    "answers": [
+      "포대",
+      "자루"
+    ],
+    "sourceAnswer": "포대/자루",
+    "strict": true
+  },
+  {
+    "id": "word-13b-18",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "마스터플랜",
+    "answers": [
+      "종합 계획",
+      "기본 설계"
+    ],
+    "sourceAnswer": "종합 계획/기본 설계",
+    "strict": true
+  },
+  {
+    "id": "word-13b-19",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "마이스터",
+    "answers": [
+      "전문가"
+    ],
+    "sourceAnswer": "전문가",
+    "strict": true
+  },
+  {
+    "id": "word-13b-20",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "매뉴얼",
+    "answers": [
+      "설명서",
+      "안내서",
+      "지침"
+    ],
+    "sourceAnswer": "설명서/안내서/지침",
+    "strict": true
+  },
+  {
+    "id": "word-13b-21",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "매뉴얼",
+    "answers": [
+      "설명서",
+      "안내서",
+      "지침"
+    ],
+    "sourceAnswer": "매뉴얼(→ 설명서/안내서/지침)",
+    "strict": true
+  },
+  {
+    "id": "word-13b-22",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "면밀히",
+    "answers": [
+      "자세히"
+    ],
+    "sourceAnswer": "자세히",
+    "strict": true
+  },
+  {
+    "id": "word-13b-23",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "모니터링하고",
+    "answers": [
+      "관찰하고",
+      "지켜보고"
+    ],
+    "sourceAnswer": "관찰하고/지켜보고",
+    "strict": true
+  },
+  {
+    "id": "word-13b-24",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "모델",
+    "answers": [
+      "본보기",
+      "모형"
+    ],
+    "sourceAnswer": "본보기/모형",
+    "strict": true
+  },
+  {
+    "id": "word-13b-25",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "무대에 반입",
+    "answers": [
+      "무대에 들어오거나"
+    ],
+    "sourceAnswer": "무대에 들어오거나",
+    "strict": true
+  },
+  {
+    "id": "word-13b-26",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "반입되는",
+    "answers": [
+      "들어오는"
+    ],
+    "sourceAnswer": "들어오는",
+    "strict": true
+  },
+  {
+    "id": "word-13b-27",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 두 번째 표",
+    "question": "무대에서 반출하려면",
+    "answers": [
+      "무대에서 내리려면"
+    ],
+    "sourceAnswer": "무대에서 내리려면",
+    "strict": true
+  },
+  {
+    "id": "word-13c-01",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "배터리가 내장되어 있습니다.",
+    "answers": [
+      "전지가 들어 있습니다."
+    ],
+    "sourceAnswer": "전지가 들어 있습니다.",
+    "strict": true
+  },
+  {
+    "id": "word-13c-02",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "복무규정에 의거함",
+    "answers": [
+      "복무규정에 따름"
+    ],
+    "sourceAnswer": "복무규정에 따름",
+    "strict": true
+  },
+  {
+    "id": "word-13c-03",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "부스",
+    "answers": [
+      "관",
+      "공간"
+    ],
+    "sourceAnswer": "관/공간",
+    "strict": true
+  },
+  {
+    "id": "word-13c-04",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "부합하는",
+    "answers": [
+      "맞는",
+      "들어맞는"
+    ],
+    "sourceAnswer": "맞는/들어맞는",
+    "strict": true
+  },
+  {
+    "id": "word-13c-05",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "부합하도록",
+    "answers": [
+      "맞도록"
+    ],
+    "sourceAnswer": "맞도록",
+    "strict": true
+  },
+  {
+    "id": "word-13c-06",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "브랜드 슬로건",
+    "answers": [
+      "대표 구호",
+      "홍보 문구",
+      "대표 가치 띄움말"
+    ],
+    "sourceAnswer": "대표 구호/홍보 문구/대표 가치 띄움말",
+    "strict": true
+  },
+  {
+    "id": "word-13c-07",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "브레인스토밍",
+    "answers": [
+      "난상 토론",
+      "발상 모으기"
+    ],
+    "sourceAnswer": "난상 토론/발상 모으기",
+    "strict": true
+  },
+  {
+    "id": "word-13c-08",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "브로슈어",
+    "answers": [
+      "안내서",
+      "소책자"
+    ],
+    "sourceAnswer": "안내서/소책자",
+    "strict": true
+  },
+  {
+    "id": "word-13c-09",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "비전",
+    "answers": [
+      "전망"
+    ],
+    "sourceAnswer": "전망",
+    "strict": true
+  },
+  {
+    "id": "word-13c-10",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "비전",
+    "answers": [
+      "이상",
+      "전망"
+    ],
+    "sourceAnswer": "비전(→ 이상/전망)",
+    "strict": true
+  },
+  {
+    "id": "word-13c-11",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "비즈니스",
+    "answers": [
+      "사업"
+    ],
+    "sourceAnswer": "사업",
+    "strict": true
+  },
+  {
+    "id": "word-13c-12",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "비즈니스벨트",
+    "answers": [
+      "사업 지대"
+    ],
+    "sourceAnswer": "사업 지대",
+    "strict": true
+  },
+  {
+    "id": "word-13c-13",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "사료됨",
+    "answers": [
+      "생각함"
+    ],
+    "sourceAnswer": "생각함",
+    "strict": true
+  },
+  {
+    "id": "word-13c-14",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "산출 내역서",
+    "answers": [
+      "산출 명세서"
+    ],
+    "sourceAnswer": "산출 명세서",
+    "strict": true
+  },
+  {
+    "id": "word-13c-15",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "상기",
+    "answers": [
+      "위의",
+      "위에 적은"
+    ],
+    "sourceAnswer": "위의/위에 적은",
+    "strict": true
+  },
+  {
+    "id": "word-13c-16",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "상이한",
+    "answers": [
+      "서로 다른"
+    ],
+    "sourceAnswer": "서로 다른",
+    "strict": true
+  },
+  {
+    "id": "word-13c-17",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "센타",
+    "answers": [
+      "센터"
+    ],
+    "sourceAnswer": "센터",
+    "strict": true
+  },
+  {
+    "id": "word-13c-18",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "소관",
+    "answers": [
+      "담당"
+    ],
+    "sourceAnswer": "담당",
+    "strict": true
+  },
+  {
+    "id": "word-13c-19",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "소명하고",
+    "answers": [
+      "밝히고"
+    ],
+    "sourceAnswer": "밝히고",
+    "strict": true
+  },
+  {
+    "id": "word-13c-20",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "소정양식",
+    "answers": [
+      "소정 양식",
+      "규정 서식",
+      "정해진 양식"
+    ],
+    "sourceAnswer": "소정 양식(→ 규정 서식/정해진 양식)",
+    "strict": true
+  },
+  {
+    "id": "word-13c-21",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "솔라시티",
+    "answers": [
+      "햇살 도시",
+      "태양 에너지 도시"
+    ],
+    "sourceAnswer": "햇살 도시/태양 에너지 도시",
+    "strict": true
+  },
+  {
+    "id": "word-13c-22",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "송부했다고",
+    "answers": [
+      "보냈다고"
+    ],
+    "sourceAnswer": "보냈다고",
+    "strict": true
+  },
+  {
+    "id": "word-13c-23",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "수납한 후",
+    "answers": [
+      "받은 다음"
+    ],
+    "sourceAnswer": "받은 다음",
+    "strict": true
+  },
+  {
+    "id": "word-13c-24",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "수여하고자",
+    "answers": [
+      "주고자"
+    ],
+    "sourceAnswer": "주고자",
+    "strict": true
+  },
+  {
+    "id": "word-13c-25",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 13쪽 · 세 번째 표",
+    "question": "대형 스크린을 통해",
+    "answers": [
+      "대형 화면을 통해"
+    ],
+    "sourceAnswer": "대형 화면을 통해",
+    "strict": true
+  },
+  {
+    "id": "word-14a-01",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "스크린도어",
+    "answers": [
+      "안전문"
+    ],
+    "sourceAnswer": "안전문",
+    "strict": true
+  },
+  {
+    "id": "word-14a-02",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "스포츠 클럽",
+    "answers": [
+      "운동 모임",
+      "동호회"
+    ],
+    "sourceAnswer": "운동 모임/동호회",
+    "strict": true
+  },
+  {
+    "id": "word-14a-03",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "슬럿지",
+    "answers": [
+      "슬러지",
+      "침전물"
+    ],
+    "sourceAnswer": "슬러지(→ 침전물)",
+    "strict": true
+  },
+  {
+    "id": "word-14a-04",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "승차권을 소지하지 아니하고",
+    "answers": [
+      "승차권 없이"
+    ],
+    "sourceAnswer": "승차권 없이",
+    "strict": true
+  },
+  {
+    "id": "word-14a-05",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "업데이트하고",
+    "answers": [
+      "갱신하고"
+    ],
+    "sourceAnswer": "갱신하고",
+    "strict": true
+  },
+  {
+    "id": "word-14a-06",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "업로드하여",
+    "answers": [
+      "올려"
+    ],
+    "sourceAnswer": "올려",
+    "strict": true
+  },
+  {
+    "id": "word-14a-07",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "연루되어",
+    "answers": [
+      "관련되어"
+    ],
+    "sourceAnswer": "관련되어",
+    "strict": true
+  },
+  {
+    "id": "word-14a-08",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "연시회",
+    "answers": [
+      "기술 시연회"
+    ],
+    "sourceAnswer": "기술 시연회",
+    "strict": true
+  },
+  {
+    "id": "word-14a-09",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "오니",
+    "answers": [
+      "오염 침전물"
+    ],
+    "sourceAnswer": "오염 침전물",
+    "strict": true
+  },
+  {
+    "id": "word-14a-10",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "요망",
+    "answers": [
+      "바람"
+    ],
+    "sourceAnswer": "바람",
+    "strict": true
+  },
+  {
+    "id": "word-14a-11",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "워크샵",
+    "answers": [
+      "워크숍",
+      "공동 연수",
+      "공동 수련"
+    ],
+    "sourceAnswer": "워크숍(→ 공동 연수, 공동 수련)",
+    "strict": true
+  },
+  {
+    "id": "word-14a-12",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "원스톱",
+    "answers": [
+      "일괄",
+      "통합",
+      "한자리"
+    ],
+    "sourceAnswer": "일괄/통합/한자리",
+    "strict": true
+  },
+  {
+    "id": "word-14a-13",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "웹싸이트",
+    "answers": [
+      "웹사이트",
+      "누리집"
+    ],
+    "sourceAnswer": "웹사이트(→ 누리집)",
+    "strict": true
+  },
+  {
+    "id": "word-14a-14",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "유관기관",
+    "answers": [
+      "관계 기관"
+    ],
+    "sourceAnswer": "관계 기관",
+    "strict": true
+  },
+  {
+    "id": "word-14a-15",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "유비쿼터스",
+    "answers": [
+      "두루누리"
+    ],
+    "sourceAnswer": "두루누리",
+    "strict": true
+  },
+  {
+    "id": "word-14a-16",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "의하여",
+    "answers": [
+      "따라"
+    ],
+    "sourceAnswer": "따라",
+    "strict": true
+  },
+  {
+    "id": "word-14a-17",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "이메일",
+    "answers": [
+      "전자우편"
+    ],
+    "sourceAnswer": "전자우편",
+    "strict": true
+  },
+  {
+    "id": "word-14a-18",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "이미지 메이킹",
+    "answers": [
+      "이미지 만들기"
+    ],
+    "sourceAnswer": "이미지 만들기",
+    "strict": true
+  },
+  {
+    "id": "word-14a-19",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "이탈리안라이그라스",
+    "answers": [
+      "이탤리언 라이그라스"
+    ],
+    "sourceAnswer": "이탤리언 라이그라스",
+    "strict": true
+  },
+  {
+    "id": "word-14a-20",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "익년도",
+    "answers": [
+      "이듬해"
+    ],
+    "sourceAnswer": "이듬해",
+    "strict": true
+  },
+  {
+    "id": "word-14a-21",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "익일",
+    "answers": [
+      "다음 날",
+      "이튿날"
+    ],
+    "sourceAnswer": "다음 날/이튿날",
+    "strict": true
+  },
+  {
+    "id": "word-14a-22",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "인센티브",
+    "answers": [
+      "특전",
+      "성과급"
+    ],
+    "sourceAnswer": "특전/성과급",
+    "strict": true
+  },
+  {
+    "id": "word-14a-23",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "인프라",
+    "answers": [
+      "기반",
+      "기반 시설",
+      "기반시설",
+      "기반(시설)"
+    ],
+    "sourceAnswer": "기반(시설)",
+    "strict": true
+  },
+  {
+    "id": "word-14a-24",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "일제",
+    "answers": [
+      "일절"
+    ],
+    "sourceAnswer": "일절",
+    "strict": true,
+    "note": "‘전혀’의 뜻으로 쓸 때"
+  },
+  {
+    "id": "word-14a-25",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "일원으로",
+    "answers": [
+      "하나로"
+    ],
+    "sourceAnswer": "하나로",
+    "strict": true
+  },
+  {
+    "id": "word-14a-26",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 첫 번째 표",
+    "question": "적발된 자는",
+    "answers": [
+      "적발된 사람은",
+      "적발되면"
+    ],
+    "sourceAnswer": "적발된 사람은(→ 적발되면)",
+    "strict": true
+  },
+  {
+    "id": "word-14b-01",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "적의 조치를 취한 후",
+    "answers": [
+      "필요한 조치를 취한 뒤",
+      "적절한 조치를 취한 뒤"
+    ],
+    "sourceAnswer": "(필요한/적절한) 조치를 취한 뒤",
+    "strict": true
+  },
+  {
+    "id": "word-14b-02",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "전년대비",
+    "answers": [
+      "전년 대비",
+      "지난해보다"
+    ],
+    "sourceAnswer": "전년 대비(→ 지난해보다)",
+    "strict": true
+  },
+  {
+    "id": "word-14b-03",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "전년에 비해",
+    "answers": [
+      "지난해보다"
+    ],
+    "sourceAnswer": "지난해보다",
+    "strict": true
+  },
+  {
+    "id": "word-14b-04",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "접수",
+    "answers": [
+      "제출"
+    ],
+    "sourceAnswer": "제출",
+    "strict": true,
+    "note": "응시자 처지일 때"
+  },
+  {
+    "id": "word-14b-05",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "정관 변경 허가를 득하지 않고",
+    "answers": [
+      "정관 변경 허가를 받지 않고"
+    ],
+    "sourceAnswer": "정관 변경 허가를 받지 않고",
+    "strict": true
+  },
+  {
+    "id": "word-14b-06",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "정보 공개 코너",
+    "answers": [
+      "정보 공개란"
+    ],
+    "sourceAnswer": "정보 공개란",
+    "strict": true
+  },
+  {
+    "id": "word-14b-07",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "정비 내역",
+    "answers": [
+      "정비 내용"
+    ],
+    "sourceAnswer": "정비 내용",
+    "strict": true
+  },
+  {
+    "id": "word-14b-08",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "정주 여건",
+    "answers": [
+      "정착 여건"
+    ],
+    "sourceAnswer": "정착 여건",
+    "strict": true
+  },
+  {
+    "id": "word-14b-09",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "정차한 후",
+    "answers": [
+      "멈춘 뒤"
+    ],
+    "sourceAnswer": "멈춘 뒤",
+    "strict": true
+  },
+  {
+    "id": "word-14b-10",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "제고하고",
+    "answers": [
+      "높이고"
+    ],
+    "sourceAnswer": "높이고",
+    "strict": true
+  },
+  {
+    "id": "word-14b-11",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "제로 플랜",
+    "answers": [
+      "없애기 계획"
+    ],
+    "sourceAnswer": "없애기 계획",
+    "strict": true
+  },
+  {
+    "id": "word-14b-12",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "조사료",
+    "answers": [
+      "거친 사료"
+    ],
+    "sourceAnswer": "거친 사료",
+    "strict": true
+  },
+  {
+    "id": "word-14b-13",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "조속히",
+    "answers": [
+      "즉시",
+      "빨리"
+    ],
+    "sourceAnswer": "즉시/빨리",
+    "strict": true
+  },
+  {
+    "id": "word-14b-14",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "週단위로",
+    "answers": [
+      "주 단위로"
+    ],
+    "sourceAnswer": "주 단위로",
+    "strict": true
+  },
+  {
+    "id": "word-14b-15",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "지금 제출하시기 바람.",
+    "answers": [
+      "속히 제출하시기 바람."
+    ],
+    "sourceAnswer": "속히 제출하시기 바람.",
+    "strict": true
+  },
+  {
+    "id": "word-14b-16",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "지체 없이",
+    "answers": [
+      "바로",
+      "곧바로"
+    ],
+    "sourceAnswer": "바로/곧바로",
+    "strict": true
+  },
+  {
+    "id": "word-14b-17",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "직접 수령",
+    "answers": [
+      "직접 받음"
+    ],
+    "sourceAnswer": "직접 받음",
+    "strict": true
+  },
+  {
+    "id": "word-14b-18",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "차월",
+    "answers": [
+      "다음 달"
+    ],
+    "sourceAnswer": "다음 달",
+    "strict": true
+  },
+  {
+    "id": "word-14b-19",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "차차월",
+    "answers": [
+      "다다음 달"
+    ],
+    "sourceAnswer": "다다음 달",
+    "strict": true
+  },
+  {
+    "id": "word-14b-20",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "다양한 채널을 이용해",
+    "answers": [
+      "다양한 경로를 이용해",
+      "다양한 창구를 이용해"
+    ],
+    "sourceAnswer": "다양한 경로를 이용해/다양한 창구를 이용해",
+    "strict": true
+  },
+  {
+    "id": "word-14b-21",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "처리 방안 부재",
+    "answers": [
+      "처리가 어려움",
+      "처리 방안이 없음"
+    ],
+    "sourceAnswer": "처리가 어려움/처리 방안이 없음",
+    "strict": true
+  },
+  {
+    "id": "word-14b-22",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "체크리스트",
+    "answers": [
+      "점검표"
+    ],
+    "sourceAnswer": "점검표",
+    "strict": true
+  },
+  {
+    "id": "word-14b-23",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "출두",
+    "answers": [
+      "출석"
+    ],
+    "sourceAnswer": "출석",
+    "strict": true
+  },
+  {
+    "id": "word-14b-24",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "취업 컨설팅",
+    "answers": [
+      "취업 상담"
+    ],
+    "sourceAnswer": "취업 상담",
+    "strict": true
+  },
+  {
+    "id": "word-14b-25",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 두 번째 표",
+    "question": "컨트롤 타워",
+    "answers": [
+      "통제탑",
+      "지휘 본부",
+      "사령탑"
+    ],
+    "sourceAnswer": "통제탑, 지휘 본부, 사령탑",
+    "strict": true
+  },
+  {
+    "id": "word-14c-01",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "클러스터",
+    "answers": [
+      "연합",
+      "지구"
+    ],
+    "sourceAnswer": "연합/지구",
+    "strict": true
+  },
+  {
+    "id": "word-14c-02",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "타 학교",
+    "answers": [
+      "다른 학교"
+    ],
+    "sourceAnswer": "다른 학교",
+    "strict": true
+  },
+  {
+    "id": "word-14c-03",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "토크 콘서트",
+    "answers": [
+      "이야기 공연"
+    ],
+    "sourceAnswer": "이야기 공연",
+    "strict": true
+  },
+  {
+    "id": "word-14c-04",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "홍보하여",
+    "answers": [
+      "알려"
+    ],
+    "sourceAnswer": "알려",
+    "strict": true
+  },
+  {
+    "id": "word-14c-05",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "통합시스템 구축·운영",
+    "answers": [
+      "통합 체제 구축·운용"
+    ],
+    "sourceAnswer": "통합 체제 구축·운용",
+    "strict": true
+  },
+  {
+    "id": "word-14c-06",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "통화스왑",
+    "answers": [
+      "통화스와프",
+      "통화 교환"
+    ],
+    "sourceAnswer": "통화스와프(→ 통화 교환)",
+    "strict": true
+  },
+  {
+    "id": "word-14c-07",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "팀웍",
+    "answers": [
+      "팀워크",
+      "결속(력)",
+      "결속",
+      "결속력"
+    ],
+    "sourceAnswer": "팀워크(→ 결속(력))",
+    "strict": true
+  },
+  {
+    "id": "word-14c-08",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "파이오니어",
+    "answers": [
+      "파이어니어",
+      "개척자",
+      "선구자"
+    ],
+    "sourceAnswer": "파이어니어(→ 개척자/선구자)",
+    "strict": true
+  },
+  {
+    "id": "word-14c-09",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "파일럿 테스트",
+    "answers": [
+      "예비 시험"
+    ],
+    "sourceAnswer": "예비 시험",
+    "strict": true
+  },
+  {
+    "id": "word-14c-10",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "팝업(창)",
+    "answers": [
+      "알림창"
+    ],
+    "sourceAnswer": "알림창",
+    "strict": true
+  },
+  {
+    "id": "word-14c-11",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "패러다임",
+    "answers": [
+      "틀",
+      "체계",
+      "방식"
+    ],
+    "sourceAnswer": "틀/체계/방식",
+    "strict": true
+  },
+  {
+    "id": "word-14c-12",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "포탈",
+    "answers": [
+      "포털"
+    ],
+    "sourceAnswer": "포털",
+    "strict": true
+  },
+  {
+    "id": "word-14c-13",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "표본",
+    "answers": [
+      "조사 대상자"
+    ],
+    "sourceAnswer": "조사 대상자",
+    "strict": true
+  },
+  {
+    "id": "word-14c-14",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "표제 회의",
+    "answers": [
+      "이번 회의"
+    ],
+    "sourceAnswer": "이번 회의",
+    "strict": true
+  },
+  {
+    "id": "word-14c-15",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "프로젝트",
+    "answers": [
+      "과제",
+      "연구 과제",
+      "(연구) 과제",
+      "사업"
+    ],
+    "sourceAnswer": "(연구) 과제/사업",
+    "strict": true
+  },
+  {
+    "id": "word-14c-16",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "플랜",
+    "answers": [
+      "계획"
+    ],
+    "sourceAnswer": "계획",
+    "strict": true
+  },
+  {
+    "id": "word-14c-17",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "병역 의무를 필한 자",
+    "answers": [
+      "병역 의무를 마친 사람"
+    ],
+    "sourceAnswer": "병역 의무를 마친 사람",
+    "strict": true
+  },
+  {
+    "id": "word-14c-18",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "필히",
+    "answers": [
+      "반드시"
+    ],
+    "sourceAnswer": "반드시",
+    "strict": true
+  },
+  {
+    "id": "word-14c-19",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "하절기 한시적으로",
+    "answers": [
+      "여름철에 한시적으로"
+    ],
+    "sourceAnswer": "여름철에 한시적으로",
+    "strict": true
+  },
+  {
+    "id": "word-14c-20",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "학습시스템",
+    "answers": [
+      "학습 체제"
+    ],
+    "sourceAnswer": "학습 체제",
+    "strict": true
+  },
+  {
+    "id": "word-14c-21",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "해소하여",
+    "answers": [
+      "없애며"
+    ],
+    "sourceAnswer": "없애며",
+    "strict": true
+  },
+  {
+    "id": "word-14c-22",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "해커톤",
+    "answers": [
+      "마라톤 토론회",
+      "끝장 토론"
+    ],
+    "sourceAnswer": "마라톤 토론회/끝장 토론",
+    "strict": true
+  },
+  {
+    "id": "word-14c-23",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "향후",
+    "answers": [
+      "앞으로"
+    ],
+    "sourceAnswer": "앞으로",
+    "strict": true
+  },
+  {
+    "id": "word-14c-24",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "혁파",
+    "answers": [
+      "없앰"
+    ],
+    "sourceAnswer": "없앰",
+    "strict": true
+  },
+  {
+    "id": "word-14c-25",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "혼파",
+    "answers": [
+      "섞어 심기",
+      "섞어 뿌림"
+    ],
+    "sourceAnswer": "섞어 심기/섞어 뿌림",
+    "strict": true
+  },
+  {
+    "id": "word-14c-26",
+    "category": "낱말",
+    "group": "낱말(표기 포함) · 14쪽 · 세 번째 표",
+    "question": "홈페이지",
+    "answers": [
+      "누리집"
+    ],
+    "sourceAnswer": "누리집",
+    "strict": true
+  }
+];
+QUESTIONS.push(...WORD_QUESTIONS);

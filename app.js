@@ -173,7 +173,7 @@ function submitAnswer() {
   feedback.append(submitted);
   feedback.prepend(title);
   const solution = document.createElement('div');
-  solution.textContent = `${current.strict ? '수정 후' : '다듬은 말'}: ${current.answers.join(' / ')}`;
+  solution.textContent = `${current.strict ? '수정 후' : '다듬은 말'}: ${current.sourceAnswer || current.answers.join(' / ')}`;
   feedback.append(solution);
   if (current.note) {
     const note = document.createElement('div');
@@ -231,7 +231,7 @@ function renderWrongReview() {
     answerLabel.textContent = '정답';
     const answerText = document.createElement('p');
     answerText.className = 'wrong-entry-value';
-    answerText.textContent = q.answers.join(' / ');
+    answerText.textContent = q.sourceAnswer || q.answers.join(' / ');
     answerRow.append(answerLabel, answerText);
     article.append(categoryText, questionRow, answerRow);
     return article;
@@ -254,7 +254,7 @@ function renderNotes() {
     group.textContent = q.group;
     term.append(group);
     const answers = document.createElement('td');
-    answers.textContent = q.answers.join(', ');
+    answers.textContent = q.sourceAnswer || q.answers.join(', ');
     if (q.note) {
       const note = document.createElement('small');
       note.textContent = q.note;
