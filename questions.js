@@ -6342,3 +6342,526 @@ const MORE_EXPRESSION_QUESTIONS = [
   }
 ];
 QUESTIONS.push(...MORE_EXPRESSION_QUESTIONS);
+
+// 사용자 제공 21쪽, 이어지는 표, 별도 사진의 표현 수정. 기존 자료와 별도 보존합니다.
+const FINAL_EXPRESSION_QUESTIONS = [
+  {
+    "id": "expression-21a-01",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 첫 번째 표",
+    "question": "지시 사항 이행 및 추진 상황 점검에 철저를 기하여 주시기 바랍니다.",
+    "answers": [
+      "지시 사항 이행과 추진 상황 점검에 소홀함이 없도록 해 주시기 바랍니다."
+    ],
+    "sourceAnswer": "지시 사항 이행과 추진 상황 점검에 소홀함이 없도록 해 주시기 바랍니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-21a-02",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 첫 번째 표",
+    "question": "아·태 지역에 있어서의 평화·번영 증진을 위해 상호 협력",
+    "answers": [
+      "아·태 지역의 평화·번영 증진을 위해 상호 협력"
+    ],
+    "sourceAnswer": "아·태 지역의 평화·번영 증진을 위해 상호 협력",
+    "strict": true
+  },
+  {
+    "id": "expression-21a-03",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 첫 번째 표",
+    "question": "직원들에 대하여 장관 표창을 수여하고자 합니다.",
+    "answers": [
+      "직원들에게 장관 표창을 수여하고자 합니다."
+    ],
+    "sourceAnswer": "직원들에게 장관 표창을 수여하고자 합니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-21a-04",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 첫 번째 표",
+    "question": "참석(최소 1인 이상)에 적극적으로 협조하여 주시기 바랍니다.",
+    "answers": [
+      "최소 1명 이상 참석하여 주시기 바랍니다."
+    ],
+    "sourceAnswer": "최소 1명 이상 참석하여 주시기 바랍니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-21a-05",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 첫 번째 표",
+    "question": "참석자들에 대하여 감사를 전하면서",
+    "answers": [
+      "참석자들에게 감사를 전하며"
+    ],
+    "sourceAnswer": "참석자들에게 감사를 전하며",
+    "strict": true
+  },
+  {
+    "id": "expression-21a-06",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 첫 번째 표",
+    "question": "범세계적 문제 해결 및 다자 체제에 있어서의 협력 강화",
+    "answers": [
+      "범세계적 문제 해결 및 다자 체제에서의 협력 강화"
+    ],
+    "sourceAnswer": "범세계적 문제 해결 및 다자 체제에서의 협력 강화",
+    "strict": true
+  },
+  {
+    "id": "expression-21a-07",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 첫 번째 표",
+    "question": "추진 중인 지시 사항의 관리 카드를 매달 업데이트해 주십시오.",
+    "answers": [
+      "추진 중인 지시 사항 관리 카드를 매달 갱신해 주십시오."
+    ],
+    "sourceAnswer": "추진 중인 지시 사항 관리 카드를 매달 갱신해 주십시오.",
+    "strict": true
+  },
+  {
+    "id": "expression-21a-08",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 첫 번째 표",
+    "question": "취업 박람회 개최 등을 통해",
+    "answers": [
+      "취업 박람회를 개최하여"
+    ],
+    "sourceAnswer": "취업 박람회를 개최하여",
+    "strict": true
+  },
+  {
+    "id": "expression-21a-09",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 첫 번째 표",
+    "question": "태풍 북상에 대비하여 철저한 사전대비와 대응조치 추진으로 총력 대응하여 시민의 생명과 재산을 보호하고 피해를 최소화할 수 있다는 자신감과 자부심을 배양하여 왔습니다.",
+    "answers": [
+      "태풍 북상에 철저히 대비하고 대응 조치를 취하였습니다. 이로써 시민의 생명과 재산을 보호하고 피해를 최소화할 수 있었습니다."
+    ],
+    "sourceAnswer": "태풍 북상에 철저히 대비하고 대응 조치를 취하였습니다. 이로써 시민의 생명과 재산을 보호하고 피해를 최소화할 수 있었습니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-21a-10",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 첫 번째 표",
+    "question": "태풍 피해 복구 철저",
+    "answers": [
+      "태풍 피해 철저히 복구"
+    ],
+    "sourceAnswer": "태풍 피해 철저히 복구",
+    "strict": true
+  },
+  {
+    "id": "expression-21a-11",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 첫 번째 표",
+    "question": "통계 서비스를 개선시킬 방안",
+    "answers": [
+      "통계 서비스를 개선할 방안"
+    ],
+    "sourceAnswer": "통계 서비스를 개선할 방안",
+    "strict": true
+  },
+  {
+    "id": "expression-21a-12",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 첫 번째 표",
+    "question": "투트랙 접근을 통한 브랜드 슬로건 대상 선정",
+    "answers": [
+      "두 가지 접근 방식을 적용하여 대표 구호 선정"
+    ],
+    "sourceAnswer": "두 가지 접근 방식을 적용하여 대표 구호 선정",
+    "strict": true
+  },
+  {
+    "id": "expression-21a-13",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 첫 번째 표",
+    "question": "판단 시 조사 대상 기관에 포함 요망",
+    "answers": [
+      "판단되면 조사 대상 기관에 포함하기 바람"
+    ],
+    "sourceAnswer": "판단되면 조사 대상 기관에 포함하기 바람",
+    "strict": true
+  },
+  {
+    "id": "expression-21b-01",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 두 번째 표",
+    "question": "평생교육지원기관간 정보공유시스템 구축",
+    "answers": [
+      "평생교육 지원 기관 사이의 정보 공유 체제 구축"
+    ],
+    "sourceAnswer": "평생교육 지원 기관 사이의 정보 공유 체제 구축",
+    "strict": true
+  },
+  {
+    "id": "expression-21b-02",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 두 번째 표",
+    "question": "피해 예방에 만전을 기해주시기 바랍니다.",
+    "answers": [
+      "피해를 입지 않도록 철저히 대비하시기 바랍니다."
+    ],
+    "sourceAnswer": "피해를 입지 않도록 철저히 대비하시기 바랍니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-21b-03",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 두 번째 표",
+    "question": "학교, 지역사회가 함께 하는",
+    "answers": [
+      "학교와 지역사회가 함께하는"
+    ],
+    "sourceAnswer": "학교와 지역사회가 함께하는",
+    "strict": true
+  },
+  {
+    "id": "expression-21b-04",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 두 번째 표",
+    "question": "한 번 파종하면 두 번 수확할 수 있기 때문에",
+    "answers": [
+      "한 번 작물을 파종하면 두 번 수확할 수 있기 때문에"
+    ],
+    "sourceAnswer": "한 번 작물을 파종하면 두 번 수확할 수 있기 때문에",
+    "strict": true
+  },
+  {
+    "id": "expression-21b-05",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 두 번째 표",
+    "question": "한식을 시도하기가 힘든 경우가 있었다.",
+    "answers": [
+      "한식을 먹어 보려 해도 어려운 점이 있었다."
+    ],
+    "sourceAnswer": "한식을 먹어 보려 해도 어려운 점이 있었다.",
+    "strict": true
+  },
+  {
+    "id": "expression-21b-06",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 두 번째 표",
+    "question": "한자배우기 및 붓글씨",
+    "answers": [
+      "한자와 붓글씨 교육"
+    ],
+    "sourceAnswer": "한자와 붓글씨 교육",
+    "strict": true
+  },
+  {
+    "id": "expression-21b-07",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 두 번째 표",
+    "question": "한편, OO국제우주대회는 60여개국 3,000여명의 우주관련 전문가 및 관련 업체가 참여하는 항공 우주 분야 최고의 행사로 지속 가능한 평화와 발전을 위한 우주를 주제로 열리는 이번 대회는 학술회의·전시회와는 별도로 일반 시민이 함께 즐길 수 있는 다양한 우주 축제가 진행될 예정이다.",
+    "answers": [
+      "한편, OO국제우주대회는 '지속 가능한 평화와 발전을 위한 우주'를 주제로 60여 개국 3,000여 명의 우주 관련 전문가와 관련 업체가 참여하는 행사이다. 이번 대회에서는 학술회의·전시회와는 별도로 일반 시민이 함께 즐길 수 있는 다양한 우주 축제도 함께 열린다."
+    ],
+    "sourceAnswer": "한편, OO국제우주대회는 '지속 가능한 평화와 발전을 위한 우주'를 주제로 60여 개국 3,000여 명의 우주 관련 전문가와 관련 업체가 참여하는 행사이다. 이번 대회에서는 학술회의·전시회와는 별도로 일반 시민이 함께 즐길 수 있는 다양한 우주 축제도 함께 열린다.",
+    "strict": true
+  },
+  {
+    "id": "expression-21b-08",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 두 번째 표",
+    "question": "합리적 조정해",
+    "answers": [
+      "합리적으로 조정해"
+    ],
+    "sourceAnswer": "합리적으로 조정해",
+    "strict": true
+  },
+  {
+    "id": "expression-21b-09",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 두 번째 표",
+    "question": "행사 진행은 사회 복무 요원들의 미담 사례와 사회 복무 제도 전반에 대해 궁금한 점 등을 자유롭게 묻고 답하는 방식으로 이루어졌다.",
+    "answers": [
+      "행사는 사회 복무 요원들의 미담 사례를 나누고, 사회 복무 제도의 궁금한 점 등을 자유롭게 묻고 답하는 방식으로 진행되었다."
+    ],
+    "sourceAnswer": "행사는 사회 복무 요원들의 미담 사례를 나누고, 사회 복무 제도의 궁금한 점 등을 자유롭게 묻고 답하는 방식으로 진행되었다.",
+    "strict": true
+  },
+  {
+    "id": "expression-21b-10",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 두 번째 표",
+    "question": "향후 감사 시",
+    "answers": [
+      "앞으로 감사할 때"
+    ],
+    "sourceAnswer": "앞으로 감사할 때",
+    "strict": true
+  },
+  {
+    "id": "expression-21b-11",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 두 번째 표",
+    "question": "현장 방문을 통한 지속적인 자율화 과제 발굴",
+    "answers": [
+      "현장 방문으로 지속적인 자율화 과제 발굴"
+    ],
+    "sourceAnswer": "현장 방문으로 지속적인 자율화 과제 발굴",
+    "strict": true
+  },
+  {
+    "id": "expression-21b-12",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 두 번째 표",
+    "question": "현장에서 필요로 하는",
+    "answers": [
+      "현장에서 필요한"
+    ],
+    "sourceAnswer": "현장에서 필요한",
+    "strict": true
+  },
+  {
+    "id": "expression-21b-13",
+    "category": "표현",
+    "group": "표현 수정 · 21쪽 · 두 번째 표",
+    "question": "현행 규정에 대한 교육 기준 및 시점과",
+    "answers": [
+      "현행 규정의 교육 기준과 교육 시점, 그리고"
+    ],
+    "sourceAnswer": "현행 규정의 교육 기준과 교육 시점, 그리고",
+    "strict": true
+  },
+  {
+    "id": "expression-continued-01",
+    "category": "표현",
+    "group": "표현 수정 · 이어지는 표",
+    "question": "협력 회의 관련, OO부는",
+    "answers": [
+      "협력 회의와 관련하여, OO부는"
+    ],
+    "sourceAnswer": "협력 회의와 관련하여, OO부는",
+    "strict": true
+  },
+  {
+    "id": "expression-continued-02",
+    "category": "표현",
+    "group": "표현 수정 · 이어지는 표",
+    "question": "협력을 지속 추진하여",
+    "answers": [
+      "협력을 지속적으로 추진하여"
+    ],
+    "sourceAnswer": "협력을 지속적으로 추진하여",
+    "strict": true
+  },
+  {
+    "id": "expression-continued-03",
+    "category": "표현",
+    "group": "표현 수정 · 이어지는 표",
+    "question": "협력의 범위가 확대·심화되어 나가야 하며",
+    "answers": [
+      "협력의 범위를 확대·심화해 나가야 하며"
+    ],
+    "sourceAnswer": "협력의 범위를 확대·심화해 나가야 하며",
+    "strict": true
+  },
+  {
+    "id": "expression-continued-04",
+    "category": "표현",
+    "group": "표현 수정 · 이어지는 표",
+    "question": "화재 등의 비상 상황이 발생하면 안내 방송 및 피난 안내도에 따라 담당 직원의 지시를 받고 행동하여 주시기 바랍니다.",
+    "answers": [
+      "화재 등의 비상 상황이 발생하면 담당 직원의 안내를 받으며 안내 방송을 잘 듣고, 피난 안내도에 따라 행동해야 합니다."
+    ],
+    "sourceAnswer": "화재 등의 비상 상황이 발생하면 담당 직원의 안내를 받으며 안내 방송을 잘 듣고, 피난 안내도에 따라 행동해야 합니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-continued-05",
+    "category": "표현",
+    "group": "표현 수정 · 이어지는 표",
+    "question": "회의 시 참가자 직접 수령",
+    "answers": [
+      "회의 때 참가자가 직접 받음"
+    ],
+    "sourceAnswer": "회의 때 참가자가 직접 받음",
+    "strict": true
+  },
+  {
+    "id": "expression-continued-06",
+    "category": "표현",
+    "group": "표현 수정 · 이어지는 표",
+    "question": "사업장에 배치된 날부터 후 6개월 이내에",
+    "answers": [
+      "사업장에 배치된 날부터 6개월 안에"
+    ],
+    "sourceAnswer": "사업장에 배치된 날부터 6개월 안에",
+    "strict": true
+  },
+  {
+    "id": "expression-continued-07",
+    "category": "표현",
+    "group": "표현 수정 · 이어지는 표",
+    "question": "후보자에 대해 알아보기",
+    "answers": [
+      "후보자 알아보기"
+    ],
+    "sourceAnswer": "후보자 알아보기",
+    "strict": true
+  },
+  {
+    "id": "expression-extra-01",
+    "category": "표현",
+    "group": "표현 수정 · 별도 사진의 표",
+    "question": "공동체 생활로 바른 인성 함양을 위하여 운영하는",
+    "answers": [
+      "공동체 생활을 익힘으로써 인성을 함양하는"
+    ],
+    "sourceAnswer": "공동체 생활을 익힘으로써 인성을 함양하는",
+    "strict": true
+  },
+  {
+    "id": "expression-extra-02",
+    "category": "표현",
+    "group": "표현 수정 · 별도 사진의 표",
+    "question": "-이 제한됨.",
+    "answers": [
+      "-을 제한받음."
+    ],
+    "sourceAnswer": "-을 제한받음.",
+    "strict": true
+  },
+  {
+    "id": "expression-extra-03",
+    "category": "표현",
+    "group": "표현 수정 · 별도 사진의 표",
+    "question": "OO면 △△리 신청자와 군수님 면담에서도",
+    "answers": [
+      "군수님이 OO면 OO리 신청자와 면담한 자리에서"
+    ],
+    "sourceAnswer": "군수님이 OO면 OO리 신청자와 면담한 자리에서",
+    "strict": true
+  },
+  {
+    "id": "expression-extra-04",
+    "category": "표현",
+    "group": "표현 수정 · 별도 사진의 표",
+    "question": "OO청은 정책의 투명성과 책임성을 제고하기 위해 7년째 시행중이다.",
+    "answers": [
+      "OO청은 정책의 투명성과 책임성을 높이고자 7년째 이 제도를 시행하고 있다."
+    ],
+    "sourceAnswer": "OO청은 정책의 투명성과 책임성을 높이고자 7년째 이 제도를 시행하고 있다.",
+    "strict": true
+  },
+  {
+    "id": "expression-extra-05",
+    "category": "표현",
+    "group": "표현 수정 · 별도 사진의 표",
+    "question": "OO청장이 사회 복무 요원을 크게 치하한 후 감사패를 수여하였다.",
+    "answers": [
+      "OO청장이 사회 복무 요원들에게 감사패를 수여하였다."
+    ],
+    "sourceAnswer": "OO청장이 사회 복무 요원들에게 감사패를 수여하였다.",
+    "strict": true
+  },
+  {
+    "id": "expression-extra-06",
+    "category": "표현",
+    "group": "표현 수정 · 별도 사진의 표",
+    "question": "11. 20.(금) 자에",
+    "answers": [
+      "11. 20.(금)에"
+    ],
+    "sourceAnswer": "11. 20.(금)에",
+    "strict": true
+  },
+  {
+    "id": "expression-extra-07",
+    "category": "표현",
+    "group": "표현 수정 · 별도 사진의 표",
+    "question": "157개 수도권 소재 공공 기관의 지방 이전을 추진하고 있으며",
+    "answers": [
+      "수도권에 있는 157개 공공 기관을 지방으로 이전하는 일을 추진하고 있으며"
+    ],
+    "sourceAnswer": "수도권에 있는 157개 공공 기관을 지방으로 이전하는 일을 추진하고 있으며",
+    "strict": true
+  },
+  {
+    "id": "expression-extra-08",
+    "category": "표현",
+    "group": "표현 수정 · 별도 사진의 표",
+    "question": "20OO.1월 이후 신설 및 통합 기관을 추가",
+    "answers": [
+      "20OO. 1. 이후 신설되거나 통합된 기관 추가"
+    ],
+    "sourceAnswer": "20OO. 1. 이후 신설되거나 통합된 기관 추가",
+    "strict": true
+  },
+  {
+    "id": "expression-extra-09",
+    "category": "표현",
+    "group": "표현 수정 · 별도 사진의 표",
+    "question": "4대보험 본인부담액이 포함된 금액임.",
+    "answers": [
+      "4대 보험과 본인 부담액이 포함된 금액임."
+    ],
+    "sourceAnswer": "4대 보험과 본인 부담액이 포함된 금액임.",
+    "strict": true
+  },
+  {
+    "id": "expression-extra-10",
+    "category": "표현",
+    "group": "표현 수정 · 별도 사진의 표",
+    "question": "70세 이상 국가유공자가 30만 명 이상 살아 계시나 국립묘지 안장 여력은 6만여 기 불과한 점을",
+    "answers": [
+      "70세 이상의 국가 유공자가 30만 명 이상이지만 국립묘지에 안장할 수 있는 자리는 6만여 기에 불과한 점을"
+    ],
+    "sourceAnswer": "70세 이상의 국가 유공자가 30만 명 이상이지만 국립묘지에 안장할 수 있는 자리는 6만여 기에 불과한 점을",
+    "strict": true
+  },
+  {
+    "id": "expression-extra-11",
+    "category": "표현",
+    "group": "표현 수정 · 별도 사진의 표",
+    "question": "G20 정상 회의 계기에",
+    "answers": [
+      "주요 20개국(G20) 정상 회의를 계기로"
+    ],
+    "sourceAnswer": "주요 20개국(G20) 정상 회의를 계기로",
+    "strict": true
+  },
+  {
+    "id": "expression-extra-12",
+    "category": "표현",
+    "group": "표현 수정 · 별도 사진의 표",
+    "question": "각 조사 대상 기관 주관 부서별로 소관 조사 대상 기관에 공문을 남기고",
+    "answers": [
+      "조사를 주관하는 부서별로 조사 대상이 되는 기관에 공문을 남기고"
+    ],
+    "sourceAnswer": "조사를 주관하는 부서별로 조사 대상이 되는 기관에 공문을 남기고",
+    "strict": true
+  },
+  {
+    "id": "expression-extra-13",
+    "category": "표현",
+    "group": "표현 수정 · 별도 사진의 표",
+    "question": "간소화하게",
+    "answers": [
+      "줄일 수 있게"
+    ],
+    "sourceAnswer": "줄일 수 있게",
+    "strict": true
+  },
+  {
+    "id": "expression-extra-14",
+    "category": "표현",
+    "group": "표현 수정 · 별도 사진의 표",
+    "question": "감염 확산 방지에 철저를 기하여 주시기 바라며",
+    "answers": [
+      "감염 확산 방지를 철저히 해 주시기 바라며",
+      "감염이 확산되지 않도록 철저히 방지해 주시기 바라며"
+    ],
+    "sourceAnswer": "감염 확산 방지를 철저히 해 주시기 바라며/감염이 확산되지 않도록 철저히 방지해 주시기 바라며",
+    "strict": true
+  }
+];
+QUESTIONS.push(...FINAL_EXPRESSION_QUESTIONS);
