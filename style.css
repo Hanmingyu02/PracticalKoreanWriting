@@ -61,3 +61,5 @@ body{min-height:100vh;min-height:100svh;padding-top:env(safe-area-inset-top,0px)
 
 /* Keep touch-sized controls when an iPad also has a mouse or trackpad attached. */
 @media(max-width:1366px){button,.tabs button,.primary,.text-button,.exam-actions a{min-height:50px}}
+
+.past-panel{border:1px solid #dce0e6;border-radius:8px;padding:24px}.past-panel h2{font-size:20px;margin:0 0 20px}.past-panel p{font-size:14px;color:#626b77}@media(min-width:761px) and (max-width:1023px){.tabs{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(max-width:760px){.past-panel{padding:18px 14px}}

@@ -388,15 +388,16 @@ function setMode(mode) {
   notesMode = mode === 'notes';
   memoMode = mode === 'memo';
   mockMode = mode === 'mock';
-  pastMode = mode === 'past';
-  for (const [id, active] of [['all-mode', mode === 'all'], ['wrong-mode', wrongMode], ['notes-mode', notesMode], ['memo-mode', memoMode], ['mock-mode', mockMode], ['past-mode', pastMode]]) {
+  pastMode = mode === 'objective-past' || mode === 'written-past';
+  for (const [id, active] of [['all-mode', mode === 'all'], ['wrong-mode', wrongMode], ['notes-mode', notesMode], ['memo-mode', memoMode], ['mock-mode', mockMode], ['objective-past-mode', mode === 'objective-past'], ['written-past-mode', mode === 'written-past']]) {
     $(id).classList.toggle('active', active);
     $(id).setAttribute('aria-pressed', active);
   }
   $('study-notes').hidden = !notesMode;
   $('personal-notes').hidden = !memoMode;
   $('mock-exams').hidden = !mockMode;
-  $('past-exams').hidden = !pastMode;
+  $('objective-past-exams').hidden = mode !== 'objective-past';
+  $('written-past-exams').hidden = mode !== 'written-past';
   $('wrong-review').hidden = !wrongMode;
   if (wrongMode) renderWrongReview();
   document.querySelector('.quiz-card').hidden = notesMode || memoMode || mockMode || pastMode || wrongMode;
@@ -420,7 +421,8 @@ $('wrong-retry-start').onclick = () => {
 $('notes-mode').onclick = () => setMode('notes');
 $('memo-mode').onclick = () => setMode('memo');
 $('mock-mode').onclick = () => setMode('mock');
-$('past-mode').onclick = () => setMode('past');
+$('objective-past-mode').onclick = () => setMode('objective-past');
+$('written-past-mode').onclick = () => setMode('written-past');
 $('restart-round').onclick = () => {
   resetRound();
   showQuestion();
