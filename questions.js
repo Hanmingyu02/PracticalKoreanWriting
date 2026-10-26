@@ -5514,3 +5514,831 @@ const EXPRESSION_QUESTIONS = [
   }
 ];
 QUESTIONS.push(...EXPRESSION_QUESTIONS);
+
+// 사용자 제공 18~20쪽 표현 수정. 괄호의 선택 표현과 권장 대체안을 각각 허용합니다.
+const MORE_EXPRESSION_QUESTIONS = [
+  {
+    "id": "expression-18a-01",
+    "category": "표현",
+    "group": "표현 수정 · 18쪽 · 첫 번째 표",
+    "question": "바로 감염대상 여부 확인 및 감염 절차를 완료할 수 있다.",
+    "answers": [
+      "감염 대상임이 확인되면 곧바로 감염 절차를 마칠 수 있다."
+    ],
+    "sourceAnswer": "감염 대상임이 확인되면 곧바로 감염 절차를 마칠 수 있다.",
+    "strict": true
+  },
+  {
+    "id": "expression-18a-02",
+    "category": "표현",
+    "group": "표현 수정 · 18쪽 · 첫 번째 표",
+    "question": "범칙금 부과 또는 형사 처벌을 받게 되고",
+    "answers": [
+      "범칙금을 부과받거나 형사 처벌을 받게 되고"
+    ],
+    "sourceAnswer": "범칙금을 부과받거나 형사 처벌을 받게 되고",
+    "strict": true
+  },
+  {
+    "id": "expression-18a-03",
+    "category": "표현",
+    "group": "표현 수정 · 18쪽 · 첫 번째 표",
+    "question": "법무부는 여러분의 외국인 등록, 귀화 신청 등을 담당하는 정부 기관으로 잘 알고 계실 것입니다.",
+    "answers": [
+      "법무부는 여러분의 외국인 등록, 귀화 신청 처리 등을 담당하는 정부 기관입니다."
+    ],
+    "sourceAnswer": "법무부는 여러분의 외국인 등록, 귀화 신청 처리 등을 담당하는 정부 기관입니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-18a-04",
+    "category": "표현",
+    "group": "표현 수정 · 18쪽 · 첫 번째 표",
+    "question": "베트남 정부는 현재 베트남 내에서 내·외국인 관광객 등을 대상으로 곰 사육 농장에서 살아 있는 곰쓸개에 튜브를 연결하여 동남아 지역에 대한 여행 수요가 급증하고 있는 상황에서 생쓸개즙의 음용을 알선하는 사람 또는 업체에 대하여 '동물보호법' 등 관련 법률 위반혐의로 강력한 단속을 취할 예정입니다.",
+    "answers": [
+      "현재 베트남 등 동남아시아 지역 내 곰 사육 농장에서 살아 있는 곰쓸개에 튜브를 연결하여 쓸개즙을 음용하는 내외국인 관광객이 급증하고 있어, 베트남 정부는 생쓸개즙의 음용을 알선하는 사람이나 업체를 '동물보호법' 등 관련 법률 위반 혐의로 강력히 단속할 예정입니다."
+    ],
+    "sourceAnswer": "현재 베트남 등 동남아시아 지역 내 곰 사육 농장에서 살아 있는 곰쓸개에 튜브를 연결하여 쓸개즙을 음용하는 내외국인 관광객이 급증하고 있어, 베트남 정부는 생쓸개즙의 음용을 알선하는 사람이나 업체를 '동물보호법' 등 관련 법률 위반 혐의로 강력히 단속할 예정입니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-18a-05",
+    "category": "표현",
+    "group": "표현 수정 · 18쪽 · 첫 번째 표",
+    "question": "신종 플루 감염으로 보여짐.",
+    "answers": [
+      "신종 플루 감염으로 보임."
+    ],
+    "sourceAnswer": "신종 플루 감염으로 보임.",
+    "strict": true
+  },
+  {
+    "id": "expression-18a-06",
+    "category": "표현",
+    "group": "표현 수정 · 18쪽 · 첫 번째 표",
+    "question": "보증 사례에 대해서는",
+    "answers": [
+      "보증 사례는"
+    ],
+    "sourceAnswer": "보증 사례는",
+    "strict": true
+  },
+  {
+    "id": "expression-18a-07",
+    "category": "표현",
+    "group": "표현 수정 · 18쪽 · 첫 번째 표",
+    "question": "의무 복무 군인에게 발병한 중증 질환은 복무관련성이 낮아도",
+    "answers": [
+      "의무 복무 군인에게 발병한 중증 질환은 복무와 관련성이 낮아도"
+    ],
+    "sourceAnswer": "의무 복무 군인에게 발병한 중증 질환은 복무와 관련성이 낮아도",
+    "strict": true
+  },
+  {
+    "id": "expression-18a-08",
+    "category": "표현",
+    "group": "표현 수정 · 18쪽 · 첫 번째 표",
+    "question": "불참한 관계로",
+    "answers": [
+      "불참하였으므로"
+    ],
+    "sourceAnswer": "불참하였으므로",
+    "strict": true
+  },
+  {
+    "id": "expression-18a-09",
+    "category": "표현",
+    "group": "표현 수정 · 18쪽 · 첫 번째 표",
+    "question": "불편함이 많았다.",
+    "answers": [
+      "불편이 컸다."
+    ],
+    "sourceAnswer": "불편이 컸다.",
+    "strict": true
+  },
+  {
+    "id": "expression-18a-10",
+    "category": "표현",
+    "group": "표현 수정 · 18쪽 · 첫 번째 표",
+    "question": "불임의 승인 조건을 숙지하신 후, 동 문서 접수 후",
+    "answers": [
+      "불임의 승인 조건을 충분히 살펴보고 문서를 제출하신 뒤"
+    ],
+    "sourceAnswer": "불임의 승인 조건을 충분히 살펴보고 문서를 제출하신 뒤",
+    "strict": true
+  },
+  {
+    "id": "expression-18a-11",
+    "category": "표현",
+    "group": "표현 수정 · 18쪽 · 첫 번째 표",
+    "question": "비교 시",
+    "answers": [
+      "비교할 때"
+    ],
+    "sourceAnswer": "비교할 때",
+    "strict": true
+  },
+  {
+    "id": "expression-18b-01",
+    "category": "표현",
+    "group": "표현 수정 · 18쪽 · 두 번째 표",
+    "question": "비상구 유도등은 녹색 바탕으로 되어 있고 밖으로 대피할 수 있는 출입구(바닥으로부터 1.5m 이상 높이 설치)를 표시하며, 통로 유도등은 백색 바탕에 녹색 화살표로 대피 방향(바닥으로부터 1m 이하 위치 설치)을 표시하고 있습니다.",
+    "answers": [
+      "비상구 유도등은 대피할 수 있는 출입구를 표시합니다. 녹색 바탕으로 되어 있고, 바닥에서 1.5m 이상 높은 곳에 설치되어 있습니다. 통로 유도등은 대피 방향을 표시합니다. 백색 바탕에 녹색 화살표가 그려져 있고, 바닥에서 1m 이하 낮은 곳에 설치되어 있습니다."
+    ],
+    "sourceAnswer": "비상구 유도등은 대피할 수 있는 출입구를 표시합니다. 녹색 바탕으로 되어 있고, 바닥에서 1.5m 이상 높은 곳에 설치되어 있습니다. 통로 유도등은 대피 방향을 표시합니다. 백색 바탕에 녹색 화살표가 그려져 있고, 바닥에서 1m 이하 낮은 곳에 설치되어 있습니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-18b-02",
+    "category": "표현",
+    "group": "표현 수정 · 18쪽 · 두 번째 표",
+    "question": "새로운 아이디어와 구체적인 실천 계획을 세운다.",
+    "answers": [
+      "새로운 아이디어를 발굴하고 구체적인 실천 계획을 세운다."
+    ],
+    "sourceAnswer": "새로운 아이디어를 발굴하고 구체적인 실천 계획을 세운다.",
+    "strict": true
+  },
+  {
+    "id": "expression-18b-03",
+    "category": "표현",
+    "group": "표현 수정 · 18쪽 · 두 번째 표",
+    "question": "서식이 있는 내규 일체 개정 완료 후, 개정 전문 송부 요망.",
+    "answers": [
+      "서식이 있는 내규 모두를 개정하고 (나서) 개정 전문을 보내 주시기 바랍니다.",
+      "서식이 있는 내규 모두를 개정하고 개정 전문을 보내 주시기 바랍니다.",
+      "서식이 있는 내규 모두를 개정하고 나서 개정 전문을 보내 주시기 바랍니다."
+    ],
+    "sourceAnswer": "서식이 있는 내규 모두를 개정하고 (나서) 개정 전문을 보내 주시기 바랍니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-18b-04",
+    "category": "표현",
+    "group": "표현 수정 · 18쪽 · 두 번째 표",
+    "question": "선거 공보는 투표 안내문과 함께 6. 3.(일)까지 발송됩니다.",
+    "answers": [
+      "선거 공보는 모든 세대에 투표 안내문과 함께 6. 3.(일)까지 발송됩니다."
+    ],
+    "sourceAnswer": "선거 공보는 모든 세대에 투표 안내문과 함께 6. 3.(일)까지 발송됩니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-18b-05",
+    "category": "표현",
+    "group": "표현 수정 · 18쪽 · 두 번째 표",
+    "question": "선결제를 하고",
+    "answers": [
+      "미리 결제하고"
+    ],
+    "sourceAnswer": "미리 결제하고",
+    "strict": true
+  },
+  {
+    "id": "expression-18b-06",
+    "category": "표현",
+    "group": "표현 수정 · 18쪽 · 두 번째 표",
+    "question": "선정되었음을 알고 있으시죠?",
+    "answers": [
+      "선정되었음을 알고 계실 것입니다."
+    ],
+    "sourceAnswer": "선정되었음을 알고 계실 것입니다.",
+    "strict": true,
+    "note": "공문서일 경우"
+  },
+  {
+    "id": "expression-18b-07",
+    "category": "표현",
+    "group": "표현 수정 · 18쪽 · 두 번째 표",
+    "question": "설명회 참석 시에는 대중교통수단을 이용해 주시기 바라며, 교육은 공단 실무 책임자가 직접 진행할 예정입니다.",
+    "answers": [
+      "설명회에 참석할 때에는 대중교통을 이용해 주시기 바랍니다. 교육은 공단 실무 책임자가 직접 진행할 예정입니다."
+    ],
+    "sourceAnswer": "설명회에 참석할 때에는 대중교통을 이용해 주시기 바랍니다. 교육은 공단 실무 책임자가 직접 진행할 예정입니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-18b-08",
+    "category": "표현",
+    "group": "표현 수정 · 18쪽 · 두 번째 표",
+    "question": "시민의 녹색 생활화를 녹색 성장의 3대 분야로 설정, 5개 자치구와 관계 기관이 공동으로 추진",
+    "answers": [
+      "시민의 녹색 생활화를 녹색 성장의 3대 분야로 설정하고, 5개 자치구와 관계 기관이 공동으로 추진"
+    ],
+    "sourceAnswer": "시민의 녹색 생활화를 녹색 성장의 3대 분야로 설정하고, 5개 자치구와 관계 기관이 공동으로 추진",
+    "strict": true
+  },
+  {
+    "id": "expression-18b-09",
+    "category": "표현",
+    "group": "표현 수정 · 18쪽 · 두 번째 표",
+    "question": "성수동에 위치한",
+    "answers": [
+      "성수동에 있는",
+      "성수동에 자리 잡은"
+    ],
+    "sourceAnswer": "성수동에 있는/성수동에 자리 잡은",
+    "strict": true
+  },
+  {
+    "id": "expression-18b-10",
+    "category": "표현",
+    "group": "표현 수정 · 18쪽 · 두 번째 표",
+    "question": "슬로건 선정 시 시사점",
+    "answers": [
+      "구호 선정 방향"
+    ],
+    "sourceAnswer": "구호 선정 방향",
+    "strict": true
+  },
+  {
+    "id": "expression-18b-11",
+    "category": "표현",
+    "group": "표현 수정 · 18쪽 · 두 번째 표",
+    "question": "시민의 삶의 질 개선과 도시 위상 강화 방향을 추진해 나간다.",
+    "answers": [
+      "시민의 삶의 질을 개선하고 도시 위상을 강화해 나간다."
+    ],
+    "sourceAnswer": "시민의 삶의 질을 개선하고 도시 위상을 강화해 나간다.",
+    "strict": true
+  },
+  {
+    "id": "expression-19a-01",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 첫 번째 표",
+    "question": "시설물 사용과 무대 작업은 담당 직원의 입회 하에 시행되어야 합니다.",
+    "answers": [
+      "시설물 사용과 무대 작업은 담당 직원이 있을 때에만 시행할 수 있습니다."
+    ],
+    "sourceAnswer": "시설물 사용과 무대 작업은 담당 직원이 있을 때에만 시행할 수 있습니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-19a-02",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 첫 번째 표",
+    "question": "시야를 확보하기 어렵고 누전 차단기가 작동하여",
+    "answers": [
+      "잘 보이지 않는 데다가 누전 차단기가 작동하여"
+    ],
+    "sourceAnswer": "잘 보이지 않는 데다가 누전 차단기가 작동하여",
+    "strict": true
+  },
+  {
+    "id": "expression-19a-03",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 첫 번째 표",
+    "question": "신종 플루 전염병 위기 단계를 '경계'에서 최고 단계인 '심각'으로 격상(11. 3.)됨에 따라",
+    "answers": [
+      "신종 플루 전염병 위기 단계를 '경계'에서 최고 단계인 '심각'으로 격상(11. 3.)함에 따라"
+    ],
+    "sourceAnswer": "신종 플루 전염병 위기 단계를 '경계'에서 최고 단계인 '심각'으로 격상(11. 3.)함에 따라",
+    "strict": true
+  },
+  {
+    "id": "expression-19a-04",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 첫 번째 표",
+    "question": "쓰레기통 결박하고 현수막 등은 제거함.",
+    "answers": [
+      "쓰레기통은 고정해 두고 현수막 등은 제거함."
+    ],
+    "sourceAnswer": "쓰레기통은 고정해 두고 현수막 등은 제거함.",
+    "strict": true
+  },
+  {
+    "id": "expression-19a-05",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 첫 번째 표",
+    "question": "계약 체결을 아래 밝힌바와 같이 의뢰하오니",
+    "answers": [
+      "계약 체결을 아래와 같이 의뢰하오니"
+    ],
+    "sourceAnswer": "계약 체결을 아래와 같이 의뢰하오니",
+    "strict": true
+  },
+  {
+    "id": "expression-19a-06",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 첫 번째 표",
+    "question": "악성 이메일 유포를 인지한 즉시",
+    "answers": [
+      "악성 전자우편을 발견한 즉시"
+    ],
+    "sourceAnswer": "악성 전자우편을 발견한 즉시",
+    "strict": true
+  },
+  {
+    "id": "expression-19a-07",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 첫 번째 표",
+    "question": "악취 발생 우려 및 집중 호우 시 침출수 지하 토양 오염 우려",
+    "answers": [
+      "악취가 발생할 수 있고 집중 호우 때 지하 토양이 침출수로 오염될 수 있음."
+    ],
+    "sourceAnswer": "악취가 발생할 수 있고 집중 호우 때 지하 토양이 침출수로 오염될 수 있음.",
+    "strict": true
+  },
+  {
+    "id": "expression-19a-08",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 첫 번째 표",
+    "question": "승인 및 계약 안내 알림",
+    "answers": [
+      "승인 및 계약 안내",
+      "승인 및 계약 알림"
+    ],
+    "sourceAnswer": "승인 및 계약 안내/승인 및 계약 알림",
+    "strict": true
+  },
+  {
+    "id": "expression-19a-09",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 첫 번째 표",
+    "question": "안전 관리자 개인의 안전 교육으로 판단되어",
+    "answers": [
+      "안전 관리자가 안전 교육을 받은 것으로 판단되어"
+    ],
+    "sourceAnswer": "안전 관리자가 안전 교육을 받은 것으로 판단되어",
+    "strict": true
+  },
+  {
+    "id": "expression-19a-10",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 첫 번째 표",
+    "question": "안전 관리자 교육대상자 포함 여부 질의에 대해",
+    "answers": [
+      "안전 관리자 교육 대상자에 포함되는지를 묻는 질문에"
+    ],
+    "sourceAnswer": "안전 관리자 교육 대상자에 포함되는지를 묻는 질문에",
+    "strict": true
+  },
+  {
+    "id": "expression-19a-11",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 첫 번째 표",
+    "question": "애국심 함양의 테마파크로",
+    "answers": [
+      "애국심을 함양할 수 있는 공원으로"
+    ],
+    "sourceAnswer": "애국심을 함양할 수 있는 공원으로",
+    "strict": true
+  },
+  {
+    "id": "expression-19a-12",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 첫 번째 표",
+    "question": "약 30여 명",
+    "answers": [
+      "약 30명",
+      "30여 명"
+    ],
+    "sourceAnswer": "약 30명/30여 명",
+    "strict": true
+  },
+  {
+    "id": "expression-19a-13",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 첫 번째 표",
+    "question": "연간 삼모작 재배도",
+    "answers": [
+      "한 해 동안에 삼모작도"
+    ],
+    "sourceAnswer": "한 해 동안에 삼모작도",
+    "strict": true
+  },
+  {
+    "id": "expression-19a-14",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 첫 번째 표",
+    "question": "연구 개발과 인재 양성 간 연계 시스템 구축",
+    "answers": [
+      "연구 개발과 인재 양성 사이의 연계 체제 구축"
+    ],
+    "sourceAnswer": "연구 개발과 인재 양성 사이의 연계 체제 구축",
+    "strict": true
+  },
+  {
+    "id": "expression-19a-15",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 첫 번째 표",
+    "question": "연구비 수혜율 제고를 위해",
+    "answers": [
+      "연구비 수혜율을 높이도록"
+    ],
+    "sourceAnswer": "연구비 수혜율을 높이도록",
+    "strict": true
+  },
+  {
+    "id": "expression-19a-16",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 첫 번째 표",
+    "question": "연시회를 갖는다.",
+    "answers": [
+      "연시회를 연다.",
+      "기술 시연회를 연다."
+    ],
+    "sourceAnswer": "연시회를 연다. (→ 기술 시연회를 연다.)",
+    "strict": true
+  },
+  {
+    "id": "expression-19b-01",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 두 번째 표",
+    "question": "요인을 발굴 개선",
+    "answers": [
+      "요인을 발굴하여 개선"
+    ],
+    "sourceAnswer": "요인을 발굴하여 개선",
+    "strict": true
+  },
+  {
+    "id": "expression-19b-02",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 두 번째 표",
+    "question": "요청(2000.7.27.)한 바",
+    "answers": [
+      "요청한바(2000. 7. 27.)",
+      "요청하여(2000. 7. 27.)"
+    ],
+    "sourceAnswer": "요청한바(2000. 7. 27.) [→ 요청하여(2000. 7. 27.)]",
+    "strict": true
+  },
+  {
+    "id": "expression-19b-03",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 두 번째 표",
+    "question": "우리 부 소관 공공기관의 수는 28개",
+    "answers": [
+      "우리 부가 맡은 공공기관의 수는 28개"
+    ],
+    "sourceAnswer": "우리 부가 맡은 공공기관의 수는 28개",
+    "strict": true
+  },
+  {
+    "id": "expression-19b-04",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 두 번째 표",
+    "question": "우리 위원회에서 개최한 토론회에 귀 기관의 직원이 참석하여 상시 학습 인정을 아래와 같이 요청하오니 협조하여 주시기 바랍니다.",
+    "answers": [
+      "우리 위원회에서 개최한 토론회에 아래와 같이 참석한 귀 기관 직원의 상시 학습 인정을 요청하오니 협조하여 주시기 바랍니다."
+    ],
+    "sourceAnswer": "우리 위원회에서 개최한 토론회에 아래와 같이 참석한 귀 기관 직원의 상시 학습 인정을 요청하오니 협조하여 주시기 바랍니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-19b-05",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 두 번째 표",
+    "question": "상담 및 교육 프로그램 운영 및 상담 관련 업무 보조",
+    "answers": [
+      "상담 및 교육 프로그램 운영과 상담 관련 업무 보조"
+    ],
+    "sourceAnswer": "상담 및 교육 프로그램 운영과 상담 관련 업무 보조",
+    "strict": true
+  },
+  {
+    "id": "expression-19b-06",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 두 번째 표",
+    "question": "법적 기준에 부적합하게 운영하고 있는 매립장은 조사되지 않음.",
+    "answers": [
+      "법적 기준에 부적합하게 운영하는 매립장은 조사되지 않음."
+    ],
+    "sourceAnswer": "법적 기준에 부적합하게 운영하는 매립장은 조사되지 않음.",
+    "strict": true
+  },
+  {
+    "id": "expression-19b-07",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 두 번째 표",
+    "question": "워크숍을 붙임과 같이 개최하기에 초청하오니 참석 여부를 알려 주시기 바랍니다.",
+    "answers": [
+      "워크숍을 붙임과 같이 개최하오니 참석 여부를 알려 주시기 바랍니다."
+    ],
+    "sourceAnswer": "워크숍을 붙임과 같이 개최하오니 참석 여부를 알려 주시기 바랍니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-19b-08",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 두 번째 표",
+    "question": "위 호와 관련, 2000년 공공 도서관 개관 시간 연장 문화 프로그램 계획 보고서",
+    "answers": [
+      "위 호와 관련하여, 2000년 공공 도서관의 개관 시간 연장에 따른 문화 프로그램 계획 보고서"
+    ],
+    "sourceAnswer": "위 호와 관련하여, 2000년 공공 도서관의 개관 시간 연장에 따른 문화 프로그램 계획 보고서",
+    "strict": true
+  },
+  {
+    "id": "expression-19b-09",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 두 번째 표",
+    "question": "「공직선거법」에 의거 처벌될 수 있습니다.",
+    "answers": [
+      "「공직선거법」에 따라 처벌될 수 있습니다."
+    ],
+    "sourceAnswer": "「공직선거법」에 따라 처벌될 수 있습니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-19b-10",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 두 번째 표",
+    "question": "일반 질환에 대한 의료 지원에 있어 본인 일부 부담제를 도입한다.",
+    "answers": [
+      "일반 질환에 대한 의료 지원은 본인 일부 부담제를 도입한다."
+    ],
+    "sourceAnswer": "일반 질환에 대한 의료 지원은 본인 일부 부담제를 도입한다.",
+    "strict": true
+  },
+  {
+    "id": "expression-19b-11",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 두 번째 표",
+    "question": "이메일 수신 시",
+    "answers": [
+      "전자우편을 받으면"
+    ],
+    "sourceAnswer": "전자우편을 받으면",
+    "strict": true
+  },
+  {
+    "id": "expression-19b-12",
+    "category": "표현",
+    "group": "표현 수정 · 19쪽 · 두 번째 표",
+    "question": "이미 잘 알려진 대외적 이미지나 일반 대중에게 인지시키기 쉬운 언어 유희적 표현 등으로 대중적 홍보성 강화",
+    "answers": [
+      "잘 알려진 이미지나 대중의 관심을 끌 수 있는 언어유희를 사용하여 홍보성 강화"
+    ],
+    "sourceAnswer": "잘 알려진 이미지나 대중의 관심을 끌 수 있는 언어유희를 사용하여 홍보성 강화",
+    "strict": true
+  },
+  {
+    "id": "expression-20a-01",
+    "category": "표현",
+    "group": "표현 수정 · 20쪽 · 첫 번째 표",
+    "question": "이번 행사는 사회 복무 제도에 대한 국민 인식을 높이기 위해 마련되었다.",
+    "answers": [
+      "OO청은 사회 복무 제도의 국민 인식 수준을 높이고자 이번 행사를 마련하였다."
+    ],
+    "sourceAnswer": "OO청은 사회 복무 제도의 국민 인식 수준을 높이고자 이번 행사를 마련하였다.",
+    "strict": true
+  },
+  {
+    "id": "expression-20a-02",
+    "category": "표현",
+    "group": "표현 수정 · 20쪽 · 첫 번째 표",
+    "question": "이번 행사에는 본청 직원뿐만 아니라 지방청에서 실무를 맡은 직원을 포함한 통계 혁신 담당자 50여 명이 참석하여",
+    "answers": [
+      "이번 행사에는 본청과 지방청에서 통계 혁신 업무를 맡고 있는 50여 명이 참석하여"
+    ],
+    "sourceAnswer": "이번 행사에는 본청과 지방청에서 통계 혁신 업무를 맡고 있는 50여 명이 참석하여",
+    "strict": true
+  },
+  {
+    "id": "expression-20a-03",
+    "category": "표현",
+    "group": "표현 수정 · 20쪽 · 첫 번째 표",
+    "question": "이에 따라 OO시는 귀사에 취업 박람회 행사 당일 지역의 유망 직업을 소개하는 기업의 직업 홍보관 운영에 참가하여 주시기 바랍니다.",
+    "answers": [
+      "이에 따라 OO시는 귀사에 직업 홍보관 운영에 협조해 주실 것을 요청합니다."
+    ],
+    "sourceAnswer": "이에 따라 OO시는 귀사에 직업 홍보관 운영에 협조해 주실 것을 요청합니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-20a-04",
+    "category": "표현",
+    "group": "표현 수정 · 20쪽 · 첫 번째 표",
+    "question": "이전 신청서 제출은 무효 처리함.",
+    "answers": [
+      "이전에 제출한 신청서는 무효로 처리함."
+    ],
+    "sourceAnswer": "이전에 제출한 신청서는 무효로 처리함.",
+    "strict": true
+  },
+  {
+    "id": "expression-20a-05",
+    "category": "표현",
+    "group": "표현 수정 · 20쪽 · 첫 번째 표",
+    "question": "일괄 공사하는 것으로 변경과 추후 도로 굴착 공사 승인 등 OO광역시와 직접 협의 처리하겠다는",
+    "answers": [
+      "일괄적으로 공사하는 것으로 변경하고 나중에 도로 굴착 공사를 승인하는 등 OO광역시와 직접 협의하여 처리하겠다는"
+    ],
+    "sourceAnswer": "일괄적으로 공사하는 것으로 변경하고 나중에 도로 굴착 공사를 승인하는 등 OO광역시와 직접 협의하여 처리하겠다는",
+    "strict": true
+  },
+  {
+    "id": "expression-20a-06",
+    "category": "표현",
+    "group": "표현 수정 · 20쪽 · 첫 번째 표",
+    "question": "일자리 기업의 홍보 기회",
+    "answers": [
+      "기업의 일자리 홍보 기회"
+    ],
+    "sourceAnswer": "기업의 일자리 홍보 기회",
+    "strict": true
+  },
+  {
+    "id": "expression-20a-07",
+    "category": "표현",
+    "group": "표현 수정 · 20쪽 · 첫 번째 표",
+    "question": "조사에 일체 응하지 않도록 주의하여 주시기 바랍니다.",
+    "answers": [
+      "조사 행위에 절대 응하지 마시기 바랍니다."
+    ],
+    "sourceAnswer": "조사 행위에 절대 응하지 마시기 바랍니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-20a-08",
+    "category": "표현",
+    "group": "표현 수정 · 20쪽 · 첫 번째 표",
+    "question": "송금 요망",
+    "answers": [
+      "송금하시기 바랍니다."
+    ],
+    "sourceAnswer": "송금하시기 바랍니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-20a-09",
+    "category": "표현",
+    "group": "표현 수정 · 20쪽 · 첫 번째 표",
+    "question": "자율화 방안이 차질 없이 추진 중",
+    "answers": [
+      "자율화 방안을 차질 없이 추진하는 중",
+      "자율화 방안이 차질 없이 추진되는 중"
+    ],
+    "sourceAnswer": "자율화 방안을 차질 없이 추진하는 중/자율화 방안이 차질 없이 추진되는 중",
+    "strict": true
+  },
+  {
+    "id": "expression-20a-10",
+    "category": "표현",
+    "group": "표현 수정 · 20쪽 · 첫 번째 표",
+    "question": "자체안의 경우 20OO 중기발전계획 비전을 정립하면서 도출",
+    "answers": [
+      "자체안은 20OO 중기발전계획 비전을 정립하면서 도출"
+    ],
+    "sourceAnswer": "자체안은 20OO 중기발전계획 비전을 정립하면서 도출",
+    "strict": true
+  },
+  {
+    "id": "expression-20a-11",
+    "category": "표현",
+    "group": "표현 수정 · 20쪽 · 첫 번째 표",
+    "question": "잡상 행위를 근절될 수 있습니다.",
+    "answers": [
+      "잡상 행위를 없앨 수 있습니다."
+    ],
+    "sourceAnswer": "잡상 행위를 없앨 수 있습니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-20a-12",
+    "category": "표현",
+    "group": "표현 수정 · 20쪽 · 첫 번째 표",
+    "question": "잡상 행위자를 발견한 시",
+    "answers": [
+      "열차 안에서 물건을 파는 사람이 있으면"
+    ],
+    "sourceAnswer": "열차 안에서 물건을 파는 사람이 있으면",
+    "strict": true
+  },
+  {
+    "id": "expression-20b-01",
+    "category": "표현",
+    "group": "표현 수정 · 20쪽 · 두 번째 표",
+    "question": "재난 및 재해 대비조치에는 단 한 번의 예비가 있을 수 없다는 것을 명심하여 주시기 바랍니다.",
+    "answers": [
+      "재난 및 재해 대비에는 절대 허술함이 없어야 함을 명심하시기 바랍니다."
+    ],
+    "sourceAnswer": "재난 및 재해 대비에는 절대 허술함이 없어야 함을 명심하시기 바랍니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-20b-02",
+    "category": "표현",
+    "group": "표현 수정 · 20쪽 · 두 번째 표",
+    "question": "도지사 지시 사항을 전 공직자가 알 수 있도록 도보에 게재하여 주시기 바랍니다.",
+    "answers": [
+      "도지사 지시 사항을 도내 공직자가 알 수 있도록 도보에 게재하여 주시기 바랍니다."
+    ],
+    "sourceAnswer": "도지사 지시 사항을 도내 공직자가 알 수 있도록 도보에 게재하여 주시기 바랍니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-20b-03",
+    "category": "표현",
+    "group": "표현 수정 · 20쪽 · 두 번째 표",
+    "question": "신청 방법: 전자우편 또는 방문 접수",
+    "answers": [
+      "신청 방법: 전자우편 또는 방문 제출"
+    ],
+    "sourceAnswer": "신청 방법: 전자우편 또는 방문 제출",
+    "strict": true
+  },
+  {
+    "id": "expression-20b-04",
+    "category": "표현",
+    "group": "표현 수정 · 20쪽 · 두 번째 표",
+    "question": "정당한 사유 없이 선거 벽보를 훼손하거나 철거한 때에는 「공직선거법」에 의거 처벌될 수 있습니다.",
+    "answers": [
+      "정당한 사유 없이 선거 벽보를 훼손하거나 철거하면 「공직선거법」에 따라 처벌을 받습니다."
+    ],
+    "sourceAnswer": "정당한 사유 없이 선거 벽보를 훼손하거나 철거하면 「공직선거법」에 따라 처벌을 받습니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-20b-05",
+    "category": "표현",
+    "group": "표현 수정 · 20쪽 · 두 번째 표",
+    "question": "정상회담 계기 공동성명을 통해",
+    "answers": [
+      "정상 회담을 계기로 공동 성명을 발표하여"
+    ],
+    "sourceAnswer": "정상 회담을 계기로 공동 성명을 발표하여",
+    "strict": true
+  },
+  {
+    "id": "expression-20b-06",
+    "category": "표현",
+    "group": "표현 수정 · 20쪽 · 두 번째 표",
+    "question": "제37조 및 OOOOOO부 및 OOO청 소관 「비영리 법인의 설립 및 감독에 관한 규칙」",
+    "answers": [
+      "제37조 그리고 OOOOOO부와 OOO청 소관 「비영리 법인의 설립 및 감독에 관한 규칙」"
+    ],
+    "sourceAnswer": "제37조 그리고 OOOOOO부와 OOO청 소관 「비영리 법인의 설립 및 감독에 관한 규칙」",
+    "strict": true
+  },
+  {
+    "id": "expression-20b-07",
+    "category": "표현",
+    "group": "표현 수정 · 20쪽 · 두 번째 표",
+    "question": "361만 명에 달하는 대상자가 서비스를 제공받을 수 있게 된다.",
+    "answers": [
+      "361만 명에 달하는 대상자가 서비스를 받을 수 있게 된다."
+    ],
+    "sourceAnswer": "361만 명에 달하는 대상자가 서비스를 받을 수 있게 된다.",
+    "strict": true
+  },
+  {
+    "id": "expression-20b-08",
+    "category": "표현",
+    "group": "표현 수정 · 20쪽 · 두 번째 표",
+    "question": "조사 내용은 모든 표본을 대상으로 조사하는 공통 조사 항목과 체류 자격에 따라 추가로 조사하는 항목들이 있습니다.",
+    "answers": [
+      "조사 내용은 공통 조사 항목과 체류 자격에 따른 조사 항목으로 구성되어 있습니다."
+    ],
+    "sourceAnswer": "조사 내용은 공통 조사 항목과 체류 자격에 따른 조사 항목으로 구성되어 있습니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-20b-09",
+    "category": "표현",
+    "group": "표현 수정 · 20쪽 · 두 번째 표",
+    "question": "조사 행위를 허가하고 있지 않습니다.",
+    "answers": [
+      "조사 행위를 할 수 없습니다."
+    ],
+    "sourceAnswer": "조사 행위를 할 수 없습니다.",
+    "strict": true
+  },
+  {
+    "id": "expression-20b-10",
+    "category": "표현",
+    "group": "표현 수정 · 20쪽 · 두 번째 표",
+    "question": "종사자에 대한 서비스 교육을 실시한다.",
+    "answers": [
+      "종사자에게 서비스 교육을 실시한다."
+    ],
+    "sourceAnswer": "종사자에게 서비스 교육을 실시한다.",
+    "strict": true
+  },
+  {
+    "id": "expression-20b-11",
+    "category": "표현",
+    "group": "표현 수정 · 20쪽 · 두 번째 표",
+    "question": "주관 부서 및 조사 대상 기관",
+    "answers": [
+      "주관 부서와 조사 대상 기관"
+    ],
+    "sourceAnswer": "주관 부서와 조사 대상 기관",
+    "strict": true
+  },
+  {
+    "id": "expression-20b-12",
+    "category": "표현",
+    "group": "표현 수정 · 20쪽 · 두 번째 표",
+    "question": "주의가 요구됩니다.",
+    "answers": [
+      "주의해야 합니다."
+    ],
+    "sourceAnswer": "주의해야 합니다.",
+    "strict": true
+  }
+];
+QUESTIONS.push(...MORE_EXPRESSION_QUESTIONS);
