@@ -12,6 +12,7 @@ let category = '전체 영역';
 let wrongMode = false;
 let notesMode = false;
 let memoMode = false;
+let pastMode = false;
 let current = null;
 let answered = false;
 let queue = [];
@@ -60,7 +61,7 @@ $('category-select').onchange = event => {
   showQuestion();
 };
 function showQuestion() {
-  if (memoMode) return;
+  if (memoMode || pastMode) return;
   if (notesMode) {
     renderNotes();
     return;
@@ -231,15 +232,17 @@ function setMode(mode) {
   wrongMode = mode === 'wrong';
   notesMode = mode === 'notes';
   memoMode = mode === 'memo';
-  for (const [id, active] of [['all-mode', mode === 'all'], ['wrong-mode', wrongMode], ['notes-mode', notesMode], ['memo-mode', memoMode]]) {
+  pastMode = mode === 'past';
+  for (const [id, active] of [['all-mode', mode === 'all'], ['wrong-mode', wrongMode], ['notes-mode', notesMode], ['memo-mode', memoMode], ['past-mode', pastMode]]) {
     $(id).classList.toggle('active', active);
     $(id).setAttribute('aria-pressed', active);
   }
   $('study-notes').hidden = !notesMode;
   $('personal-notes').hidden = !memoMode;
-  document.querySelector('.quiz-card').hidden = notesMode || memoMode;
-  document.querySelector('.stats').hidden = memoMode;
-  $('reset').hidden = memoMode;
+  $('past-exams').hidden = !pastMode;
+  document.querySelector('.quiz-card').hidden = notesMode || memoMode || pastMode;
+  document.querySelector('.stats').hidden = memoMode || pastMode;
+  $('reset').hidden = memoMode || pastMode;
   queue = [];
   showQuestion();
 }
@@ -247,6 +250,7 @@ $('all-mode').onclick = () => setMode('all');
 $('wrong-mode').onclick = () => setMode('wrong');
 $('notes-mode').onclick = () => setMode('notes');
 $('memo-mode').onclick = () => setMode('memo');
+$('past-mode').onclick = () => setMode('past');
 $('next').onclick = () => {
   showQuestion();
   (current ? $('answer-input') : $('question')).focus();
