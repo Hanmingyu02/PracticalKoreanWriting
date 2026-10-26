@@ -44,12 +44,21 @@ let roundStarted = false;
 let roundTotal = 0;
 let roundAnswered = 0;
 let roundCorrect = 0;
+let roundWrongIds = new Set();
+let roundOverrideIds = null;
+let roundScope = '';
+function currentRoundScope() {
+  return `${wrongMode ? 'wrong' : 'all'}:${[...selectedCategories].sort().join('|')}`;
+}
 function resetRound() {
   queue = [];
   roundStarted = false;
   roundTotal = 0;
   roundAnswered = 0;
   roundCorrect = 0;
+  roundWrongIds = new Set();
+  roundOverrideIds = null;
+  roundScope = '';
   $('round-complete').hidden = true;
   $('quiz-bottom').hidden = false;
 }
@@ -149,15 +158,21 @@ $('category-picker').open = !compactLayout.matches;
 compactLayout.addEventListener('change', event => {
   $('category-picker').open = !event.matches;
 });
-function showQuestion() {
+function showQuestion(resume = false) {
   if (memoMode || mockMode || pastMode || (wrongMode && !wrongRetryActive)) return;
   if (notesMode) {
     renderNotes();
     return;
   }
-  const available = pool();
+  if (resume && roundStarted) return;
+  if (roundStarted && roundTotal > 0 && roundAnswered >= roundTotal) {
+    showRoundComplete();
+    return;
+  }
+  const available = roundOverrideIds ? QUESTIONS.filter(q => roundOverrideIds.includes(q.id) && matchesCategory(q)) : pool();
   if (!roundStarted) {
     roundStarted = true;
+    roundScope = currentRoundScope();
     roundTotal = available.length;
     queue = available.map(q => q.id);
     for (let i = queue.length - 1; i > 0; i--) {
@@ -221,6 +236,7 @@ function submitAnswer() {
   const correct = isAcceptedAnswer(text, current.answers, current.strict);
   roundAnswered++;
   roundCorrect += Number(correct);
+  if (!correct) roundWrongIds.add(current.id);
   state.answered++;
   state.correct += Number(correct);
   state.streak = correct ? state.streak + 1 : 0;
@@ -251,12 +267,18 @@ function submitAnswer() {
   renderWrongReview();
   $('progress').textContent = `${roundAnswered} / ${roundTotal}문제 완료`;
   if (roundAnswered === roundTotal) {
-    $('round-complete').hidden = false;
-    $('quiz-bottom').hidden = true;
-    $('next').disabled = true;
-    $('round-summary').textContent = `${category} · ${roundTotal}문제 완료 · 정답 ${roundCorrect}개 · 오답 ${roundTotal - roundCorrect}개`;
-    $('restart-round').focus();
+    showRoundComplete();
   } else $('next').focus();
+}
+function showRoundComplete() {
+  $('round-complete').hidden = false;
+  $('quiz-bottom').hidden = true;
+  $('next').disabled = true;
+  $('round-summary').textContent = `${category} · ${roundTotal}문제 완료 · 정답 ${roundCorrect}개 · 오답 ${roundTotal - roundCorrect}개`;
+  $('retry-round-wrong').hidden = roundWrongIds.size === 0;
+  $('retry-round-wrong').textContent = `이번 회차 틀린 ${roundWrongIds.size}문제 다시 풀기`;
+  $('round-complete').focus({ preventScroll: true });
+  $('round-complete').scrollIntoView({ block: 'center', behavior: 'instant' });
 }
 let composing = false;
 $('answer-input').addEventListener('compositionstart', () => { composing = true; });
@@ -499,8 +521,8 @@ function setMode(mode) {
   document.querySelector('.stats').hidden = memoMode || mockMode || pastMode || wrongMode;
   $('reset').hidden = memoMode || mockMode || pastMode;
   renderCategoryChoices();
-  resetRound();
-  showQuestion();
+  if (!notesMode && !memoMode && !mockMode && !pastMode && !wrongMode && roundStarted && roundScope !== currentRoundScope()) resetRound();
+  showQuestion(true);
 }
 $('all-mode').onclick = () => setMode('all');
 $('wrong-mode').onclick = () => setMode('wrong');
@@ -520,6 +542,14 @@ $('objective-past-mode').onclick = () => setMode('objective-past');
 $('written-past-mode').onclick = () => setMode('written-past');
 $('restart-round').onclick = () => {
   resetRound();
+  showQuestion();
+  (current ? $('answer-input') : $('question')).focus();
+};
+$('retry-round-wrong').onclick = () => {
+  const ids = [...roundWrongIds];
+  if (!ids.length) return;
+  resetRound();
+  roundOverrideIds = ids;
   showQuestion();
   (current ? $('answer-input') : $('question')).focus();
 };
