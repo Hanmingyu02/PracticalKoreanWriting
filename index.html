@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#ffffff">
   <title>실용글쓰기 연습</title>
-  <link rel="stylesheet" href="style.css?v=strike-1">
+  <link rel="stylesheet" href="style.css?v=wrong-review-1">
   <script src="questions.js?v=strike-1" defer></script>
   <script src="concepts.js?v=strike-1" defer></script>
-  <script src="app.js?v=strike-1" defer></script>
+  <script src="app.js?v=wrong-review-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#question">문제로 바로가기</a>
@@ -54,6 +54,17 @@
           <p id="notes-count" role="status"></p>
           <p id="notes-empty" hidden>검색 결과가 없습니다.</p>
           <table id="notes-table"><caption class="visually-hidden">선택한 영역의 용어와 다듬은 말</caption><thead><tr><th scope="col">용어</th><th scope="col">다듬은 말</th></tr></thead><tbody id="notes-rows"></tbody></table>
+        </section>
+        <section id="wrong-review" aria-labelledby="wrong-review-title" hidden>
+          <h2 id="wrong-review-title">오답 노트</h2>
+          <p id="wrong-summary" class="wrong-summary" role="status"></p>
+          <p id="wrong-empty" class="wrong-empty" hidden>이 영역에 저장된 오답이 없습니다.</p>
+          <div id="wrong-list" class="wrong-list"></div>
+          <section id="wrong-retry" aria-labelledby="wrong-retry-title">
+            <h3 id="wrong-retry-title">틀린 문제 다시 풀기</h3>
+            <p>오답을 확인한 뒤 아래 버튼을 눌러 틀린 문제만 다시 풀 수 있습니다.</p>
+            <button id="wrong-retry-start" class="primary" type="button">틀린 문제 다시 풀기</button>
+          </section>
         </section>
         <article class="quiz-card" aria-labelledby="question">
           <div class="card-top"><span id="category" class="badge"></span><span class="random-label">무작위 출제</span></div>
