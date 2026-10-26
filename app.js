@@ -13,7 +13,8 @@ let wrongMode = false;
 let current = null;
 let answered = false;
 let queue = [];
-const categories = ['전체 영역', ...new Set(QUESTIONS.map(q => q.category))];
+const categories = [...new Set(['전체 영역', '어법·어문 규범', '틀리기 쉬운 맞춤법', '띄어쓰기', '낱말', '표현', '외래어·외국어 다듬기', '한자어 다듬기', '일본어 투 용어', ...QUESTIONS.map(q => q.category)])];
+const categoryIcons = ['▦', 'Aa', '✓', '↔', '가', '✎', '↗', '字', '≈'];
 
 function persist() {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch { /* Session remains usable. */ }
@@ -28,12 +29,20 @@ function pool() {
   return QUESTIONS.filter(q => (category === '전체 영역' || q.category === category) && (!wrongMode || state.wrong.includes(q.id)));
 }
 function renderCategories() {
-  $('categories').replaceChildren(...categories.map(name => {
+  $('categories').replaceChildren(...categories.map((name, index) => {
     const button = document.createElement('button');
-    button.textContent = name;
+    const icon = document.createElement('span');
+    icon.className = 'category-icon';
+    icon.textContent = categoryIcons[index] || '·';
+    icon.setAttribute('aria-hidden', 'true');
+    const label = document.createElement('span');
+    label.className = 'category-name';
+    label.textContent = name;
+    button.append(icon, label);
     button.className = name === category ? 'active' : '';
     button.setAttribute('aria-pressed', name === category);
     const count = document.createElement('span');
+    count.className = 'category-count';
     count.textContent = QUESTIONS.filter(q => name === '전체 영역' || q.category === name).length;
     button.append(count);
     button.onclick = () => { category = name; queue = []; renderCategories(); showQuestion(); };
@@ -53,6 +62,11 @@ function showQuestion() {
   }
   const nextId = queue.shift();
   current = available.find(q => q.id === nextId) || null;
+  document.querySelector('.quiz-card').classList.toggle('is-empty', !current);
+  $('empty-description').hidden = Boolean(current);
+  $('empty-description').textContent = wrongMode && QUESTIONS.length
+    ? '이 영역에서 틀린 문제를 모두 복습했어요. 다른 영역도 살펴보세요.'
+    : '좋은 문장을 위한 연습을 준비하고 있어요. 문제가 등록되면 이곳에서 바로 시작할 수 있어요.';
   answered = false;
   $('next').disabled = true;
   $('feedback').replaceChildren();
