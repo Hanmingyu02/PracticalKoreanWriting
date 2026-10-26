@@ -1,34 +1,4 @@
 const $ = id => document.getElementById(id);
-// Static-site convenience gate; not server-side authentication.
-const ACCESS_KEY = 'bareun-access-v1';
-function setUnlocked(unlocked) {
-  $('password-gate').hidden = unlocked;
-  $('site-content').hidden = !unlocked;
-  $('site-password').value = '';
-  $('password-error').textContent = '';
-  $('site-password').removeAttribute('aria-invalid');
-  if (unlocked) $('lock-site').focus();
-  else $('site-password').focus();
-}
-let unlocked = false;
-try { unlocked = sessionStorage.getItem(ACCESS_KEY) === 'yes'; } catch {}
-setUnlocked(unlocked);
-$('password-form').onsubmit = event => {
-  event.preventDefault();
-  const password = $('site-password').value.trim().replace(/[０-９]/g, digit => String(digit.charCodeAt(0) - 0xFF10));
-  if (password !== '2002') {
-    $('password-error').textContent = '비밀번호가 맞지 않습니다. 다시 입력해 주세요.';
-    $('site-password').setAttribute('aria-invalid', 'true');
-    $('site-password').select();
-    return;
-  }
-  try { sessionStorage.setItem(ACCESS_KEY, 'yes'); } catch {}
-  setUnlocked(true);
-};
-$('lock-site').onclick = () => {
-  try { sessionStorage.removeItem(ACCESS_KEY); } catch {}
-  setUnlocked(false);
-};
 const STORAGE_KEY = 'bareun-study-v1';
 const emptyState = () => ({ answered: 0, correct: 0, streak: 0, wrong: [] });
 let state = emptyState();
