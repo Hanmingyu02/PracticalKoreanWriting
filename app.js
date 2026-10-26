@@ -10,6 +10,7 @@ try {
 } catch { /* Private browsing and unavailable storage still allow quizzes. */ }
 let category = '전체 영역';
 let wrongMode = false;
+let wrongRetryActive = false;
 let notesMode = false;
 let memoMode = false;
 let pastMode = false;
@@ -29,6 +30,18 @@ function updateStats() {
 }
 function pool() {
   return QUESTIONS.filter(q => (category === '전체 영역' || q.category === category) && (!wrongMode || state.wrong.includes(q.id)));
+}
+function onCategoryChanged() {
+  queue = [];
+  renderCategories();
+  if (wrongMode) {
+    wrongRetryActive = false;
+    document.querySelector('.quiz-card').hidden = true;
+    document.querySelector('.stats').hidden = true;
+    renderWrongReview();
+  } else {
+    showQuestion();
+  }
 }
 function renderCategories() {
   $('category-select').replaceChildren(...categories.map(name => {
@@ -50,18 +63,16 @@ function renderCategories() {
     count.className = 'category-count';
     count.textContent = QUESTIONS.filter(q => name === '전체 영역' || q.category === name).length;
     button.append(count);
-    button.onclick = () => { category = name; queue = []; renderCategories(); showQuestion(); };
+    button.onclick = () => { category = name; onCategoryChanged(); };
     return button;
   }));
 }
 $('category-select').onchange = event => {
   category = event.target.value;
-  queue = [];
-  renderCategories();
-  showQuestion();
+  onCategoryChanged();
 };
 function showQuestion() {
-  if (memoMode || pastMode) return;
+  if (memoMode || pastMode || (wrongMode && !wrongRetryActive)) return;
   if (notesMode) {
     renderNotes();
     return;
@@ -156,6 +167,7 @@ function submitAnswer() {
   $('next').disabled = false;
   persist();
   updateStats();
+  renderWrongReview();
   $('next').focus();
 }
 let composing = false;
@@ -168,6 +180,39 @@ $('answer-form').onsubmit = event => {
   event.preventDefault();
   if (!composing) submitAnswer();
 };
+function renderWrongReview() {
+  const entries = QUESTIONS.filter(q => state.wrong.includes(q.id) && (category === '전체 영역' || q.category === category));
+  $('wrong-summary').textContent = category + ' · ' + entries.length + '개 오답';
+  $('wrong-empty').hidden = entries.length !== 0;
+  $('wrong-retry-start').disabled = entries.length === 0;
+  $('wrong-list').replaceChildren(...entries.map(q => {
+    const article = document.createElement('article');
+    article.className = 'wrong-entry';
+    const categoryText = document.createElement('p');
+    categoryText.className = 'wrong-entry-category';
+    categoryText.textContent = q.category + ' · ' + q.group;
+    const questionRow = document.createElement('div');
+    questionRow.className = 'wrong-entry-row';
+    const questionLabel = document.createElement('span');
+    questionLabel.className = 'wrong-entry-label';
+    questionLabel.textContent = '틀린 문제';
+    const questionText = document.createElement('p');
+    questionText.className = 'wrong-entry-value';
+    questionText.textContent = q.question;
+    questionRow.append(questionLabel, questionText);
+    const answerRow = document.createElement('div');
+    answerRow.className = 'wrong-entry-row wrong-entry-answer';
+    const answerLabel = document.createElement('span');
+    answerLabel.className = 'wrong-entry-label';
+    answerLabel.textContent = '정답';
+    const answerText = document.createElement('p');
+    answerText.className = 'wrong-entry-value';
+    answerText.textContent = q.answers.join(' / ');
+    answerRow.append(answerLabel, answerText);
+    article.append(categoryText, questionRow, answerRow);
+    return article;
+  }));
+}
 function renderNotes() {
   const search = normalizeAnswer($('notes-search').value).toLocaleLowerCase();
   const entries = QUESTIONS.filter(q => (category === '전체 영역' || q.category === category)
@@ -276,6 +321,7 @@ $('export-memo').onclick = () => {
 };
 function setMode(mode) {
   wrongMode = mode === 'wrong';
+  wrongRetryActive = false;
   notesMode = mode === 'notes';
   memoMode = mode === 'memo';
   pastMode = mode === 'past';
@@ -286,14 +332,25 @@ function setMode(mode) {
   $('study-notes').hidden = !notesMode;
   $('personal-notes').hidden = !memoMode;
   $('past-exams').hidden = !pastMode;
-  document.querySelector('.quiz-card').hidden = notesMode || memoMode || pastMode;
-  document.querySelector('.stats').hidden = memoMode || pastMode;
+  $('wrong-review').hidden = !wrongMode;
+  if (wrongMode) renderWrongReview();
+  document.querySelector('.quiz-card').hidden = notesMode || memoMode || pastMode || wrongMode;
+  document.querySelector('.stats').hidden = memoMode || pastMode || wrongMode;
   $('reset').hidden = memoMode || pastMode;
   queue = [];
   showQuestion();
 }
 $('all-mode').onclick = () => setMode('all');
 $('wrong-mode').onclick = () => setMode('wrong');
+$('wrong-retry-start').onclick = () => {
+  if (!wrongMode || !$('wrong-list').children.length) return;
+  wrongRetryActive = true;
+  queue = [];
+  document.querySelector('.quiz-card').hidden = false;
+  document.querySelector('.stats').hidden = false;
+  showQuestion();
+  $('question').focus();
+};
 $('notes-mode').onclick = () => setMode('notes');
 $('memo-mode').onclick = () => setMode('memo');
 $('past-mode').onclick = () => setMode('past');
@@ -303,7 +360,17 @@ $('next').onclick = () => {
 };
 $('reset').onclick = () => {
   if (!confirm('정답률과 오답을 포함한 모든 학습 기록을 초기화할까요?')) return;
-  state = emptyState(); persist(); updateStats(); queue = []; showQuestion();
+  state = emptyState();
+  persist();
+  updateStats();
+  queue = [];
+  if (wrongMode) {
+    wrongRetryActive = false;
+    document.querySelector('.quiz-card').hidden = true;
+    document.querySelector('.stats').hidden = true;
+    renderWrongReview();
+  }
+  showQuestion();
 };
 renderCategories();
 updateStats();
