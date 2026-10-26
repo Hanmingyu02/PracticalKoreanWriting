@@ -78,7 +78,11 @@ function showQuestion() {
   answered = false;
   $('next').disabled = true;
   $('feedback').replaceChildren();
-  $('options').replaceChildren();
+  $('answer-form').hidden = !current;
+  $('answer-input').value = '';
+  $('answer-input').disabled = false;
+  $('submit-answer').disabled = false;
+  $('answer-input').removeAttribute('aria-invalid');
   $('category').textContent = category;
   $('progress').textContent = available.length ? `이 영역에서 ${available.length}문제 무작위 출제` : '다른 영역도 살펴보세요';
   if (!current) {
@@ -88,43 +92,61 @@ function showQuestion() {
     if (!QUESTIONS.length) $('progress').textContent = '등록된 문제 0개';
     return;
   }
-  $('category').textContent = current.category;
+  $('category').textContent = `${current.category} · ${current.group}`;
   $('question').textContent = current.question;
-  current.options.forEach((option, index) => {
-    const button = document.createElement('button');
-    button.className = 'option';
-    const number = document.createElement('span');
-    number.className = 'number';
-    number.textContent = index + 1;
-    button.append(number, document.createTextNode(option));
-    button.onclick = () => select(index);
-    $('options').append(button);
-  });
 }
-function select(index) {
+function normalizeAnswer(text) {
+  // 한자어 풀이 연습이므로 띄어쓰기 차이는 채점하지 않습니다.
+  return text.normalize('NFC').replace(/\s+/gu, '').trim();
+}
+function isAcceptedAnswer(text, answers) {
+  const parts = text.split(/[,，、/;；·\n]+/u).map(normalizeAnswer).filter(Boolean);
+  const accepted = answers.map(normalizeAnswer);
+  return parts.length > 0 && parts.every(part => accepted.includes(part));
+}
+function submitAnswer() {
   if (!current || answered) return;
+  const text = $('answer-input').value.trim();
+  if (!text) {
+    $('answer-input').focus();
+    return;
+  }
   answered = true;
-  const correct = index === current.answer;
+  const correct = isAcceptedAnswer(text, current.answers);
   state.answered++;
   state.correct += Number(correct);
   state.streak = correct ? state.streak + 1 : 0;
   if (correct) state.wrong = state.wrong.filter(id => id !== current.id);
   else if (!state.wrong.includes(current.id)) state.wrong.push(current.id);
-  [...$('options').children].forEach((button, i) => {
-    button.disabled = true;
-    if (i === current.answer) button.classList.add('correct');
-    else if (i === index) button.classList.add('incorrect');
-  });
+  $('answer-input').disabled = true;
+  $('submit-answer').disabled = true;
   const feedback = document.createElement('div');
   feedback.className = `feedback${correct ? '' : ' wrong'}`;
   const title = document.createElement('strong');
-  title.textContent = correct ? '정답이에요. 잘 알고 계시네요!' : `아쉬워요. 정답은 ‘${current.options[current.answer]}’입니다.`;
-  feedback.append(title, document.createTextNode(current.explanation));
+  title.textContent = correct ? '정답입니다.' : '오답입니다.';
+  const submitted = document.createElement('div');
+  submitted.textContent = `내 답: ${text}`;
+  feedback.append(submitted);
+  feedback.prepend(title);
+  const solution = document.createElement('div');
+  solution.textContent = `다듬은 말: ${current.answers.join(', ')}`;
+  feedback.append(solution);
   $('feedback').replaceChildren(feedback);
   $('next').disabled = false;
   persist();
   updateStats();
+  $('next').focus();
 }
+let composing = false;
+$('answer-input').addEventListener('compositionstart', () => { composing = true; });
+$('answer-input').addEventListener('compositionend', () => { composing = false; });
+$('answer-input').addEventListener('keydown', event => {
+  if (event.key === 'Enter' && (event.isComposing || composing || event.keyCode === 229)) event.preventDefault();
+});
+$('answer-form').onsubmit = event => {
+  event.preventDefault();
+  if (!composing) submitAnswer();
+};
 function setMode(wrong) {
   wrongMode = wrong;
   $('all-mode').classList.toggle('active', !wrong);
@@ -136,7 +158,10 @@ function setMode(wrong) {
 }
 $('all-mode').onclick = () => setMode(false);
 $('wrong-mode').onclick = () => setMode(true);
-$('next').onclick = () => { showQuestion(); $('question').setAttribute('tabindex', '-1'); $('question').focus(); };
+$('next').onclick = () => {
+  showQuestion();
+  (current ? $('answer-input') : $('question')).focus();
+};
 $('reset').onclick = () => {
   if (!confirm('정답률과 오답을 포함한 모든 학습 기록을 초기화할까요?')) return;
   state = emptyState(); persist(); updateStats(); queue = []; showQuestion();

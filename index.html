@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#ffffff">
   <title>실용글쓰기 연습</title>
-  <link rel="stylesheet" href="style.css?v=responsive-1">
-  <script src="questions.js?v=responsive-1" defer></script>
-  <script src="app.js?v=responsive-1" defer></script>
+  <link rel="stylesheet" href="style.css?v=typed-1">
+  <script src="questions.js?v=typed-1" defer></script>
+  <script src="app.js?v=typed-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#question">문제로 바로가기</a>
@@ -19,10 +19,14 @@
         <div class="toolbar"><div class="tabs" role="group" aria-label="문제 모드"><button id="all-mode" class="active">문제 풀기</button><button id="wrong-mode">오답 노트 <span id="wrong-count">0</span></button></div><button class="text-button" id="reset">기록 초기화</button></div>
         <article class="quiz-card" aria-labelledby="question">
           <div class="card-top"><span id="category" class="badge"></span><span class="random-label">무작위 출제</span></div>
-          <p class="question-label">알맞은 답을 선택하세요.</p>
+          <p class="question-label">아래 용어를 다듬은 말로 바꿔 적으세요.</p>
           <h2 id="question" tabindex="-1"></h2>
           <p id="empty-description" hidden></p>
-          <div id="options" class="options"></div>
+          <form id="answer-form" hidden>
+            <label for="answer-input">다듬은 말</label>
+            <p id="answer-help">여러 답 중 하나만 적어도 됩니다. 띄어쓰기 차이는 무시합니다.</p>
+            <div class="answer-row"><input id="answer-input" type="text" placeholder="답을 입력하세요" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="send" required aria-describedby="answer-help"><button id="submit-answer" class="primary" type="submit">보내기</button></div>
+          </form>
           <div id="feedback" aria-live="polite"></div>
           <div class="card-bottom"><span id="progress"></span><button id="next" class="primary" disabled>다음 문제 <span aria-hidden="true">→</span></button></div>
         </article>
