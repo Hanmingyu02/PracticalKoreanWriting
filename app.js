@@ -33,6 +33,7 @@ function resetRound() {
 }
 const categories = [...new Set(['전체 영역', '어법·어문 규범', '틀리기 쉬운 맞춤법', '띄어쓰기', '낱말', '표현', '외래어·외국어 다듬기', '한자어 다듬기', '일본어 투 용어', ...QUESTIONS.map(q => q.category)])];
 let selectedCategories = new Set(categories.slice(1));
+let draftCategories = new Set(selectedCategories);
 function matchesCategory(question) { return selectedCategories.has(question.category); }
 
 function persist() {
@@ -59,48 +60,50 @@ function onCategoryChanged() {
     showQuestion();
   }
 }
+const categoryShortNames = {
+  '전체 영역': '전체', '어법·어문 규범': '어법·어문 규범', '틀리기 쉬운 맞춤법': '맞춤법',
+  '외래어·외국어 다듬기': '외래어·외국어', '한자어 다듬기': '한자어',
+};
 function renderCategories() {
-  const container = $('category-options');
-  const legend = document.createElement('legend');
-  legend.className = 'visually-hidden';
-  legend.textContent = '함께 풀 영역 선택';
-  container.replaceChildren(legend, ...categories.map(name => {
-    const label = document.createElement('label');
-    label.className = 'category-choice';
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.value = name;
-    checkbox.checked = name === '전체 영역' ? selectedCategories.size === categories.length - 1 : selectedCategories.has(name);
-    checkbox.setAttribute('aria-label', name);
-    const text = document.createElement('span');
-    text.className = 'category-name';
-    text.textContent = name;
-    const count = document.createElement('span');
-    count.className = 'category-count';
-    count.textContent = QUESTIONS.filter(q => name === '전체 영역' || q.category === name).length;
-    label.append(checkbox, text, count);
-    checkbox.onchange = () => {
-      if (name === '전체 영역') for (const item of container.querySelectorAll('input')) item.checked = checkbox.checked;
-      updateCategoryDraft();
-    };
-    return label;
-  }));
-  $('category-summary').textContent = selectedCategories.size === categories.length - 1
-    ? '영역 선택 · 전체' : `영역 선택 · ${selectedCategories.size}개 선택됨`;
-  updateCategoryDraft();
+  draftCategories = new Set(selectedCategories);
+  const count = QUESTIONS.filter(matchesCategory).length;
+  $('category-summary').textContent = `현재: ${selectedCategories.size === categories.length - 1 ? '전체 영역' : [...selectedCategories].map(name => categoryShortNames[name] || name).join(' · ')} (${count}) · 변경`;
+  renderCategoryChoices();
 }
-function updateCategoryDraft() {
-  const inputs = [...$('category-options').querySelectorAll('input')];
-  const chosen = inputs.slice(1).filter(input => input.checked);
-  inputs[0].checked = chosen.length === categories.length - 1;
-  inputs[0].indeterminate = chosen.length > 0 && chosen.length < categories.length - 1;
-  $('apply-categories').disabled = chosen.length === 0;
-  const count = QUESTIONS.filter(q => chosen.some(input => input.value === q.category)).length;
-  $('category-selection-status').textContent = chosen.length ? `${chosen.length}개 영역 · ${count}문제 선택` : '한 개 이상의 영역을 선택하세요.';
+function renderCategoryChoices() {
+  const allSelected = draftCategories.size === categories.length - 1;
+  $('category-options').replaceChildren(...categories.map(name => {
+    const count = QUESTIONS.filter(q => name === '전체 영역' || q.category === name).length;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'category-chip';
+    button.setAttribute('aria-label', name);
+    button.setAttribute('aria-pressed', name === '전체 영역' ? allSelected : !allSelected && draftCategories.has(name));
+    button.disabled = count === 0;
+    const label = document.createElement('span');
+    label.textContent = categoryShortNames[name] || name;
+    const number = document.createElement('span');
+    number.className = 'category-count';
+    number.textContent = count;
+    button.append(label, number);
+    button.onclick = () => {
+      if (name === '전체 영역') draftCategories = new Set(categories.slice(1));
+      else if (allSelected) draftCategories = new Set([name]);
+      else if (draftCategories.has(name)) draftCategories.delete(name);
+      else draftCategories.add(name);
+      renderCategoryChoices();
+      [...$('category-options').children].find(item => item.getAttribute('aria-label') === name).focus();
+    };
+    return button;
+  }));
+  const count = QUESTIONS.filter(q => draftCategories.has(q.category)).length;
+  $('apply-categories').disabled = count === 0;
+  $('apply-categories').textContent = notesMode ? '선택한 영역 보기' : wrongMode ? '선택한 오답 보기' : `${count}문제 시작`;
+  $('category-selection-status').textContent = !count ? '학습할 영역을 선택하세요.' : allSelected ? `전체 ${count}문제` : `${draftCategories.size}개 영역 · ${count}문제`;
 }
 $('apply-categories').onclick = () => {
-  selectedCategories = new Set([...$('category-options').querySelectorAll('input')].slice(1).filter(input => input.checked).map(input => input.value));
-  if (!selectedCategories.size) return;
+  if (!draftCategories.size) return;
+  selectedCategories = new Set(draftCategories);
   category = selectedCategories.size === categories.length - 1 ? '전체 영역' : [...selectedCategories].join(' + ');
   onCategoryChanged();
   if (matchMedia('(max-width:760px)').matches) {
@@ -395,6 +398,7 @@ function setMode(mode) {
   document.querySelector('.quiz-card').hidden = notesMode || memoMode || mockMode || pastMode || wrongMode;
   document.querySelector('.stats').hidden = memoMode || mockMode || pastMode || wrongMode;
   $('reset').hidden = memoMode || mockMode || pastMode;
+  renderCategoryChoices();
   resetRound();
   showQuestion();
 }
