@@ -153,8 +153,8 @@ function showQuestion() {
   $('category').textContent = `${current.category} · ${current.group}`;
   $('question').textContent = current.question;
   document.querySelector('.quiz-card').classList.toggle('correction', Boolean(current.strict));
-  $('question-instruction').textContent = current.strict ? '아래 표현을 올바르게 고쳐 적으세요.' : '아래 용어를 다듬은 말로 바꿔 적으세요.';
-  $('answer-label').textContent = current.strict ? '수정한 표현' : '다듬은 말';
+  $('question-instruction').textContent = current.instruction || (current.strict ? '아래 표현을 올바르게 고쳐 적으세요.' : '아래 용어를 다듬은 말로 바꿔 적으세요.');
+  $('answer-label').textContent = current.answerLabel || (current.strict ? '수정한 표현' : '다듬은 말');
   $('answer-help').textContent = current.strict
     ? '띄어쓰기와 문장부호까지 정확하게 입력하세요. 여러 정답 중 하나만 적으면 됩니다.'
     : '여러 답 중 하나만 적어도 됩니다. 띄어쓰기 차이는 무시합니다.';
@@ -197,11 +197,11 @@ function submitAnswer() {
   feedback.append(submitted);
   feedback.prepend(title);
   const solution = document.createElement('div');
-  solution.textContent = `${current.strict ? '수정 후' : '다듬은 말'}: ${current.sourceAnswer || current.answers.join(' / ')}`;
+  solution.textContent = `${current.answerLabel || (current.strict ? '수정 후' : '다듬은 말')}: ${current.sourceAnswer || current.answers.join(' / ')}`;
   feedback.append(solution);
-  if (current.note) {
+  if (current.note || current.reference) {
     const note = document.createElement('div');
-    note.textContent = `참고: ${current.note}`;
+    note.textContent = `참고: ${[current.note, current.reference].filter(Boolean).join(' ')}`;
     feedback.append(note);
   }
   $('feedback').replaceChildren(feedback);
@@ -271,7 +271,7 @@ function renderWrongReview() {
 }
 function renderNotes() {
   const search = normalizeAnswer($('notes-search').value).toLocaleLowerCase();
-  const entries = QUESTIONS.filter(q => matchesCategory(q)
+  const entries = [...QUESTIONS, ...STUDY_ONLY_ITEMS].filter(q => matchesCategory(q)
     && (!search || [q.question, ...q.answers].some(text => normalizeAnswer(text).toLocaleLowerCase().includes(search))));
   $('notes-count').textContent = `${category} · ${entries.length}개 항목`;
   $('notes-empty').hidden = entries.length > 0;
@@ -287,9 +287,9 @@ function renderNotes() {
     term.append(group);
     const answers = document.createElement('td');
     answers.textContent = q.sourceAnswer || q.answers.join(', ');
-    if (q.note) {
+    if (q.note || q.reference) {
       const note = document.createElement('small');
-      note.textContent = q.note;
+      note.textContent = [q.note, q.reference].filter(Boolean).join(' ');
       answers.append(note);
     }
     row.append(term, answers);

@@ -4147,3 +4147,720 @@ const MORE_GRAMMAR_QUESTIONS = [
   }
 ];
 QUESTIONS.push(...MORE_GRAMMAR_QUESTIONS);
+
+// 사용자 제공 어문 규범 및 준말. 동일한 수정 전후와 별도 참고 설명은 학습노트에만 저장합니다.
+const LANGUAGE_RULE_QUESTIONS = [
+  {
+    "id": "language-initial-01",
+    "category": "어법·어문 규범",
+    "group": "두음법칙을 지키지 않은 경우 · 7~8쪽",
+    "question": "남여",
+    "answers": [
+      "남녀"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-initial-02",
+    "category": "어법·어문 규범",
+    "group": "두음법칙을 지키지 않은 경우 · 7~8쪽",
+    "question": "년간",
+    "answers": [
+      "연간"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-initial-03",
+    "category": "어법·어문 규범",
+    "group": "두음법칙을 지키지 않은 경우 · 7~8쪽",
+    "question": "실천률",
+    "answers": [
+      "실천율"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-initial-04",
+    "category": "어법·어문 규범",
+    "group": "두음법칙을 지키지 않은 경우 · 7~8쪽",
+    "question": "자부담율",
+    "answers": [
+      "자부담률"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-initial-05",
+    "category": "어법·어문 규범",
+    "group": "두음법칙을 지키지 않은 경우 · 7~8쪽",
+    "question": "증감율",
+    "answers": [
+      "증감률"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-initial-06",
+    "category": "어법·어문 규범",
+    "group": "두음법칙을 지키지 않은 경우 · 7~8쪽",
+    "question": "집행율",
+    "answers": [
+      "집행률"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-initial-07",
+    "category": "어법·어문 규범",
+    "group": "두음법칙을 지키지 않은 경우 · 7~8쪽",
+    "question": "회계 년도",
+    "answers": [
+      "회계 연도"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-sai-01",
+    "category": "어법·어문 규범",
+    "group": "사이시옷 원칙을 지키지 않은 경우 · 7~8쪽",
+    "question": "갈비집",
+    "answers": [
+      "갈빗집"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-sai-02",
+    "category": "어법·어문 규범",
+    "group": "사이시옷 원칙을 지키지 않은 경우 · 7~8쪽",
+    "question": "우유값",
+    "answers": [
+      "우윳값"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-sai-03",
+    "category": "어법·어문 규범",
+    "group": "사이시옷 원칙을 지키지 않은 경우 · 7~8쪽",
+    "question": "최소값",
+    "answers": [
+      "최솟값"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-sai-04",
+    "category": "어법·어문 규범",
+    "group": "사이시옷 원칙을 지키지 않은 경우 · 7~8쪽",
+    "question": "둘쨋날",
+    "answers": [
+      "둘째 날"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-sai-05",
+    "category": "어법·어문 규범",
+    "group": "사이시옷 원칙을 지키지 않은 경우 · 7~8쪽",
+    "question": "백짓장",
+    "answers": [
+      "백지장"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-bracket-01",
+    "category": "어법·어문 규범",
+    "group": "괄호 뒤 조사를 잘못 사용한 경우 · 7~8쪽",
+    "question": "'음성 자동응답시스템(ARS)'와",
+    "answers": [
+      "'음성 자동응답시스템(ARS)'과"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-bracket-02",
+    "category": "어법·어문 규범",
+    "group": "괄호 뒤 조사를 잘못 사용한 경우 · 7~8쪽",
+    "question": "'지속가능발전 기본법 시행(22. 7. 5.)'와",
+    "answers": [
+      "'지속가능발전 기본법 시행(22. 7. 5.)'과"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-bracket-03",
+    "category": "어법·어문 규범",
+    "group": "괄호 뒤 조사를 잘못 사용한 경우 · 7~8쪽",
+    "question": "계약담당자(OOO 전임)으로",
+    "answers": [
+      "계약담당자(OOO 전임)로"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-bracket-04",
+    "category": "어법·어문 규범",
+    "group": "괄호 뒤 조사를 잘못 사용한 경우 · 7~8쪽",
+    "question": "꾸러미 417박스(약 1,000만 원)을",
+    "answers": [
+      "꾸러미 417박스(약 1,000만 원)를"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-bracket-05",
+    "category": "어법·어문 규범",
+    "group": "괄호 뒤 조사를 잘못 사용한 경우 · 7~8쪽",
+    "question": "이메일(OOOO@OOOO)를",
+    "answers": [
+      "이메일(OOOO@OOOO)을"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-bracket-06",
+    "category": "어법·어문 규범",
+    "group": "괄호 뒤 조사를 잘못 사용한 경우 · 7~8쪽",
+    "question": "전담팀(TF)를",
+    "answers": [
+      "전담팀(TF)을"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-bracket-07",
+    "category": "어법·어문 규범",
+    "group": "괄호 뒤 조사를 잘못 사용한 경우 · 7~8쪽",
+    "question": "학생 참여 정원(5개소)로",
+    "answers": [
+      "학생 참여 정원(5개소)으로"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-middle-dot-01",
+    "category": "어법·어문 규범",
+    "group": "한 단어로 굳어진 말의 문장 부호 오류 · 8쪽 상단",
+    "question": "공·사립",
+    "answers": [
+      "공사립"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-middle-dot-02",
+    "category": "어법·어문 규범",
+    "group": "한 단어로 굳어진 말의 문장 부호 오류 · 8쪽 상단",
+    "question": "국내·외",
+    "answers": [
+      "국내외"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-middle-dot-03",
+    "category": "어법·어문 규범",
+    "group": "한 단어로 굳어진 말의 문장 부호 오류 · 8쪽 상단",
+    "question": "군·경",
+    "answers": [
+      "군경"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-middle-dot-04",
+    "category": "어법·어문 규범",
+    "group": "한 단어로 굳어진 말의 문장 부호 오류 · 8쪽 상단",
+    "question": "노·사",
+    "answers": [
+      "노사"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-middle-dot-05",
+    "category": "어법·어문 규범",
+    "group": "한 단어로 굳어진 말의 문장 부호 오류 · 8쪽 상단",
+    "question": "민·관",
+    "answers": [
+      "민관"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-middle-dot-06",
+    "category": "어법·어문 규범",
+    "group": "한 단어로 굳어진 말의 문장 부호 오류 · 8쪽 상단",
+    "question": "민-관",
+    "answers": [
+      "민관"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-middle-dot-07",
+    "category": "어법·어문 규범",
+    "group": "한 단어로 굳어진 말의 문장 부호 오류 · 8쪽 상단",
+    "question": "상·중·하",
+    "answers": [
+      "상중하"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-middle-dot-08",
+    "category": "어법·어문 규범",
+    "group": "한 단어로 굳어진 말의 문장 부호 오류 · 8쪽 상단",
+    "question": "시·공간",
+    "answers": [
+      "시공간"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-middle-dot-09",
+    "category": "어법·어문 규범",
+    "group": "한 단어로 굳어진 말의 문장 부호 오류 · 8쪽 상단",
+    "question": "오·폐수",
+    "answers": [
+      "오폐수"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-middle-dot-10",
+    "category": "어법·어문 규범",
+    "group": "한 단어로 굳어진 말의 문장 부호 오류 · 8쪽 상단",
+    "question": "유·무선",
+    "answers": [
+      "유무선"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-middle-dot-11",
+    "category": "어법·어문 규범",
+    "group": "한 단어로 굳어진 말의 문장 부호 오류 · 8쪽 상단",
+    "question": "융·복합",
+    "answers": [
+      "융복합"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-middle-dot-12",
+    "category": "어법·어문 규범",
+    "group": "한 단어로 굳어진 말의 문장 부호 오류 · 8쪽 상단",
+    "question": "인·허가",
+    "answers": [
+      "인허가"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-middle-dot-13",
+    "category": "어법·어문 규범",
+    "group": "한 단어로 굳어진 말의 문장 부호 오류 · 8쪽 상단",
+    "question": "전·현직",
+    "answers": [
+      "전현직"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-middle-dot-14",
+    "category": "어법·어문 규범",
+    "group": "한 단어로 굳어진 말의 문장 부호 오류 · 8쪽 상단",
+    "question": "전·후",
+    "answers": [
+      "전후"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-middle-dot-15",
+    "category": "어법·어문 규범",
+    "group": "한 단어로 굳어진 말의 문장 부호 오류 · 8쪽 상단",
+    "question": "증·개축",
+    "answers": [
+      "증개축"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-middle-dot-16",
+    "category": "어법·어문 규범",
+    "group": "한 단어로 굳어진 말의 문장 부호 오류 · 8쪽 상단",
+    "question": "출·퇴근",
+    "answers": [
+      "출퇴근"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-loanword-01",
+    "category": "어법·어문 규범",
+    "group": "외래어 표기법을 지키지 않은 경우 · 7~8쪽",
+    "question": "네비게이션",
+    "answers": [
+      "내비게이션"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-loanword-02",
+    "category": "어법·어문 규범",
+    "group": "외래어 표기법을 지키지 않은 경우 · 7~8쪽",
+    "question": "라이센스",
+    "answers": [
+      "라이선스"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-loanword-03",
+    "category": "어법·어문 규범",
+    "group": "외래어 표기법을 지키지 않은 경우 · 7~8쪽",
+    "question": "로얄",
+    "answers": [
+      "로열"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-loanword-04",
+    "category": "어법·어문 규범",
+    "group": "외래어 표기법을 지키지 않은 경우 · 7~8쪽",
+    "question": "로타리",
+    "answers": [
+      "로터리"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-loanword-05",
+    "category": "어법·어문 규범",
+    "group": "외래어 표기법을 지키지 않은 경우 · 7~8쪽",
+    "question": "메세지",
+    "answers": [
+      "메시지"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-loanword-06",
+    "category": "어법·어문 규범",
+    "group": "외래어 표기법을 지키지 않은 경우 · 7~8쪽",
+    "question": "벤처캐피탈",
+    "answers": [
+      "벤처캐피털"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-loanword-07",
+    "category": "어법·어문 규범",
+    "group": "외래어 표기법을 지키지 않은 경우 · 7~8쪽",
+    "question": "쉐프",
+    "answers": [
+      "셰프"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-loanword-08",
+    "category": "어법·어문 규범",
+    "group": "외래어 표기법을 지키지 않은 경우 · 7~8쪽",
+    "question": "스케쥴",
+    "answers": [
+      "스케줄"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-loanword-09",
+    "category": "어법·어문 규범",
+    "group": "외래어 표기법을 지키지 않은 경우 · 7~8쪽",
+    "question": "스텀프",
+    "answers": [
+      "스탬프"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-loanword-10",
+    "category": "어법·어문 규범",
+    "group": "외래어 표기법을 지키지 않은 경우 · 7~8쪽",
+    "question": "썸머",
+    "answers": [
+      "서머"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-loanword-11",
+    "category": "어법·어문 규범",
+    "group": "외래어 표기법을 지키지 않은 경우 · 7~8쪽",
+    "question": "어플리케이션",
+    "answers": [
+      "애플리케이션"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-loanword-12",
+    "category": "어법·어문 규범",
+    "group": "외래어 표기법을 지키지 않은 경우 · 7~8쪽",
+    "question": "워크샵",
+    "answers": [
+      "워크숍"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-loanword-13",
+    "category": "어법·어문 규범",
+    "group": "외래어 표기법을 지키지 않은 경우 · 7~8쪽",
+    "question": "컨텐츠",
+    "answers": [
+      "콘텐츠"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-loanword-14",
+    "category": "어법·어문 규범",
+    "group": "외래어 표기법을 지키지 않은 경우 · 7~8쪽",
+    "question": "컬쳐",
+    "answers": [
+      "컬처"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-loanword-15",
+    "category": "어법·어문 규범",
+    "group": "외래어 표기법을 지키지 않은 경우 · 7~8쪽",
+    "question": "클라쓰",
+    "answers": [
+      "클래스"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-loanword-16",
+    "category": "어법·어문 규범",
+    "group": "외래어 표기법을 지키지 않은 경우 · 7~8쪽",
+    "question": "데크",
+    "answers": [
+      "덱"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-loanword-17",
+    "category": "어법·어문 규범",
+    "group": "외래어 표기법을 지키지 않은 경우 · 7~8쪽",
+    "question": "트롯",
+    "answers": [
+      "트로트"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-loanword-18",
+    "category": "어법·어문 규범",
+    "group": "외래어 표기법을 지키지 않은 경우 · 7~8쪽",
+    "question": "파트너쉽",
+    "answers": [
+      "파트너십"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-loanword-19",
+    "category": "어법·어문 규범",
+    "group": "외래어 표기법을 지키지 않은 경우 · 7~8쪽",
+    "question": "팰럴림픽",
+    "answers": [
+      "패럴림픽"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-typo-01",
+    "category": "어법·어문 규범",
+    "group": "오탈자 · 7~8쪽",
+    "question": "내딛었다",
+    "answers": [
+      "내디뎠다"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-typo-02",
+    "category": "어법·어문 규범",
+    "group": "오탈자 · 7~8쪽",
+    "question": "일사분란",
+    "answers": [
+      "일사불란"
+    ],
+    "strict": true
+  },
+  {
+    "id": "language-contract-chi-01",
+    "category": "어법·어문 규범",
+    "group": "‘-하지 않다’의 준말 · -치 않다",
+    "question": "필요하지 않다",
+    "answers": [
+      "필요치 않다"
+    ],
+    "strict": true,
+    "instruction": "아래 기본 표현을 줄여 적으세요.",
+    "answerLabel": "줄인 표현",
+    "reference": "‘하’의 앞말이 모음이나 유성음(ㄴ, ㄹ, ㅁ, ㅇ)으로 끝날 때 ‘-치 않다’로 씁니다."
+  },
+  {
+    "id": "language-contract-chi-02",
+    "category": "어법·어문 규범",
+    "group": "‘-하지 않다’의 준말 · -치 않다",
+    "question": "간편하지 않다",
+    "answers": [
+      "간편치 않다"
+    ],
+    "strict": true,
+    "instruction": "아래 기본 표현을 줄여 적으세요.",
+    "answerLabel": "줄인 표현",
+    "reference": "‘하’의 앞말이 모음이나 유성음(ㄴ, ㄹ, ㅁ, ㅇ)으로 끝날 때 ‘-치 않다’로 씁니다."
+  },
+  {
+    "id": "language-contract-chi-03",
+    "category": "어법·어문 규범",
+    "group": "‘-하지 않다’의 준말 · -치 않다",
+    "question": "각별하지 않다",
+    "answers": [
+      "각별치 않다"
+    ],
+    "strict": true,
+    "instruction": "아래 기본 표현을 줄여 적으세요.",
+    "answerLabel": "줄인 표현",
+    "reference": "‘하’의 앞말이 모음이나 유성음(ㄴ, ㄹ, ㅁ, ㅇ)으로 끝날 때 ‘-치 않다’로 씁니다."
+  },
+  {
+    "id": "language-contract-chi-04",
+    "category": "어법·어문 규범",
+    "group": "‘-하지 않다’의 준말 · -치 않다",
+    "question": "의심하지 않다",
+    "answers": [
+      "의심치 않다"
+    ],
+    "strict": true,
+    "instruction": "아래 기본 표현을 줄여 적으세요.",
+    "answerLabel": "줄인 표현",
+    "reference": "‘하’의 앞말이 모음이나 유성음(ㄴ, ㄹ, ㅁ, ㅇ)으로 끝날 때 ‘-치 않다’로 씁니다."
+  },
+  {
+    "id": "language-contract-chi-05",
+    "category": "어법·어문 규범",
+    "group": "‘-하지 않다’의 준말 · -치 않다",
+    "question": "사용하지 않다",
+    "answers": [
+      "사용치 않다"
+    ],
+    "strict": true,
+    "instruction": "아래 기본 표현을 줄여 적으세요.",
+    "answerLabel": "줄인 표현",
+    "reference": "‘하’의 앞말이 모음이나 유성음(ㄴ, ㄹ, ㅁ, ㅇ)으로 끝날 때 ‘-치 않다’로 씁니다."
+  },
+  {
+    "id": "language-contract-ji-01",
+    "category": "어법·어문 규범",
+    "group": "‘-하지 않다’의 준말 · -지 않다",
+    "question": "녹록하지 않다",
+    "answers": [
+      "녹록지 않다"
+    ],
+    "strict": true,
+    "instruction": "아래 기본 표현을 줄여 적으세요.",
+    "answerLabel": "줄인 표현",
+    "reference": "‘하’의 앞말이 모음이나 유성음(ㄴ, ㄹ, ㅁ, ㅇ)을 제외한 자음으로 끝날 때 ‘-지 않다’로 씁니다."
+  },
+  {
+    "id": "language-contract-ji-02",
+    "category": "어법·어문 규범",
+    "group": "‘-하지 않다’의 준말 · -지 않다",
+    "question": "익숙하지 않다",
+    "answers": [
+      "익숙지 않다"
+    ],
+    "strict": true,
+    "instruction": "아래 기본 표현을 줄여 적으세요.",
+    "answerLabel": "줄인 표현",
+    "reference": "‘하’의 앞말이 모음이나 유성음(ㄴ, ㄹ, ㅁ, ㅇ)을 제외한 자음으로 끝날 때 ‘-지 않다’로 씁니다."
+  },
+  {
+    "id": "language-contract-ji-03",
+    "category": "어법·어문 규범",
+    "group": "‘-하지 않다’의 준말 · -지 않다",
+    "question": "탐탁하지 않다",
+    "answers": [
+      "탐탁지 않다"
+    ],
+    "strict": true,
+    "instruction": "아래 기본 표현을 줄여 적으세요.",
+    "answerLabel": "줄인 표현",
+    "reference": "‘하’의 앞말이 모음이나 유성음(ㄴ, ㄹ, ㅁ, ㅇ)을 제외한 자음으로 끝날 때 ‘-지 않다’로 씁니다."
+  },
+  {
+    "id": "language-contract-ji-04",
+    "category": "어법·어문 규범",
+    "group": "‘-하지 않다’의 준말 · -지 않다",
+    "question": "갑갑하지 않다",
+    "answers": [
+      "갑갑지 않다"
+    ],
+    "strict": true,
+    "instruction": "아래 기본 표현을 줄여 적으세요.",
+    "answerLabel": "줄인 표현",
+    "reference": "‘하’의 앞말이 모음이나 유성음(ㄴ, ㄹ, ㅁ, ㅇ)을 제외한 자음으로 끝날 때 ‘-지 않다’로 씁니다."
+  },
+  {
+    "id": "language-contract-ji-05",
+    "category": "어법·어문 규범",
+    "group": "‘-하지 않다’의 준말 · -지 않다",
+    "question": "깨끗하지 않다",
+    "answers": [
+      "깨끗지 않다"
+    ],
+    "strict": true,
+    "instruction": "아래 기본 표현을 줄여 적으세요.",
+    "answerLabel": "줄인 표현",
+    "reference": "‘하’의 앞말이 모음이나 유성음(ㄴ, ㄹ, ㅁ, ㅇ)을 제외한 자음으로 끝날 때 ‘-지 않다’로 씁니다."
+  }
+];
+QUESTIONS.push(...LANGUAGE_RULE_QUESTIONS);
+const STUDY_ONLY_ITEMS = [
+  {
+    "id": "language-typo-pending-cheongryeom",
+    "category": "어법·어문 규범",
+    "group": "오탈자 · 원문 확인 필요",
+    "question": "청렴도",
+    "answers": [
+      "청렴도"
+    ],
+    "note": "사진상 수정 전후가 동일하게 보입니다. 원문 확인 전까지 문제로 출제하지 않습니다."
+  },
+  {
+    "id": "language-reference-seoseum",
+    "category": "어법·어문 규범",
+    "group": "‘-하지 않다’의 준말 · 쏙쏙 길잡이",
+    "question": "‘서슴치’가 아닌 ‘서슴지’",
+    "answers": [
+      "서슴지"
+    ],
+    "note": "‘서슴지’는 어간이 ㅁ으로 끝나는데도 ‘서슴치’가 아니고 ‘서슴지’인 이유: 기본형이 ‘서슴하다’가 아니고 ‘서슴다’이기 때문에 위의 경우에 해당되지 않아서 ‘하’를 완전히 줄여 ‘서슴지’로 써요. (제공 자료의 설명)"
+  }
+];
