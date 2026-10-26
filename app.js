@@ -37,6 +37,7 @@ let notesMode = false;
 let memoMode = false;
 let mockMode = false;
 let pastMode = false;
+let analysisMode = false;
 let current = null;
 let answered = false;
 let queue = [];
@@ -159,7 +160,7 @@ compactLayout.addEventListener('change', event => {
   $('category-picker').open = !event.matches;
 });
 function showQuestion(resume = false) {
-  if (memoMode || mockMode || pastMode || (wrongMode && !wrongRetryActive)) return;
+  if (memoMode || mockMode || pastMode || analysisMode || (wrongMode && !wrongRetryActive)) return;
   if (notesMode) {
     renderNotes();
     return;
@@ -505,23 +506,25 @@ function setMode(mode) {
   }
   memoMode = mode === 'memo';
   mockMode = mode === 'mock';
+  analysisMode = mode === 'analysis';
   pastMode = mode === 'objective-past' || mode === 'written-past';
-  for (const [id, active] of [['all-mode', mode === 'all'], ['wrong-mode', wrongMode], ['notes-mode', notesMode], ['memo-mode', memoMode], ['mock-mode', mockMode], ['objective-past-mode', mode === 'objective-past'], ['written-past-mode', mode === 'written-past']]) {
+  for (const [id, active] of [['all-mode', mode === 'all'], ['wrong-mode', wrongMode], ['notes-mode', notesMode], ['memo-mode', memoMode], ['mock-mode', mockMode], ['analysis-mode', analysisMode], ['objective-past-mode', mode === 'objective-past'], ['written-past-mode', mode === 'written-past']]) {
     $(id).classList.toggle('active', active);
     $(id).setAttribute('aria-pressed', active);
   }
   $('study-notes').hidden = !notesMode;
   $('personal-notes').hidden = !memoMode;
   $('mock-exams').hidden = !mockMode;
+  $('exam-analysis').hidden = !analysisMode;
   $('objective-past-exams').hidden = mode !== 'objective-past';
   $('written-past-exams').hidden = mode !== 'written-past';
   $('wrong-review').hidden = !wrongMode;
   if (wrongMode) renderWrongReview();
-  document.querySelector('.quiz-card').hidden = notesMode || memoMode || mockMode || pastMode || wrongMode;
-  document.querySelector('.stats').hidden = memoMode || mockMode || pastMode || wrongMode;
-  $('reset').hidden = memoMode || mockMode || pastMode;
+  document.querySelector('.quiz-card').hidden = notesMode || memoMode || mockMode || pastMode || analysisMode || wrongMode;
+  document.querySelector('.stats').hidden = memoMode || mockMode || pastMode || analysisMode || wrongMode;
+  $('reset').hidden = memoMode || mockMode || pastMode || analysisMode;
   renderCategoryChoices();
-  if (!notesMode && !memoMode && !mockMode && !pastMode && !wrongMode && roundStarted && roundScope !== currentRoundScope()) resetRound();
+  if (!notesMode && !memoMode && !mockMode && !pastMode && !analysisMode && !wrongMode && roundStarted && roundScope !== currentRoundScope()) resetRound();
   showQuestion(true);
 }
 $('all-mode').onclick = () => setMode('all');
@@ -538,6 +541,7 @@ $('wrong-retry-start').onclick = () => {
 $('notes-mode').onclick = () => setMode('notes');
 $('memo-mode').onclick = () => setMode('memo');
 $('mock-mode').onclick = () => setMode('mock');
+$('analysis-mode').onclick = () => setMode('analysis');
 $('objective-past-mode').onclick = () => setMode('objective-past');
 $('written-past-mode').onclick = () => setMode('written-past');
 $('restart-round').onclick = () => {

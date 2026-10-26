@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#ffffff">
   <title>실용글쓰기 연습</title>
-  <link rel="stylesheet" href="style.css?v=round-results-1">
-  <script src="questions.js?v=round-results-1" defer></script>
-  <script src="concepts.js?v=round-results-1" defer></script>
-  <script src="app.js?v=round-results-1" defer></script>
+  <link rel="stylesheet" href="style.css?v=analysis-1">
+  <script src="questions.js?v=analysis-1" defer></script>
+  <script src="concepts.js?v=analysis-1" defer></script>
+  <script src="app.js?v=analysis-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#question">문제로 바로가기</a>
@@ -25,7 +25,34 @@
         </details>
       </aside>
       <section class="quiz-column" aria-label="문제 풀기">
-        <div class="toolbar"><div class="tabs" role="group" aria-label="학습 모드"><button id="notes-mode">학습노트</button><button id="memo-mode">단권화 노트</button><button id="all-mode" class="active">문제 풀기</button><button id="wrong-mode">오답 노트 <span id="wrong-count">0</span></button><button id="objective-past-mode">객관식 기출</button><button id="written-past-mode">서술형 기출</button><button id="mock-mode">모의고사</button></div><button class="text-button" id="reset">기록 초기화</button></div>
+        <div class="toolbar"><div class="tabs" role="group" aria-label="학습 모드"><button id="notes-mode">학습노트</button><button id="memo-mode">단권화 노트</button><button id="all-mode" class="active">문제 풀기</button><button id="wrong-mode">오답 노트 <span id="wrong-count">0</span></button><button id="objective-past-mode">객관식 기출</button><button id="written-past-mode">서술형 기출</button><button id="mock-mode">모의고사</button><button id="analysis-mode">시험 분석</button></div><button class="text-button" id="reset">기록 초기화</button></div>
+        <section id="exam-analysis" aria-labelledby="analysis-title" hidden>
+          <h2 id="analysis-title">시험 분석</h2>
+          <figure class="exam-distribution">
+            <figcaption>영역별 출제 비중 <span>전체 39문항 기준</span></figcaption>
+            <div class="distribution-layout">
+              <div class="distribution-donut" aria-hidden="true"><div><strong>39</strong><span>전체 문항</span></div></div>
+              <ul class="distribution-legend" aria-label="영역별 문항 비율">
+                <li><span class="distribution-name"><i class="dot-principles" aria-hidden="true"></i>글쓰기 원리</span><strong>35.9%</strong></li>
+                <li><span class="distribution-name"><i class="dot-practice" aria-hidden="true"></i>글쓰기 실제</span><strong>41%</strong></li>
+                <li><span class="distribution-name"><i class="dot-thinking" aria-hidden="true"></i>사고력</span><strong>20.5%</strong></li>
+                <li><span class="distribution-name"><i class="dot-ethics" aria-hidden="true"></i>글쓰기 윤리</span><strong>2.6%</strong></li>
+              </ul>
+            </div>
+            <p class="analysis-note">문항 수의 비율입니다. 객관식·서술형의 배점 비율과는 다릅니다.</p>
+          </figure>
+          <table id="analysis-table">
+            <caption>영역별 문항 수 및 배점</caption>
+            <thead><tr><th scope="col">영역</th><th scope="col">객관식</th><th scope="col">서술형</th><th scope="col">계</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">글쓰기 원리</th><td>8</td><td>6</td><td>14</td></tr>
+              <tr><th scope="row">글쓰기 실제</th><td>13</td><td>3</td><td>16</td></tr>
+              <tr><th scope="row">사고력</th><td>8</td><td>0</td><td>8</td></tr>
+              <tr><th scope="row">글쓰기 윤리</th><td>1</td><td>0</td><td>1</td></tr>
+            </tbody>
+            <tfoot><tr><th scope="row">합계<span>(배점)</span></th><td>30문항<span>(300점)</span></td><td>9문항<span>(700점)</span></td><td>39문항<span>(1,000점)</span></td></tr></tfoot>
+          </table>
+        </section>
         <section id="objective-past-exams" class="past-panel" aria-labelledby="objective-past-title" hidden>
           <h2 id="objective-past-title">객관식 기출</h2>
           <p>아직 등록된 객관식 기출 자료가 없습니다.</p>
