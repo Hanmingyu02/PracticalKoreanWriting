@@ -185,3 +185,1560 @@ const QUESTIONS = [
   answers: entry.replacements,
   explanation: `제공 자료의 ${entry.group} 항목: ${entry.term} → ${entry.replacements.join(', ')}`,
 }));
+
+// 수정 전/후 표의 공백·괄호·문장부호를 그대로 보존합니다.
+const CORRECTION_QUESTIONS = [
+  {
+    "id": "spelling-01",
+    "category": "틀리기 쉬운 맞춤법",
+    "group": "맞춤법",
+    "question": "의심스런",
+    "answers": [
+      "의심스러운"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spelling-02",
+    "category": "틀리기 쉬운 맞춤법",
+    "group": "맞춤법",
+    "question": "있읍니다",
+    "answers": [
+      "있습니다"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spelling-03",
+    "category": "틀리기 쉬운 맞춤법",
+    "group": "맞춤법",
+    "question": "동·식물",
+    "answers": [
+      "동식물"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spelling-04",
+    "category": "틀리기 쉬운 맞춤법",
+    "group": "맞춤법",
+    "question": "승·하차",
+    "answers": [
+      "승하차"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spelling-05",
+    "category": "틀리기 쉬운 맞춤법",
+    "group": "맞춤법",
+    "question": "갯수",
+    "answers": [
+      "개수"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spelling-06",
+    "category": "틀리기 쉬운 맞춤법",
+    "group": "맞춤법",
+    "question": "2000.9.7",
+    "answers": [
+      "2000. 9. 7."
+    ],
+    "strict": true
+  },
+  {
+    "id": "spelling-07",
+    "category": "틀리기 쉬운 맞춤법",
+    "group": "맞춤법",
+    "question": "10. 28-29간",
+    "answers": [
+      "10. 28.~29.에"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spelling-08",
+    "category": "틀리기 쉬운 맞춤법",
+    "group": "맞춤법",
+    "question": "2000.11.2",
+    "answers": [
+      "2000. 11. 2."
+    ],
+    "strict": true
+  },
+  {
+    "id": "spelling-09",
+    "category": "틀리기 쉬운 맞춤법",
+    "group": "맞춤법",
+    "question": "2000.1.4",
+    "answers": [
+      "2000. 1. 4."
+    ],
+    "strict": true
+  },
+  {
+    "id": "spelling-10",
+    "category": "틀리기 쉬운 맞춤법",
+    "group": "맞춤법",
+    "question": "(처분 행위가 완료(소유권 이전 등기완료)되는 시점인지, 주무관청의 처분 허가를 받은 시점인지)",
+    "answers": [
+      "[처분 행위가 완료(소유권 이전 등기 완료)되는 시점인지, 주무관청의 처분 허가를 받은 시점인지]"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spelling-11",
+    "category": "틀리기 쉬운 맞춤법",
+    "group": "맞춤법",
+    "question": "향토 기업으로써",
+    "answers": [
+      "향토 기업으로서"
+    ],
+    "strict": true,
+    "note": "자격을 나타낼 때"
+  },
+  {
+    "id": "spelling-12",
+    "category": "틀리기 쉬운 맞춤법",
+    "group": "맞춤법",
+    "question": "신분으로써",
+    "answers": [
+      "신분으로서"
+    ],
+    "strict": true,
+    "note": "자격을 나타낼 때"
+  },
+  {
+    "id": "spelling-13",
+    "category": "틀리기 쉬운 맞춤법",
+    "group": "맞춤법",
+    "question": "삼가하여 주십시오.",
+    "answers": [
+      "삼가 주십시오."
+    ],
+    "strict": true
+  },
+  {
+    "id": "spelling-14",
+    "category": "틀리기 쉬운 맞춤법",
+    "group": "맞춤법",
+    "question": "그리고,",
+    "answers": [
+      "그리고"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spelling-15",
+    "category": "틀리기 쉬운 맞춤법",
+    "group": "맞춤법",
+    "question": "목표 년도",
+    "answers": [
+      "목표 연도"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spelling-16",
+    "category": "틀리기 쉬운 맞춤법",
+    "group": "맞춤법",
+    "question": "년수",
+    "answers": [
+      "연수"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spelling-17",
+    "category": "틀리기 쉬운 맞춤법",
+    "group": "맞춤법",
+    "question": "승인률",
+    "answers": [
+      "승인율"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spelling-18",
+    "category": "틀리기 쉬운 맞춤법",
+    "group": "맞춤법",
+    "question": "실업율",
+    "answers": [
+      "실업률"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spelling-19",
+    "category": "틀리기 쉬운 맞춤법",
+    "group": "맞춤법",
+    "question": "\"되었다\"고",
+    "answers": [
+      "\"되었다.\"라고"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing09-01",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 9쪽",
+    "question": "1/2 가량은",
+    "answers": [
+      "1/2가량은"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing09-02",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 9쪽",
+    "question": "10. 25.(금) 까지",
+    "answers": [
+      "10. 25.(금)까지"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing09-03",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 9쪽",
+    "question": "10월초",
+    "answers": [
+      "10월 초"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing09-04",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 9쪽",
+    "question": "10천㎡미만",
+    "answers": [
+      "1만㎡ 미만"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing09-05",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 9쪽",
+    "question": "10천㎡이상",
+    "answers": [
+      "1만㎡ 이상"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing09-06",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 9쪽",
+    "question": "15세이상",
+    "answers": [
+      "15세 이상"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing09-07",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 9쪽",
+    "question": "1년이상",
+    "answers": [
+      "1년 이상"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing09-08",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 9쪽",
+    "question": "2000년말",
+    "answers": [
+      "2000년 말"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing09-09",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 9쪽",
+    "question": "20일 경",
+    "answers": [
+      "20일경"
+    ],
+    "strict": true,
+    "note": "20일 무렵"
+  },
+  {
+    "id": "spacing09-10",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 9쪽",
+    "question": "하순 경",
+    "answers": [
+      "하순경"
+    ],
+    "strict": true,
+    "note": "하순 무렵"
+  },
+  {
+    "id": "spacing09-11",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 9쪽",
+    "question": "23만개",
+    "answers": [
+      "23만 개"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing09-12",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 9쪽",
+    "question": "2개월 간",
+    "answers": [
+      "2개월간"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing09-13",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 9쪽",
+    "question": "30%미만",
+    "answers": [
+      "30% 미만"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing09-14",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 9쪽",
+    "question": "3년이하",
+    "answers": [
+      "3년 이하"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing09-15",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 9쪽",
+    "question": "3일내",
+    "answers": [
+      "3일 내"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing09-16",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 9쪽",
+    "question": "3일자료",
+    "answers": [
+      "3일 자료"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing09-17",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 9쪽",
+    "question": "3천명",
+    "answers": [
+      "3천 명"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing09-18",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 9쪽",
+    "question": "4개부처",
+    "answers": [
+      "4개 부처"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-01",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "50%이상",
+    "answers": [
+      "50% 이상"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-02",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "50만명",
+    "answers": [
+      "50만 명"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-03",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "50여년간",
+    "answers": [
+      "50여 년간"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-04",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "50여회",
+    "answers": [
+      "50여 회"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-05",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "5천억원",
+    "answers": [
+      "5천억 원"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-06",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "60여개국 3,000여명",
+    "answers": [
+      "60여 개국 3,000여 명"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-07",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "6시30분",
+    "answers": [
+      "6시 30분"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-08",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "각1부",
+    "answers": [
+      "각 1부"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-09",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "간소화 하게",
+    "answers": [
+      "간소화하게"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-10",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "개시 할",
+    "answers": [
+      "개시할"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-11",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "경기전",
+    "answers": [
+      "경기 전"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-12",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "경제팀내",
+    "answers": [
+      "경제 팀 내"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-13",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "계약 체결후",
+    "answers": [
+      "계약 체결 후"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-14",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "계약시",
+    "answers": [
+      "계약 시"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-15",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "계획인 바",
+    "answers": [
+      "계획인바"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-16",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "고용및",
+    "answers": [
+      "고용 및"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-17",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "고용안내",
+    "answers": [
+      "고용 안내"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-18",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "고용현황",
+    "answers": [
+      "고용 현황"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-19",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "공모건",
+    "answers": [
+      "공모 건"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-20",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "구비서류",
+    "answers": [
+      "구비 서류"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-21",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "국가를당사자로하는계약에관한법률",
+    "answers": [
+      "「국가를 당사자로 하는 계약에 관한 법률」"
+    ],
+    "strict": true,
+    "note": "법률명을 나타낼 때"
+  },
+  {
+    "id": "spacing10l-22",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "귀 사",
+    "answers": [
+      "귀사"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-23",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "귀주재국",
+    "answers": [
+      "귀 주재국"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-24",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "그 동안",
+    "answers": [
+      "그동안"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-25",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "근거 : ○○○○부",
+    "answers": [
+      "근거: ○○○○부"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-26",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "근무지역",
+    "answers": [
+      "근무 지역"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10l-27",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 왼쪽",
+    "question": "기업과 함께 하는",
+    "answers": [
+      "기업과 함께하는"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10r-01",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "기재착오",
+    "answers": [
+      "기재 착오"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10r-02",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "기한내",
+    "answers": [
+      "기한 내"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10r-03",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "기호 순에 따라",
+    "answers": [
+      "기호순에 따라"
+    ],
+    "strict": true,
+    "note": "기호 순서대로"
+  },
+  {
+    "id": "spacing10r-04",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "김처장",
+    "answers": [
+      "김 처장"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10r-05",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "대통령간",
+    "answers": [
+      "대통령 간"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10r-06",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "더이상은",
+    "answers": [
+      "더 이상은"
+    ],
+    "strict": true,
+    "note": "더는"
+  },
+  {
+    "id": "spacing10r-07",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "두가지",
+    "answers": [
+      "두 가지"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10r-08",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "매세대",
+    "answers": [
+      "매 세대"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10r-09",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "모집공고",
+    "answers": [
+      "모집 공고"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10r-10",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "문서 입니다.",
+    "answers": [
+      "문서입니다."
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10r-11",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "문어발 식",
+    "answers": [
+      "문어발식"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10r-12",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "받지 못 하셨다면",
+    "answers": [
+      "받지 못하셨다면"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10r-13",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "발사 될",
+    "answers": [
+      "발사될"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10r-14",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "발생시",
+    "answers": [
+      "발생 시"
+    ],
+    "strict": true,
+    "note": "발생했을 때"
+  },
+  {
+    "id": "spacing10r-15",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "발전시키는데",
+    "answers": [
+      "발전시키는 데"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10r-16",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "발전해 온 바",
+    "answers": [
+      "발전해 온바"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10r-17",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "발행사간",
+    "answers": [
+      "발행사 간"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10r-18",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "밤 부터",
+    "answers": [
+      "밤부터"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10r-19",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "방과후",
+    "answers": [
+      "방과 후"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10r-20",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "배치전",
+    "answers": [
+      "배치 전"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10r-21",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "법적기준",
+    "answers": [
+      "법적 기준"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10r-22",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "변동없음",
+    "answers": [
+      "변동 없음"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10r-23",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "사용가능한",
+    "answers": [
+      "사용 가능한",
+      "사용할 수 있는"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10r-24",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "사용중인",
+    "answers": [
+      "사용 중인"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10r-25",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "선양활동 뿐만아니라",
+    "answers": [
+      "선양 활동뿐만 아니라"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10r-26",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "소득산정시",
+    "answers": [
+      "소득 산정 시"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing10r-27",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 10쪽 오른쪽",
+    "question": "소비자물가",
+    "answers": [
+      "소비자 물가"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-01",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "수 차례",
+    "answers": [
+      "수차례"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-02",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "승인후",
+    "answers": [
+      "승인 후"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-03",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "시설수",
+    "answers": [
+      "시설 수"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-04",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "시행이전",
+    "answers": [
+      "시행 이전"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-05",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "시행한바 있고",
+    "answers": [
+      "시행한 바 있고"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-06",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "신청 할",
+    "answers": [
+      "신청할"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-07",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "실효성있게",
+    "answers": [
+      "실효성 있게"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-08",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "심사방법",
+    "answers": [
+      "심사 방법"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-09",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "안됩니다.",
+    "answers": [
+      "안 됩니다."
+    ],
+    "strict": true,
+    "note": "‘안’이 ‘되다’를 부정할 때"
+  },
+  {
+    "id": "spacing11l-10",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "안정화 되는",
+    "answers": [
+      "안정화되는"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-11",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "알려드립니다.",
+    "answers": [
+      "알려 드립니다."
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-12",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "양국가간",
+    "answers": [
+      "양 국가 간",
+      "양국 간"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-13",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "어느선 까지이며",
+    "answers": [
+      "어느 선까지이며"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-14",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "업무내용",
+    "answers": [
+      "업무 내용"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-15",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "역량있고",
+    "answers": [
+      "역량 있고"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-16",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "연체여부",
+    "answers": [
+      "연체 여부"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-17",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "영수증 상의",
+    "answers": [
+      "영수증상의"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-18",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "용도외",
+    "answers": [
+      "용도 외"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-19",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "우리 나라",
+    "answers": [
+      "우리나라"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-20",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "우리경제",
+    "answers": [
+      "우리 경제"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-21",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "우리극장",
+    "answers": [
+      "우리 극장"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-22",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "우리부",
+    "answers": [
+      "우리 부"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-23",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "우주관련",
+    "answers": [
+      "우주 관련"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-24",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "원활해 지기를",
+    "answers": [
+      "원활해지기를"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-25",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "위호와 관련",
+    "answers": [
+      "위 호와 관련하여"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11l-26",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 왼쪽",
+    "question": "이 날",
+    "answers": [
+      "이날"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-01",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "이용 시간 : (오전) 09:00 ~ 12:00, (오후) 13:00 ~ 17:00, (야간) 18:00 ~ 22:00",
+    "answers": [
+      "이용 시간: (오전) 09:00~12:00, (오후) 13:00~17:00, (야간) 18:00~22:00"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-02",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "이중",
+    "answers": [
+      "이 중"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-03",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "입국 할",
+    "answers": [
+      "입국할"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-04",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "입국규제가",
+    "answers": [
+      "입국 규제가"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-05",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "재 교육을",
+    "answers": [
+      "재교육을"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-06",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "전년대비",
+    "answers": [
+      "전년 대비"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-07",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "정부합동단속이",
+    "answers": [
+      "정부 합동 단속이"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-08",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "정책간",
+    "answers": [
+      "정책 간"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-09",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "제 2000",
+    "answers": [
+      "제2000"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-10",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "제 4장",
+    "answers": [
+      "제4장"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-11",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "제 4차 제 1분과",
+    "answers": [
+      "제4차 제1분과"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-12",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "종합정책개발및성과관리",
+    "answers": [
+      "종합 정책 개발 및 성과 관리"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-13",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "주의깊게",
+    "answers": [
+      "주의 깊게"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-14",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "週단위로",
+    "answers": [
+      "주 단위로"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-15",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "지원가능한",
+    "answers": [
+      "지원 가능한"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-16",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "차질없이",
+    "answers": [
+      "차질 없이"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-17",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "착오없으시기",
+    "answers": [
+      "착오 없으시기"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-18",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "참가자앞",
+    "answers": [
+      "참가자 앞"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-19",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "○○부앞",
+    "answers": [
+      "○○부 앞"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-20",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "전달바람",
+    "answers": [
+      "전달 바람"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-21",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "참고바람",
+    "answers": [
+      "참고 바람"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-22",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "채용내용",
+    "answers": [
+      "채용 내용"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-23",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "첫 해인",
+    "answers": [
+      "첫해인"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-24",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "총28건",
+    "answers": [
+      "총 28건"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-25",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "추진중인",
+    "answers": [
+      "추진 중인"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-26",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "취임이후부터",
+    "answers": [
+      "취임 이후부터"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing11r-27",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 11쪽 오른쪽",
+    "question": "취임후",
+    "answers": [
+      "취임 후"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing-photo3-01",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 세 번째 사진",
+    "question": "하는 바",
+    "answers": [
+      "하는바"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing-photo3-02",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 세 번째 사진",
+    "question": "학교, 지역사회가 함께 하는",
+    "answers": [
+      "학교와 지역 사회가 함께하는"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing-photo3-03",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 세 번째 사진",
+    "question": "학력 :",
+    "answers": [
+      "학력:"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing-photo3-04",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 세 번째 사진",
+    "question": "한 것 뿐이라며",
+    "answers": [
+      "한 것뿐이라며"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing-photo3-05",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 세 번째 사진",
+    "question": "한 자리",
+    "answers": [
+      "한자리"
+    ],
+    "strict": true,
+    "note": "같은 자리"
+  },
+  {
+    "id": "spacing-photo3-06",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 세 번째 사진",
+    "question": "한다는데 의견을 같이 하였다.",
+    "answers": [
+      "한다는 데 의견을 같이하였다."
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing-photo3-07",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 세 번째 사진",
+    "question": "한반도 뿐 아니라",
+    "answers": [
+      "한반도뿐 아니라"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing-photo3-08",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 세 번째 사진",
+    "question": "허위기재",
+    "answers": [
+      "허위 기재"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing-photo3-09",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 세 번째 사진",
+    "question": "기초반과 활용반등",
+    "answers": [
+      "기초반과 활용반 등"
+    ],
+    "strict": true
+  },
+  {
+    "id": "spacing-photo3-10",
+    "category": "띄어쓰기",
+    "group": "띄어쓰기 · 세 번째 사진",
+    "question": "희생정도",
+    "answers": [
+      "희생 정도"
+    ],
+    "strict": true
+  }
+];
+QUESTIONS.push(...CORRECTION_QUESTIONS);

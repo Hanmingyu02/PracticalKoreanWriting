@@ -99,12 +99,20 @@ function showQuestion() {
   }
   $('category').textContent = `${current.category} · ${current.group}`;
   $('question').textContent = current.question;
+  document.querySelector('.quiz-card').classList.toggle('correction', Boolean(current.strict));
+  $('question-instruction').textContent = current.strict ? '아래 표현을 올바르게 고쳐 적으세요.' : '아래 용어를 다듬은 말로 바꿔 적으세요.';
+  $('answer-label').textContent = current.strict ? '수정한 표현' : '다듬은 말';
+  $('answer-help').textContent = current.strict
+    ? '띄어쓰기와 문장부호까지 정확하게 입력하세요. 여러 정답 중 하나만 적으면 됩니다.'
+    : '여러 답 중 하나만 적어도 됩니다. 띄어쓰기 차이는 무시합니다.';
+  if (current.note) $('question-instruction').textContent += ` (${current.note})`;
 }
 function normalizeAnswer(text) {
   // 괄호 속 맥락 설명과 띄어쓰기 차이는 채점하지 않습니다.
   return text.normalize('NFC').replace(/\([^)]*\)/gu, '').replace(/\s+/gu, '').trim();
 }
-function isAcceptedAnswer(text, answers) {
+function isAcceptedAnswer(text, answers, strict = false) {
+  if (strict) return answers.some(answer => text.normalize('NFC').trim() === answer.normalize('NFC').trim());
   const parts = text.replace(/\([^)]*\)/gu, '').split(/[,，、/;；·\n]+/u).map(normalizeAnswer).filter(Boolean);
   const accepted = answers.map(normalizeAnswer);
   return parts.length > 0 && parts.every(part => accepted.includes(part));
@@ -117,7 +125,7 @@ function submitAnswer() {
     return;
   }
   answered = true;
-  const correct = isAcceptedAnswer(text, current.answers);
+  const correct = isAcceptedAnswer(text, current.answers, current.strict);
   state.answered++;
   state.correct += Number(correct);
   state.streak = correct ? state.streak + 1 : 0;
@@ -134,8 +142,13 @@ function submitAnswer() {
   feedback.append(submitted);
   feedback.prepend(title);
   const solution = document.createElement('div');
-  solution.textContent = `다듬은 말: ${current.answers.join(', ')}`;
+  solution.textContent = `${current.strict ? '수정 후' : '다듬은 말'}: ${current.answers.join(' / ')}`;
   feedback.append(solution);
+  if (current.note) {
+    const note = document.createElement('div');
+    note.textContent = `참고: ${current.note}`;
+    feedback.append(note);
+  }
   $('feedback').replaceChildren(feedback);
   $('next').disabled = false;
   persist();
@@ -170,6 +183,11 @@ function renderNotes() {
     term.append(group);
     const answers = document.createElement('td');
     answers.textContent = q.answers.join(', ');
+    if (q.note) {
+      const note = document.createElement('small');
+      note.textContent = q.note;
+      answers.append(note);
+    }
     row.append(term, answers);
     return row;
   }));
