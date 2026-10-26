@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#ffffff">
   <title>실용글쓰기 연습</title>
-  <link rel="stylesheet" href="style.css?v=concepts-writing-1">
-  <script src="questions.js?v=concepts-writing-1" defer></script>
-  <script src="concepts.js?v=concepts-writing-1" defer></script>
-  <script src="app.js?v=concepts-writing-1" defer></script>
+  <link rel="stylesheet" href="style.css?v=concept-tree-1">
+  <script src="questions.js?v=concept-tree-1" defer></script>
+  <script src="concepts.js?v=concept-tree-1" defer></script>
+  <script src="app.js?v=concept-tree-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#question">문제로 바로가기</a>
@@ -36,7 +36,13 @@
         </section>
         <section id="personal-notes" aria-labelledby="memo-title" hidden>
           <h2 id="memo-title">단권화 노트</h2>
-          <p class="memo-help">객관식 개념 정리를 모아 두는 곳입니다. 문제 풀기와는 별도로 볼 수 있습니다.</p>
+          <p class="memo-help">부·편·장을 선택해 정리한 내용을 확인하세요.</p>
+          <div class="concept-selectors">
+            <div><label for="concept-part">부</label><select id="concept-part"></select></div>
+            <div><label for="concept-volume">편</label><select id="concept-volume"></select></div>
+            <div><label for="concept-chapter">장</label><select id="concept-chapter"></select></div>
+          </div>
+          <p id="concept-location" class="memo-help" role="status"></p>
           <p id="concepts-empty">아직 등록된 개념 정리가 없습니다.</p>
           <div id="concepts-content"></div>
           <details id="legacy-memo" hidden><summary>이전에 작성한 메모</summary><p class="memo-help">기존 브라우저 메모는 삭제하지 않았습니다.</p><pre id="legacy-memo-text"></pre><button id="export-memo" type="button" class="text-button">기존 메모 내려받기</button></details>

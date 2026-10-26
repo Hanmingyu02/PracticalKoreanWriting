@@ -196,13 +196,46 @@ function renderNotes() {
   }));
 }
 $('notes-search').addEventListener('input', renderNotes);
+function setConceptOptions(id, items) {
+  $(id).replaceChildren(...items.map(item => {
+    const option = document.createElement('option');
+    option.value = item.value;
+    option.textContent = item.title;
+    return option;
+  }));
+}
+function selectedConceptPart() {
+  return CONCEPT_STRUCTURE.find(part => part.id === $('concept-part').value);
+}
+function selectedConceptVolume() {
+  return selectedConceptPart().volumes.find(volume => volume.id === $('concept-volume').value);
+}
+function renderConceptVolumes() {
+  setConceptOptions('concept-volume', selectedConceptPart().volumes.map(volume => ({ value: volume.id, title: volume.title })));
+  renderConceptChapters();
+}
+function renderConceptChapters() {
+  const part = selectedConceptPart();
+  const volume = selectedConceptVolume();
+  setConceptOptions('concept-chapter', volume.chapters.map(chapter => ({
+    value: String(chapter.number),
+    title: chapter.title + (CONCEPT_NOTES.some(entry => entry.part === part.id && entry.volume === volume.id && entry.chapter === chapter.number) ? '' : ' · 내용 미등록'),
+  })));
+  renderConcepts();
+}
 function renderConcepts() {
-  $('concepts-empty').hidden = CONCEPT_NOTES.length > 0;
-  $('concepts-content').replaceChildren(...CONCEPT_NOTES.map(entry => {
+  const part = selectedConceptPart();
+  const volume = selectedConceptVolume();
+  const chapter = volume.chapters.find(item => item.number === Number($('concept-chapter').value));
+  const entries = CONCEPT_NOTES.filter(entry => entry.part === part.id && entry.volume === volume.id && entry.chapter === chapter.number);
+  $('concept-location').textContent = `${part.title} / ${volume.title} / ${chapter.title}`;
+  $('concepts-empty').hidden = entries.length > 0;
+  $('concepts-empty').textContent = '이 장은 아직 내용이 등록되지 않았습니다.';
+  $('concepts-content').replaceChildren(...entries.map(entry => {
     const article = document.createElement('article');
     article.className = 'concept-entry';
     const title = document.createElement('h3');
-    title.textContent = entry.title;
+    title.textContent = chapter.title;
     const body = document.createElement('div');
     body.className = 'concept-body';
     body.textContent = entry.body;
@@ -210,7 +243,11 @@ function renderConcepts() {
     return article;
   }));
 }
-renderConcepts();
+setConceptOptions('concept-part', CONCEPT_STRUCTURE.map(part => ({ value: part.id, title: part.title })));
+$('concept-part').onchange = renderConceptVolumes;
+$('concept-volume').onchange = renderConceptChapters;
+$('concept-chapter').onchange = renderConcepts;
+renderConceptVolumes();
 let legacyMemo = '';
 try {
   legacyMemo = localStorage.getItem('bareun-personal-notes-v1') || '';
