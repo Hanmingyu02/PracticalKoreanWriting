@@ -34,6 +34,7 @@ let category = '전체 영역';
 let wrongMode = false;
 let wrongRetryActive = false;
 let notesMode = false;
+let lastPracticeMode = 'all';
 let memoMode = false;
 let mockMode = false;
 let pastMode = false;
@@ -497,6 +498,11 @@ $('export-memo').onclick = () => {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 };
 function setMode(mode) {
+  const practiceActive = ['all', 'wrong', 'notes'].includes(mode);
+  if (practiceActive) lastPracticeMode = mode;
+  $('practice-controls').hidden = !practiceActive;
+  $('practice-mode').classList.toggle('active', practiceActive);
+  $('practice-mode').setAttribute('aria-pressed', practiceActive);
   wrongMode = mode === 'wrong';
   wrongRetryActive = false;
   notesMode = mode === 'notes';
@@ -527,6 +533,7 @@ function setMode(mode) {
   if (!notesMode && !memoMode && !mockMode && !pastMode && !analysisMode && !wrongMode && roundStarted && roundScope !== currentRoundScope()) resetRound();
   showQuestion(true);
 }
+$('practice-mode').onclick = () => setMode(lastPracticeMode);
 $('all-mode').onclick = () => setMode('all');
 $('wrong-mode').onclick = () => setMode('wrong');
 $('wrong-retry-start').onclick = () => {
