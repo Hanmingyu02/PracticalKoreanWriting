@@ -457,6 +457,35 @@ function renderConcepts() {
         body.append(deleted);
       }
     }
+    if (entry.comparison) {
+      const table = document.createElement('table');
+      table.className = 'concept-comparison';
+      const caption = document.createElement('caption');
+      caption.textContent = entry.comparison.caption;
+      const head = document.createElement('thead');
+      const headerRow = document.createElement('tr');
+      for (const name of entry.comparison.columns) {
+        const cell = document.createElement('th');
+        cell.scope = 'col';
+        cell.textContent = name;
+        headerRow.append(cell);
+      }
+      head.append(headerRow);
+      const rows = document.createElement('tbody');
+      for (const values of entry.comparison.rows) {
+        const row = document.createElement('tr');
+        values.forEach((value, index) => {
+          const cell = document.createElement(index === 0 ? 'th' : 'td');
+          if (index === 0) cell.scope = 'row';
+          else cell.dataset.label = entry.comparison.columns[index];
+          cell.textContent = value;
+          row.append(cell);
+        });
+        rows.append(row);
+      }
+      table.append(caption, head, rows);
+      body.append(table);
+    }
     return body;
   }));
   const readable = part.volumes.flatMap(item => item.chapters.filter(ch => chapterEntries(part.id, item.id, ch.number).length).map(ch => ({ volume: item.id, chapter: ch.number })));
