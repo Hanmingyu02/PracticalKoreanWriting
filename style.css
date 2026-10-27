@@ -87,3 +87,5 @@ header{flex-wrap:wrap}.exam-countdown{display:flex;align-items:center;gap:14px;f
 .concept-images{white-space:normal;margin-top:28px}.concept-images h4{font-size:18px;margin:0 0 18px}.concept-images figure{margin:0 0 28px}.concept-images figcaption{font-size:15px;font-weight:600;margin-bottom:12px}.concept-images img{display:block;max-width:100%;height:auto;border:1px solid #dce2ea;background:#fff}.concept-images figure>a:first-of-type{display:block;width:fit-content;max-width:100%}.concept-image-original{display:inline-flex;align-items:center;min-height:48px;font-size:13px;color:#174781;text-decoration:underline;text-underline-offset:3px}
 
 .concept-note-section{white-space:normal;margin-top:26px;padding:18px;border:1px solid #dce2ea;border-radius:6px;background:#fafbfc}.concept-note-section h4{font-size:17px;margin:0 0 12px}.concept-note-section ul{margin:0;padding-left:22px;font-size:15px;line-height:1.9}.concept-note-section li+li{margin-top:9px}.concept-comparison:has(thead th:nth-child(2):last-child) th:first-child{width:25%}
+
+@media(min-width:1024px){.tabs{grid-template-columns:repeat(7,minmax(0,1fr))}.tabs button{font-size:12px}}
