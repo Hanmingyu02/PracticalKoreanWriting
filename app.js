@@ -8,6 +8,59 @@ function updateExamCountdown(now = new Date()) {
   const days = Math.round((EXAM_DAY - koreanDay) / DAY_MS);
   $('exam-dday').textContent = days > 0 ? `D-${days}` : days === 0 ? 'D-DAY' : `D+${-days}`;
   $('exam-dday').setAttribute('aria-label', days > 0 ? `시험까지 ${days}일` : days === 0 ? '오늘은 시험일입니다' : `시험일로부터 ${-days}일 지났습니다`);
+  renderPlanCalendars(now);
+}
+function renderPlanCalendars(now = new Date()) {
+  const korean = new Date(now.getTime() + KOREA_OFFSET_MS);
+  const today = `${korean.getUTCFullYear()}-${String(korean.getUTCMonth() + 1).padStart(2, '0')}-${String(korean.getUTCDate()).padStart(2, '0')}`;
+  $('plan-calendars').replaceChildren(...[9, 10].map(month => {
+    const table = document.createElement('table');
+    table.className = 'plan-calendar';
+    const caption = document.createElement('caption');
+    caption.textContent = `2026년 ${month + 1}월`;
+    const head = document.createElement('thead');
+    const header = document.createElement('tr');
+    for (const day of ['일', '월', '화', '수', '목', '금', '토']) {
+      const th = document.createElement('th');
+      th.scope = 'col';
+      th.textContent = day;
+      header.append(th);
+    }
+    head.append(header);
+    const body = document.createElement('tbody');
+    const firstWeekday = new Date(Date.UTC(2026, month, 1)).getUTCDay();
+    const days = new Date(Date.UTC(2026, month + 1, 0)).getUTCDate();
+    for (let start = 0; start < Math.ceil((firstWeekday + days) / 7) * 7; start += 7) {
+      const row = document.createElement('tr');
+      for (let weekday = 0; weekday < 7; weekday++) {
+        const cell = document.createElement('td');
+        const day = start + weekday - firstWeekday + 1;
+        if (day > 0 && day <= days) {
+          const date = `2026-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+          const time = document.createElement('time');
+          time.dateTime = date;
+          time.textContent = day;
+          cell.append(time);
+          if (date === today) {
+            cell.classList.add('calendar-today');
+            time.setAttribute('aria-current', 'date');
+          }
+          if (date === '2026-11-21') {
+            cell.classList.add('calendar-exam');
+            const label = document.createElement('span');
+            label.textContent = '시험';
+            label.className = 'calendar-exam-label';
+            cell.append(label);
+            time.setAttribute('aria-label', '11월 21일 토요일, 한국실용글쓰기 시험일');
+          }
+        } else cell.className = 'calendar-blank';
+        row.append(cell);
+      }
+      body.append(row);
+    }
+    table.append(caption, head, body);
+    return table;
+  }));
 }
 let countdownTimer;
 function refreshExamCountdown() {

@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#ffffff">
   <title>한국실용글쓰기</title>
-  <link rel="stylesheet" href="style.css?v=study-plan-1">
-  <script src="questions.js?v=study-plan-1" defer></script>
-  <script src="concepts.js?v=study-plan-1" defer></script>
-  <script src="app.js?v=study-plan-1" defer></script>
+  <link rel="stylesheet" href="style.css?v=plan-calendar-1">
+  <script src="questions.js?v=plan-calendar-1" defer></script>
+  <script src="concepts.js?v=plan-calendar-1" defer></script>
+  <script src="app.js?v=plan-calendar-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#question">문제로 바로가기</a>
@@ -32,7 +32,9 @@
         </div>
         <section id="study-plan" class="past-panel" aria-labelledby="plan-title" hidden>
           <h2 id="plan-title">공부 계획</h2>
-          <p>아직 등록된 공부 계획이 없습니다.</p>
+          <p class="calendar-description">2026년 10월·11월 <span>시험일: 11월 21일 토요일</span></p>
+          <div class="calendar-key"><span><i class="calendar-today-key" aria-hidden="true"></i>오늘</span><span><i class="calendar-exam-key" aria-hidden="true"></i>시험일</span></div>
+          <div id="plan-calendars" class="plan-calendars"></div>
         </section>
         <section id="exam-analysis" aria-labelledby="analysis-title" hidden>
           <h2 id="analysis-title">시험 분석</h2>
