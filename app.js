@@ -2,6 +2,9 @@ const $ = id => document.getElementById(id);
 const EXAM_DAY = Date.UTC(2026, 10, 21);
 const DAY_MS = 86400000;
 const KOREA_OFFSET_MS = 9 * 60 * 60 * 1000;
+const PLAN_MONTHS = [{year:2026,month:9},{year:2026,month:10},{year:2026,month:11},{year:2027,month:0},{year:2027,month:1}];
+const initialKoreanDate = new Date(Date.now() + KOREA_OFFSET_MS);
+let planMonthIndex = Math.max(0, PLAN_MONTHS.findIndex(item => item.year === initialKoreanDate.getUTCFullYear() && item.month === initialKoreanDate.getUTCMonth()));
 function updateExamCountdown(now = new Date()) {
   // 날짜만 한국 시간 기준으로 비교하여 시차와 일광 절약 시간의 영향을 피합니다.
   const koreanDay = Math.floor((now.getTime() + KOREA_OFFSET_MS) / DAY_MS) * DAY_MS;
@@ -13,11 +16,16 @@ function updateExamCountdown(now = new Date()) {
 function renderPlanCalendars(now = new Date()) {
   const korean = new Date(now.getTime() + KOREA_OFFSET_MS);
   const today = `${korean.getUTCFullYear()}-${String(korean.getUTCMonth() + 1).padStart(2, '0')}-${String(korean.getUTCDate()).padStart(2, '0')}`;
-  $('plan-calendars').replaceChildren(...[9, 10].map(month => {
+  const selectedMonth = PLAN_MONTHS[planMonthIndex];
+  $('calendar-month-label').textContent = `${selectedMonth.year}년 ${selectedMonth.month + 1}월`;
+  $('calendar-previous').disabled = planMonthIndex === 0;
+  $('calendar-next').disabled = planMonthIndex === PLAN_MONTHS.length - 1;
+  $('plan-calendars').replaceChildren(...[selectedMonth].map(({year, month}) => {
     const table = document.createElement('table');
     table.className = 'plan-calendar';
     const caption = document.createElement('caption');
-    caption.textContent = `2026년 ${month + 1}월`;
+    caption.textContent = `${year}년 ${month + 1}월`;
+    caption.className = 'visually-hidden';
     const head = document.createElement('thead');
     const header = document.createElement('tr');
     for (const day of ['일', '월', '화', '수', '목', '금', '토']) {
@@ -28,15 +36,15 @@ function renderPlanCalendars(now = new Date()) {
     }
     head.append(header);
     const body = document.createElement('tbody');
-    const firstWeekday = new Date(Date.UTC(2026, month, 1)).getUTCDay();
-    const days = new Date(Date.UTC(2026, month + 1, 0)).getUTCDate();
+    const firstWeekday = new Date(Date.UTC(year, month, 1)).getUTCDay();
+    const days = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
     for (let start = 0; start < Math.ceil((firstWeekday + days) / 7) * 7; start += 7) {
       const row = document.createElement('tr');
       for (let weekday = 0; weekday < 7; weekday++) {
         const cell = document.createElement('td');
         const day = start + weekday - firstWeekday + 1;
         if (day > 0 && day <= days) {
-          const date = `2026-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+          const date = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
           const time = document.createElement('time');
           time.dateTime = date;
           time.textContent = day;
@@ -62,6 +70,12 @@ function renderPlanCalendars(now = new Date()) {
     return table;
   }));
 }
+$('calendar-previous').onclick = () => {
+  if (planMonthIndex > 0) { planMonthIndex--; renderPlanCalendars(); }
+};
+$('calendar-next').onclick = () => {
+  if (planMonthIndex < PLAN_MONTHS.length - 1) { planMonthIndex++; renderPlanCalendars(); }
+};
 let countdownTimer;
 function refreshExamCountdown() {
   updateExamCountdown();
