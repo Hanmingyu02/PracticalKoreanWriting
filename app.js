@@ -401,6 +401,46 @@ function renderWrongReview() {
     return article;
   }));
 }
+function appendChangedText(container, before, after) {
+  const original = Array.from(before);
+  const revised = Array.from(after);
+  const lengths = Array.from({ length: original.length + 1 }, () => new Uint16Array(revised.length + 1));
+  for (let i = original.length - 1; i >= 0; i--) {
+    for (let j = revised.length - 1; j >= 0; j--) {
+      lengths[i][j] = original[i] === revised[j] ? lengths[i + 1][j + 1] + 1 : Math.max(lengths[i + 1][j], lengths[i][j + 1]);
+    }
+  }
+  const parts = [];
+  let i = 0, j = 0;
+  function add(text, changed) {
+    if (parts.length && parts[parts.length - 1].changed === changed) parts[parts.length - 1].text += text;
+    else parts.push({ text, changed });
+  }
+  let removed = false;
+  while (i < original.length || j < revised.length) {
+    if (i < original.length && j < revised.length && original[i] === revised[j]) {
+      add(revised[j++], false); i++;
+    } else if (j < revised.length && (i === original.length || lengths[i][j + 1] > lengths[i + 1][j])) {
+      add(revised[j++], true);
+    } else { i++; removed = true; }
+  }
+  for (const part of parts) {
+    if (!part.changed) container.append(document.createTextNode(part.text));
+    else {
+      const span = document.createElement('span');
+      span.className = 'changed-text';
+      span.textContent = part.text;
+      span.title = '수정되거나 추가된 부분';
+      container.append(span);
+    }
+  }
+  if (removed && !parts.some(part => part.changed)) {
+    const note = document.createElement('small');
+    note.className = 'changed-text deletion-note';
+    note.textContent = '원문에서 불필요한 표현을 삭제했습니다.';
+    container.append(note);
+  }
+}
 function renderNotes() {
   const search = normalizeAnswer($('notes-search').value).toLocaleLowerCase();
   const entries = [...QUESTIONS, ...STUDY_ONLY_ITEMS].filter(q => matchesCategory(q)
@@ -418,7 +458,15 @@ function renderNotes() {
     group.textContent = q.group;
     term.append(group);
     const answers = document.createElement('td');
-    answers.textContent = q.sourceAnswer || q.answers.join(', ');
+    if (q.category === '어법·어문 규범') {
+      if (q.sourceAnswer?.startsWith('① ')) {
+        q.answers.forEach((answer, index) => {
+          if (index) answers.append(document.createTextNode('\n'));
+          answers.append(document.createTextNode(`${['①', '②', '③'][index] || index + 1} `));
+          appendChangedText(answers, q.question, answer);
+        });
+      } else appendChangedText(answers, q.question, q.sourceAnswer || q.answers.join(', '));
+    } else answers.textContent = q.sourceAnswer || q.answers.join(', ');
     if (q.note || q.reference) {
       const note = document.createElement('small');
       note.textContent = [q.note, q.reference].filter(Boolean).join(' ');
